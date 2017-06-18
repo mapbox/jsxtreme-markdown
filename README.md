@@ -97,7 +97,7 @@ Alternately, you can provide custom syntax highlighting instructions with your `
   Delimiters set off interpolated JS and JSX from the Markdown text.
   Customize them by passing an array with two strings, one for the opener, one for the closer.
   For example: `['{{', '}}']`.
-- **syntaxHighlighting** `'prism' | 'highlightjs' | void` - Default `'highlight.js'`.
+- **syntaxHighlighting** `'highlightjs' | 'prism' | void` - Default `'highlightjs'`.
   Preconfigured syntax highlighting with [highlight.js](https://github.com/isagalaev/highlight.js) or [Prism](https://github.com/PrismJS/prism).
   *Make sure that you include the CSS you'll need to theme the highlighted code!*
   If you would like more control over syntax highlighting, use `markdownItOptions`.
