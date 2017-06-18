@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mdToComponentModule default options 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {
+  title: \\"Everything is ok\\"
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1>{frontMatter.title}</h1>
+        <p>And a <strong>special</strong> number: {props.number}.</p>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule default options produce valid module 1`] = `
+"<div>
+    <h1>Everything is ok</h1>
+    <p>And a <strong>special</strong> number: 77.</p>
+</div>"
+`;
+
+exports[`mdToComponentModule default options with modules in front matter 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+const Timer = require(\\"./timer\\");
+import { Watcher } from \\"./watcher\\";
+
+const frontMatter = {
+  title: \\"Everything is ok\\"
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1>{frontMatter.title}</h1>
+        <p>Some introductory text.</p>
+        <Watcher />
+        <p>This paragraph includes a <Timer />.</p>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule documentation example 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+const Timer = require(\\"./timer\\");
+import { Watcher } from \\"./watcher\\";
+
+const frontMatter = {
+  title: \\"Everything is ok\\",
+  quantity: 834
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1>{frontMatter.title}</h1>
+        <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
+        <Watcher />
+        <p>This paragraph includes a <Timer />.</p>
+        <p>This component also accepts a \\"foo\\" prop: {props.foo}</p>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule mdToJsx options 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {
+  title: \\"Foo\\",
+  list: [\\"one\\", \\"two\\"]
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1>{frontMatter.title}</h1>
+        <div className=\\"foo\\">
+          <p>The default {\\"{\\"}# delimiter #{\\"}\\"} is ignored.</p>
+        </div>
+        <pre>
+          <code className=\\"language-js\\">
+            <span className=\\"token keyword\\">var</span> x{\\" \\"}
+            <span className=\\"token operator\\">=</span>{\\" \\"}
+            <span className=\\"token number\\">3</span>
+            <span className=\\"token punctuation\\">;</span>{\\"\\\\n\\"}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule non-string primitives in front matter 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {
+  count: 7,
+  isHonest: false
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <p>count: {frontMatter.count}</p>
+        <p>isHonest: {frontMatter.isHonest}</p>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule options.name 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {};
+
+class MySpecialName extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1>Title</h1>
+      </div>
+    );
+  }
+}
+
+module.exports = MySpecialName;
+"
+`;
+
+exports[`mdToComponentModule options.template 1`] = `
+"MarkdownReact
+{\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
+<div><h1>{frontMatter.title}</h1>
+</div>"
+`;

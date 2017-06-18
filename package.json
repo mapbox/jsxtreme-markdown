@@ -1,0 +1,80 @@
+{
+  "name": "@mapbox/md-react-transformer",
+  "version": "0.1.0",
+  "description": "Transform Markdown into JSX or React component modules",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "lint": "eslint *.js test lib",
+    "format": "prettier --single-quote --write '{,lib/,test/}*.js'",
+    "test-jest": "jest",
+    "pretest": "npm run lint",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/md-react-transformer.git"
+  },
+  "keywords": [
+    "markdown",
+    "jsx",
+    "react",
+    "transform",
+    "markdown-to-react"
+  ],
+  "author": "Mapbox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapbox/md-react-transformer/issues"
+  },
+  "homepage": "https://github.com/mapbox/md-react-transformer#readme",
+  "dependencies": {
+    "balanced-match": "^1.0.0",
+    "gray-matter": "^2.1.1",
+    "highlight.js": "^9.12.0",
+    "htmltojsx": "^0.2.6",
+    "lodash": "^4.17.4",
+    "markdown-it": "^8.3.1",
+    "pascal-case": "^2.0.1",
+    "prettier": "^1.4.4",
+    "prismjs": "^1.6.0",
+    "stringify-object": "^3.2.0",
+    "strip-indent": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "del": "^3.0.0",
+    "eslint": "^4.0.0",
+    "eslint-plugin-node": "^5.0.0",
+    "husky": "^0.13.4",
+    "jest": "^20.0.4",
+    "js-beautify": "^1.6.14",
+    "lint-staged": "^4.0.0",
+    "pify": "^3.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "lint-staged": {
+    "{,lib/,test/}*.js": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "resetMocks": true,
+    "roots": [
+      "./test"
+    ]
+  },
+  "engines": {
+    "node": ">=4"
+  }
+}
