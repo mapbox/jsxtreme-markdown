@@ -118,6 +118,14 @@ Returns a Promise that resolves with the module as a string.
 
 A default template is provided that produces the output exemplified below. (Alternately, you can provide your own template.)
 
+By default, **there are two special front matter properties":**
+- `wrapper`: Path to a wrapper component.
+  This wrapper component will receive the following props:
+  - All the props passed to the component at runtime.
+  - A `frontMatter` prop containing all the parsed front matter.
+  - A `children` prop that is the JSX content generated from your source Markdown.
+- `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
+
 ```js
 const mdReactTransformer = require('md-react-transformer');
 
@@ -125,6 +133,7 @@ const markdown = `
   ---
   title: Everything is ok
   quantity: 834
+  wrapper: '../wrapper.js',
   modules:
     - "const Timer = require('./timer')"
     - "import { Watcher } from './watcher'"
@@ -150,6 +159,7 @@ mdReactTransformer.mdToComponentModule(markdown).then(result => {
 const React = require("react");
 const Timer = require("./timer");
 import { Watcher } from "./watcher";
+const Wrapper = require("../wrapper");
 
 const frontMatter = {
   title: "Everything is ok",
@@ -160,13 +170,15 @@ class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
-      <div>
-        <h1>{frontMatter.title}</h1>
-        <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
-        <Watcher />
-        <p>This paragraph includes a <Timer />.</p>
-        <p>This component also accepts a "foo" prop: {props.foo}</p>
-      </div>
+      <Wrapper {...props} frontMatter={frontMatter}>
+        <div>
+          <h1>{frontMatter.title}</h1>
+          <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
+          <Watcher />
+          <p>This paragraph includes a <Timer />.</p>
+          <p>This component also accepts a "foo" prop: {props.foo}</p>
+        </div>
+      </Wrapper>
     );
   }
 }
@@ -178,11 +190,15 @@ module.exports = MarkdownReact;
 **Options** (none required)
 
 - Any of the options for `mdToJsx`, documented above.
+- **wrapper** `?string` - The path to a wrapper component.
+  This value can be set of overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
+  See the docs about `wrapper` front matter above.
 - **name** `?string` - Default: `MarkdownReact`.
   The name of the component class that will be generated.
 - **template** `?Function` - An alternative template function.
   Receives as its argument a data object and must return a string.
   Data includes:
+  - `wrapper`: The value of the `wrapper` option above.
   - `name`: The value of the `name` option above, converted to PascalCase.
   - `frontMatter`: The parsed front matter.
   - `jsx`: The JSX string generated from your source Markdown.

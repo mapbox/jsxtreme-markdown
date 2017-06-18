@@ -59,11 +59,12 @@ module.exports = MarkdownReact;
 "
 `;
 
-exports[`mdToComponentModule documentation example 1`] = `
+exports[`mdToComponentModule documentation example, with wrapper front matter 1`] = `
 "\\"use strict\\";
 const React = require(\\"react\\");
 const Timer = require(\\"./timer\\");
 import { Watcher } from \\"./watcher\\";
+const Wrapper = require(\\"../wrapper\\");
 
 const frontMatter = {
   title: \\"Everything is ok\\",
@@ -74,13 +75,15 @@ class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
-      <div>
-        <h1>{frontMatter.title}</h1>
-        <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
-        <Watcher />
-        <p>This paragraph includes a <Timer />.</p>
-        <p>This component also accepts a \\"foo\\" prop: {props.foo}</p>
-      </div>
+      <Wrapper {...props} frontMatter={frontMatter}>
+        <div>
+          <h1>{frontMatter.title}</h1>
+          <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
+          <Watcher />
+          <p>This paragraph includes a <Timer />.</p>
+          <p>This component also accepts a \\"foo\\" prop: {props.foo}</p>
+        </div>
+      </Wrapper>
     );
   }
 }
@@ -174,5 +177,48 @@ exports[`mdToComponentModule options.template 1`] = `
 "MarkdownReact
 {\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
 <div><h1>{frontMatter.title}</h1>
+</div>"
+`;
+
+exports[`mdToComponentModule options.wrapper 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+const Wrapper = require(\\"/Users/davidclark/dev/mapbox/md-react-transformer/test/fixtures/wrapper.js\\");
+
+const frontMatter = {
+  title: \\"Everything is ok\\",
+  quantity: 834
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <Wrapper {...props} frontMatter={frontMatter}>
+        <div>
+          <h1>{frontMatter.title}</h1>
+          <p>Some introductory text. The quantity is {frontMatter.quantity}</p>
+          <p>Here is a number: {props.number}</p>
+        </div>
+      </Wrapper>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`mdToComponentModule options.wrapper 2`] = `
+"<div>
+    <div>This is the wrapper. Here are its props:</div>
+    <div>77</div>
+    <div>Everything is ok</div>
+    <div>834</div>
+    <div>
+        <h1>Everything is ok</h1>
+        <p>Some introductory text. The quantity is 834</p>
+        <p>Here is a number: 77</p>
+    </div>
 </div>"
 `;

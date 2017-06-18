@@ -5,26 +5,25 @@ const stripIndent = require('strip-indent');
 const pify = require('pify');
 const path = require('path');
 const del = require('del');
+const mkdirp = require('mkdirp');
 const beautify = require('js-beautify');
 const fs = require('fs');
-const babel = require('babel-core');
-const babelPresetEs2015 = require('babel-preset-es2015');
-const babelPresetReact = require('babel-preset-react');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const mdToComponentModule = require('../lib/md-to-component-module');
 
 const prepText = text => stripIndent(text).trim();
-const tmpDir = path.join(__dirname, './tmp');
+const tmpDir = path.join(__dirname, '../tmp');
 
 const loadOutputModule = content => {
-  const compiledContent = babel.transform(content, {
-    presets: [babelPresetEs2015, babelPresetReact]
-  }).code;
-  const filename = path.join(tmpDir, crypto.randomBytes(16).toString('hex'));
-  return pify(fs.writeFile)(filename, compiledContent).then(() => {
-    const module = require(filename);
-    return module;
+  const filename = path.join(
+    tmpDir,
+    crypto.randomBytes(16).toString('hex') + '.js'
+  );
+
+  return pify(fs.writeFile)(filename, content).then(() => {
+    const m = require(filename);
+    return m;
   });
 };
 
@@ -36,7 +35,7 @@ const renderComponent = (Component, props) => {
 
 describe('mdToComponentModule', () => {
   beforeAll(() => {
-    return pify(fs.mkdir)(tmpDir);
+    return pify(mkdirp)(tmpDir);
   });
 
   afterAll(() => {
@@ -182,14 +181,45 @@ describe('mdToComponentModule', () => {
     });
   });
 
-  test('documentation example', () => {
+  test('options.wrapper', () => {
     const text = prepText(`
       ---
       title: Everything is ok
       quantity: 834
+      ---
+
+      # {# frontMatter.title #}
+
+      Some introductory text. The quantity is {# frontMatter.quantity #}
+
+      Here is a number: {# props.number #}
+    `);
+    const options = {
+      wrapper: path.join(__dirname, './fixtures/wrapper.js')
+    };
+    return mdToComponentModule(text, options)
+      .then(result => {
+        expect(result).toMatchSnapshot();
+        return result;
+      })
+      .then(loadOutputModule)
+      .then(Output => {
+        const rendered = renderComponent(Output, {
+          number: 77
+        });
+        expect(rendered).toMatchSnapshot();
+      });
+  });
+
+  test.only('documentation example, with wrapper front matter', () => {
+    const text = prepText(`
+      ---
+      wrapper: '../wrapper'
       modules:
         - "const Timer = require('./timer')"
         - "import { Watcher } from './watcher'"
+      title: Everything is ok
+      quantity: 834
       ---
 
       # {# frontMatter.title #}
