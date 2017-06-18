@@ -118,7 +118,7 @@ Returns a Promise that resolves with the module as a string.
 
 A default template is provided that produces the output exemplified below. (Alternately, you can provide your own template.)
 
-By default, **there are two special front matter properties":**
+By default, **there are two special front matter properties:**
 - `wrapper`: Path to a wrapper component.
   This wrapper component will receive the following props:
   - All the props passed to the component at runtime.
