@@ -1,5 +1,7 @@
 # md-react-transformer
 
+[![Build Status](https://travis-ci.org/mapbox/md-react-transformer.svg?branch=master)](https://travis-ci.org/mapbox/md-react-transformer)
+
 Transform Markdown with interpolated JS expressions and JSX elements into JSX or React component modules.
 
 🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
