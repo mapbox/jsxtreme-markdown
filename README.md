@@ -11,7 +11,10 @@ That low-level focus means it can be used by a variety of higher-level modules t
 
 ## API
 
-This module exposes two functions.
+This module exposes the following functions.
+
+- [mdToJsx](#mdtojsx)
+- [mdToComponentModule](#mdtocomponentmodule)
 
 ## mdToJsx
 
