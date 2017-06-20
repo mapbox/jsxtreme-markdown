@@ -18,10 +18,9 @@ This module exposes the following functions.
 
 ## mdToJsx
 
-`mdToJsx(input: string, options?: Object): Promise<string>`
+`mdToJsx(input: string, options?: Object): string`
 
 Write Markdown with interpolated JS and JSX that are set off from the Markdown syntax by designated delimiters; then transform it into pure JSX.
-Returns a Promise that resolves with the JSX string.
 
 ```js
 const prettier = require('prettier');
@@ -52,9 +51,8 @@ const markdown = `
   {# </div> #}
 `;
 
-mdReactTransformer.mdToJsx(markdown).then(jsx => {
-  console.log(prettier.format(jsx));
-});
+const jsx = mdReactTransformer.mdToJsx(markdown);
+console.log(prettier.format(jsx));
 
 /*
 <div>
@@ -109,12 +107,11 @@ Alternately, you can provide custom syntax highlighting instructions with your `
 
 ## mdToComponentModule
 
-`mdToComponentModule(input: string, options?: Object): Promise<string>`
+`mdToComponentModule(input: string, options?: Object): string`
 
 Uses `mdToJsx`, above, to transform Markdown to JSX.
 Also parses front matter.
 Finally, generates a React component module that wraps this content.
-Returns a Promise that resolves with the module as a string.
 
 A default template is provided that produces the output exemplified below. (Alternately, you can provide your own template.)
 
@@ -150,9 +147,8 @@ const markdown = `
   This component also accepts a "foo" prop: {# props.foo #}
 `;
 
-mdReactTransformer.mdToComponentModule(markdown).then(result => {
-  console.log(result);
-});
+const js = mdReactTransformer.mdToComponentModule(markdown);
+console.log(js);
 
 /*
 "use strict";

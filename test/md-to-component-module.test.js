@@ -202,7 +202,7 @@ describe('mdToComponentModule', () => {
     });
   });
 
-  test.only('documentation example, with wrapper front matter', () => {
+  test('documentation example, with wrapper front matter', () => {
     const text = prepText(`
       ---
       wrapper: '../wrapper'
