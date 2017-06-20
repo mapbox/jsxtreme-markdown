@@ -193,7 +193,6 @@ describe('mdToComponentModule', () => {
       wrapper: path.join(__dirname, './fixtures/wrapper.js')
     };
     const code = mdToComponentModule(text, options);
-    expect(code).toMatchSnapshot();
     return loadOutputModule(code).then(Output => {
       const rendered = renderComponent(Output, {
         number: 77
