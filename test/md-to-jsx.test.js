@@ -1,66 +1,59 @@
 'use strict';
 
-const stripIndent = require('strip-indent');
 const prettier = require('prettier');
 const Prism = require('prismjs');
 const mdToJsx = require('../lib/md-to-jsx');
 
-const prepText = text => stripIndent(text).trim();
-
 describe('mdToJsx', () => {
   test('with simple expression', () => {
-    const text = prepText(`
+    const text = `
       # Title
       And a **special**: {# number #}, {#twice#}.
-    `);
+    `;
 
-    return mdToJsx(text).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with nested JSX', () => {
-    const text = prepText(`
+    const text = `
       This is a paragraph {# <span className="foo">with a span inside</span> #}
       {# <div style={{ margin: 70 }}>
         And here is a div.
       </div> #}
-    `);
+    `;
 
-    return mdToJsx(text).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with broken-up nested JSX', () => {
-    const text = prepText(`
+    const text = `
       This is a paragraph {# <span className="foo"> #} with a **markdown** span inside {# </span> #}
       {# <div style={{ margin: 70 }}> #}
         And here is a paragraph inside a div.
         [Link](/some/url)
       {# </div> #}
-    `);
+    `;
 
-    return mdToJsx(text).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with alternative delimiters', () => {
-    const text = prepText(`
+    const text = `
       This time there's {{ adjective }} new delimiters.
       {{ <div style={{ margin: 70 }}>
         Did this work?
       </div> }}
-    `);
+    `;
 
     const options = {
       delimiters: ['{{', '}}']
     };
 
-    return mdToJsx(text, options).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text, options);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with MarkdownIt options', () => {
@@ -75,7 +68,7 @@ describe('mdToJsx', () => {
       return `<pre><code class="language-${lang}">${highlightedCode}</code></pre>`;
     };
 
-    const text = prepText(`
+    const text = `
       This time there's "special" punctuation and syntax highlighting.
       \`\`\`javascript
       const obj = {
@@ -83,7 +76,7 @@ describe('mdToJsx', () => {
         thing: 'two'
       };
       \`\`\`
-    `);
+    `;
 
     const options = {
       delimiters: ['{{', '}}'],
@@ -93,13 +86,12 @@ describe('mdToJsx', () => {
       }
     };
 
-    return mdToJsx(text, options).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text, options);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with built-in Prism highlighting', () => {
-    const text = prepText(`
+    const text = `
       Here is a block of code
       \`\`\`javascript
       const obj = {
@@ -107,19 +99,18 @@ describe('mdToJsx', () => {
         thing: 'two'
       };
       \`\`\`
-    `);
+    `;
 
     const options = {
       syntaxHighlighting: 'prism'
     };
 
-    return mdToJsx(text, options).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text, options);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('with built-in highlight.js highlighting', () => {
-    const text = prepText(`
+    const text = `
       Here is a block of code
       \`\`\`javascript
       const obj = {
@@ -127,19 +118,18 @@ describe('mdToJsx', () => {
         thing: 'two'
       };
       \`\`\`
-    `);
+    `;
 
     const options = {
       syntaxHighlighting: 'highlightjs'
     };
 
-    return mdToJsx(text, options).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text, options);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
   test('documentation example', () => {
-    const text = prepText(`
+    const text = `
       # Title
       Here is some **markdown**. So *easy* to write.
       You can interpolate JS expressions like {# data.number #}
@@ -155,10 +145,9 @@ describe('mdToJsx', () => {
         This is a **Markdown** paragraph inside the div.
         And this is another.
       {# </div> #}
-    `);
+    `;
 
-    return mdToJsx(text).then(jsx => {
-      expect(prettier.format(jsx)).toMatchSnapshot();
-    });
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
   });
 });

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`alternate variable name, with broken-up nested JSX 1`] = `
+"'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['This is a paragraph {# <span className=\\"foo\\"> #} with a **markdown** span inside {# </span> #}\\\\n    {# <div style={{ margin: 70 }}> #}\\\\n      And here is a *paragraph* inside a div.\\\\n      [Link](/some/url)\\\\n    {# </div> #}'], ['This is a paragraph {# <span className=\\"foo\\"> #} with a **markdown** span inside {# </span> #}\\\\n    {# <div style={{ margin: 70 }}> #}\\\\n      And here is a *paragraph* inside a div.\\\\n      [Link](/some/url)\\\\n    {# </div> #}']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var text = markit(_templateObject);"
+`;
+
+exports[`basic usage 1`] = `
+"'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    '], ['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    ']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var foo = md(_templateObject);"
+`;
+
+exports[`does nothing when moduel is not in scope 1`] = `
+"'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    '], ['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    ']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function x() {}
+var foo = md(_templateObject);"
+`;
+
+exports[`import instead of require 1`] = `
+"'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    '], ['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    ']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var foo = md(_templateObject);"
+`;
+
+exports[`require in nested scope 1`] = `
+"'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\\\\n          # Title\\\\n          This is **bold.**\\\\n          Here is a [link](/some/url).\\\\n        '], ['\\\\n          # Title\\\\n          This is **bold.**\\\\n          Here is a [link](/some/url).\\\\n        ']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function x() {
+  if (true) {
+    var foo = md(_templateObject);
+  }
+}"
+`;

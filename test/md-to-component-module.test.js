@@ -57,9 +57,8 @@ describe('mdToComponentModule', () => {
       And a **special** number: {# props.number #}.
     `);
 
-    return mdToComponentModule(text).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text);
+    expect(code).toMatchSnapshot();
   });
 
   test('default options produce valid module', () => {
@@ -73,7 +72,8 @@ describe('mdToComponentModule', () => {
       And a **special** number: {# props.number #}.
     `);
 
-    return mdToComponentModule(text).then(loadOutputModule).then(Output => {
+    const code = mdToComponentModule(text);
+    return loadOutputModule(code).then(Output => {
       const rendered = renderComponent(Output, {
         number: 77
       });
@@ -99,9 +99,8 @@ describe('mdToComponentModule', () => {
       This paragraph includes a {# <Timer /> #}.
     `);
 
-    return mdToComponentModule(text).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text);
+    expect(code).toMatchSnapshot();
   });
 
   test('options.name', () => {
@@ -111,9 +110,8 @@ describe('mdToComponentModule', () => {
     const options = {
       name: 'my-special-name'
     };
-    return mdToComponentModule(text, options).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text, options);
+    expect(code).toMatchSnapshot();
   });
 
   test('options.template', () => {
@@ -132,9 +130,8 @@ describe('mdToComponentModule', () => {
         return `${data.name}\n${JSON.stringify(data.frontMatter)}\n${data.jsx}`;
       }
     };
-    return mdToComponentModule(text, options).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text, options);
+    expect(code).toMatchSnapshot();
   });
 
   test('mdToJsx options', () => {
@@ -160,9 +157,8 @@ describe('mdToComponentModule', () => {
       delimiters: ['{{', '}}'],
       syntaxHighlighting: 'prism'
     };
-    return mdToComponentModule(text, options).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text, options);
+    expect(code).toMatchSnapshot();
   });
 
   test('non-string primitives in front matter', () => {
@@ -176,9 +172,8 @@ describe('mdToComponentModule', () => {
 
       isHonest: {# frontMatter.isHonest #}
     `);
-    return mdToComponentModule(text).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text);
+    expect(code).toMatchSnapshot();
   });
 
   test('options.wrapper', () => {
@@ -197,18 +192,14 @@ describe('mdToComponentModule', () => {
     const options = {
       wrapper: path.join(__dirname, './fixtures/wrapper.js')
     };
-    return mdToComponentModule(text, options)
-      .then(result => {
-        expect(result).toMatchSnapshot();
-        return result;
-      })
-      .then(loadOutputModule)
-      .then(Output => {
-        const rendered = renderComponent(Output, {
-          number: 77
-        });
-        expect(rendered).toMatchSnapshot();
+    const code = mdToComponentModule(text, options);
+    expect(code).toMatchSnapshot();
+    return loadOutputModule(code).then(Output => {
+      const rendered = renderComponent(Output, {
+        number: 77
       });
+      expect(rendered).toMatchSnapshot();
+    });
   });
 
   test.only('documentation example, with wrapper front matter', () => {
@@ -232,8 +223,7 @@ describe('mdToComponentModule', () => {
 
       This component also accepts a "foo" prop: {# props.foo #}
     `);
-    return mdToComponentModule(text).then(result => {
-      expect(result).toMatchSnapshot();
-    });
+    const code = mdToComponentModule(text);
+    expect(code).toMatchSnapshot();
   });
 });
