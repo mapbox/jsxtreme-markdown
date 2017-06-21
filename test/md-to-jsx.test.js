@@ -186,4 +186,20 @@ describe('mdToJsx', () => {
     const jsx = mdToJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
+
+  test('error on block-level element within paragraph', () => {
+    const text = `
+      Text {# <ul><li>block</li></ul> #}
+
+      More text.
+    `;
+    expect(() => mdToJsx(text)).toThrow('block-level element');
+  });
+
+  test('error on block-level element starting paragraph', () => {
+    const text = `
+      {# <ul><li>block</li></ul> #} text.
+    `;
+    expect(() => mdToJsx(text)).toThrow('block-level element');
+  });
 });
