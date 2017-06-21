@@ -188,11 +188,7 @@ const frontMatter = {};
 class MySpecialName extends React.PureComponent {
   render() {
     const props = this.props;
-    return (
-      <div>
-        <h1>Title</h1>
-      </div>
-    );
+    return <h1>Title</h1>;
   }
 }
 
@@ -203,8 +199,8 @@ module.exports = MySpecialName;
 exports[`mdToComponentModule options.template 1`] = `
 "MarkdownReact
 {\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
-<div><h1>{frontMatter.title}</h1>
-</div>"
+<h1>{frontMatter.title}</h1>
+"
 `;
 
 exports[`mdToComponentModule options.wrapper 1`] = `

@@ -4,7 +4,7 @@ exports[`mdToJsx documentation example 1`] = `
 "<div>
   <h1>Title</h1>
   <p>
-    Here is some <strong>markdown</strong>. So <em>easy</em> to write.
+    {\\" \\"}Here is some <strong>markdown</strong>. So <em>easy</em> to write.
     You can interpolate JS expressions like {data.number}
     or {dogs.map(d => d.name).join(\\", \\")}.
     You can also interpolate JSX elements,
@@ -14,12 +14,12 @@ exports[`mdToJsx documentation example 1`] = `
     This is a block.
   </div>
   <p>
-    You can even break up JSX interpolation to process more or your text
+    {\\" \\"}You can even break up JSX interpolation to process more or your text
     as Markdown.
   </p>
   <div className=\\"fancy-class\\">
     <p>
-      This is a <strong>Markdown</strong> paragraph inside the div.
+      {\\" \\"}This is a <strong>Markdown</strong> paragraph inside the div.
       And this is another.
     </p>
   </div>
@@ -47,28 +47,11 @@ exports[`mdToJsx expression inside a src url 1`] = `
 "
 `;
 
-exports[`mdToJsx with MarkdownIt options 1`] = `
-"<div>
-  <p>This time there’s “special” punctuation and syntax highlighting.</p>
-  <pre>
-    <code className=\\"language-javascript\\">
-      <span className=\\"token keyword\\">const</span> obj{\\" \\"}
-      <span className=\\"token operator\\">=</span>{\\" \\"}
-      <span className=\\"token punctuation\\">{\\"{\\"}</span>{\\"\\\\n\\"}{\\"  \\"}thing<span className=\\"token punctuation\\">:</span>{\\" \\"}
-      <span className=\\"token number\\">1</span>
-      <span className=\\"token punctuation\\">,</span>{\\"\\\\n\\"}{\\"  \\"}thing<span className=\\"token punctuation\\">:</span>{\\" \\"}
-      <span className=\\"token string\\">'two'</span>{\\"\\\\n\\"}
-      <span className=\\"token punctuation\\">{\\"}\\"}</span>
-      <span className=\\"token punctuation\\">;</span>{\\"\\\\n\\"}
-    </code>
-  </pre>
-</div>;
-"
-`;
-
 exports[`mdToJsx with alternative delimiters 1`] = `
 "<div>
-  <p>This time there's {adjective} new delimiters.</p>
+  <p>
+    This time there's {adjective} new delimiters.
+  </p>
   <div style={{ margin: 70 }}>
     Did this work?
   </div>
@@ -80,11 +63,11 @@ exports[`mdToJsx with broken-up nested JSX 1`] = `
 "<div>
   <p>
     This is a paragraph{\\" \\"}
-    <span className=\\"foo\\"> with a <strong>markdown</strong> span inside </span>
+    <span className=\\"foo\\">with a <strong>markdown</strong> span inside</span>
   </p>
   <div style={{ margin: 70 }}>
     <p>
-      And here is a paragraph inside a div.
+      {\\" \\"}And here is a paragraph inside a div.
       <a href=\\"/some/url\\">Link</a>
     </p>
   </div>
@@ -105,22 +88,6 @@ exports[`mdToJsx with built-in Prism highlighting 1`] = `
       <span className=\\"token string\\">'two'</span>{\\"\\\\n\\"}
       <span className=\\"token punctuation\\">{\\"}\\"}</span>
       <span className=\\"token punctuation\\">;</span>{\\"\\\\n\\"}
-    </code>
-  </pre>
-</div>;
-"
-`;
-
-exports[`mdToJsx with built-in highlight.js highlighting 1`] = `
-"<div>
-  <p>Here is a block of code</p>
-  <pre>
-    <code className=\\"hljs\\">
-      <span className=\\"hljs-keyword\\">const</span> obj = {\\"{\\"}{\\"\\\\n\\"}{\\"  \\"}
-      <span className=\\"hljs-attr\\">thing</span>:{\\" \\"}
-      <span className=\\"hljs-number\\">1</span>,{\\"\\\\n\\"}{\\"  \\"}
-      <span className=\\"hljs-attr\\">thing</span>:{\\" \\"}
-      <span className=\\"hljs-string\\">'two'</span>{\\"\\\\n\\"}{\\"}\\"};{\\"\\\\n\\"}
     </code>
   </pre>
 </div>;
