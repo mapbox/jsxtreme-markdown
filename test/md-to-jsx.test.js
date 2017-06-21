@@ -15,9 +15,40 @@ describe('mdToJsx', () => {
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
+  test('expression inside a link url', () => {
+    const text = `
+      Go to [the place](/the/place/)
+
+      Go to [the place]({# thePlaceUrl #})
+
+      Go to [the place](/the/{# placeUrl #})
+
+      Go to [the place]({# theUrl #}/place)
+    `;
+
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
+  test('expression inside a src url', () => {
+    const text = `
+      ![The image](/the/img.jpg)
+
+      ![The image]({# theImgUrl #}.jpg)
+
+      ![The image](/the/{# imgUrl #})
+
+      ![The image]({# theUrl #}/img.jpg)
+    `;
+
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
   test('with nested JSX', () => {
     const text = `
       This is a paragraph {# <span className="foo">with a span inside</span> #}
+
       {# <div style={{ margin: 70 }}>
         And here is a div.
       </div> #}
@@ -30,6 +61,7 @@ describe('mdToJsx', () => {
   test('with broken-up nested JSX', () => {
     const text = `
       This is a paragraph {# <span className="foo"> #} with a **markdown** span inside {# </span> #}
+
       {# <div style={{ margin: 70 }}> #}
         And here is a paragraph inside a div.
         [Link](/some/url)
@@ -43,6 +75,7 @@ describe('mdToJsx', () => {
   test('with alternative delimiters', () => {
     const text = `
       This time there's {{ adjective }} new delimiters.
+
       {{ <div style={{ margin: 70 }}>
         Did this work?
       </div> }}
@@ -93,6 +126,7 @@ describe('mdToJsx', () => {
   test('with built-in Prism highlighting', () => {
     const text = `
       Here is a block of code
+
       \`\`\`javascript
       const obj = {
         thing: 1,
@@ -138,9 +172,11 @@ describe('mdToJsx', () => {
       whether {# <span>inline</span> #} or as a block:
       {# <div className="fancy-class">
         This is a block.
-      </div>#}
+      </div> #}
+
       You can even break up JSX interpolation to process more or your text
       as Markdown.
+
       {# <div className="fancy-class"> #}
         This is a **Markdown** paragraph inside the div.
         And this is another.
@@ -149,5 +185,21 @@ describe('mdToJsx', () => {
 
     const jsx = mdToJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
+  test('error on block-level element within paragraph', () => {
+    const text = `
+      Text {# <ul><li>block</li></ul> #}
+
+      More text.
+    `;
+    expect(() => mdToJsx(text)).toThrow('block-level element');
+  });
+
+  test('error on block-level element starting paragraph', () => {
+    const text = `
+      {# <ul><li>block</li></ul> #} text.
+    `;
+    expect(() => mdToJsx(text)).toThrow('block-level element');
   });
 });
