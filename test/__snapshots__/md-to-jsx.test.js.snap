@@ -27,6 +27,26 @@ exports[`mdToJsx documentation example 1`] = `
 "
 `;
 
+exports[`mdToJsx expression inside a link url 1`] = `
+"<div>
+  <p>Go to <a href=\\"/the/place/\\">the place</a></p>
+  <p>Go to <a href={\`\${thePlaceUrl}\`}>the place</a></p>
+  <p>Go to <a href={\`/the/\${placeUrl}\`}>the place</a></p>
+  <p>Go to <a href={\`\${theUrl}/place\`}>the place</a></p>
+</div>;
+"
+`;
+
+exports[`mdToJsx expression inside a src url 1`] = `
+"<div>
+  <p><img src=\\"/the/img.jpg\\" alt=\\"The image\\" /></p>
+  <p><img src={\`\${theImgUrl}.jpg\`} alt=\\"The image\\" /></p>
+  <p><img src={\`/the/\${imgUrl}\`} alt=\\"The image\\" /></p>
+  <p><img src={\`\${theUrl}/img.jpg\`} alt=\\"The image\\" /></p>
+</div>;
+"
+`;
+
 exports[`mdToJsx with MarkdownIt options 1`] = `
 "<div>
   <p>This time there’s “special” punctuation and syntax highlighting.</p>

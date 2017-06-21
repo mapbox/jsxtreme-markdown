@@ -15,6 +15,36 @@ describe('mdToJsx', () => {
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
+  test('expression inside a link url', () => {
+    const text = `
+      Go to [the place](/the/place/)
+
+      Go to [the place]({# thePlaceUrl #})
+
+      Go to [the place](/the/{# placeUrl #})
+
+      Go to [the place]({# theUrl #}/place)
+    `;
+
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
+  test('expression inside a src url', () => {
+    const text = `
+      ![The image](/the/img.jpg)
+
+      ![The image]({# theImgUrl #}.jpg)
+
+      ![The image](/the/{# imgUrl #})
+
+      ![The image]({# theUrl #}/img.jpg)
+    `;
+
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
   test('with nested JSX', () => {
     const text = `
       This is a paragraph {# <span className="foo">with a span inside</span> #}
