@@ -674,11 +674,7 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1, babel-types@^6.25
     lodash "^4.2.0"
     to-fast-properties "^1.0.1"
 
-babylon@^6.13.0, babylon@^6.17.2:
-  version "6.17.3"
-  resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.3.tgz#1327d709950b558f204e5352587fd0290f8d8e48"
-
-babylon@^6.17.4:
+babylon@^6.13.0, babylon@^6.17.2, babylon@^6.17.4:
   version "6.17.4"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.4.tgz#3e8b7402b88d22c3423e137a1577883b15ff869a"
 
@@ -695,6 +691,10 @@ bcrypt-pbkdf@^1.0.0:
   resolved "https://registry.yarnpkg.com/bcrypt-pbkdf/-/bcrypt-pbkdf-1.0.1.tgz#63bc5dcb61331b92bc05fd528953c33462a06f8d"
   dependencies:
     tweetnacl "^0.14.3"
+
+block-elements@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/block-elements/-/block-elements-1.2.0.tgz#8e04ccab638c7e2596f5065fb6c1c7518c905a5d"
 
 bluebird@^3.0.5:
   version "3.5.0"
@@ -2341,6 +2341,13 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+line-column@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/line-column/-/line-column-1.0.2.tgz#d25af2936b6f4849172b312e4792d1d987bc34a2"
+  dependencies:
+    isarray "^1.0.0"
+    isobject "^2.0.0"
 
 linkify-it@^2.0.0:
   version "2.0.3"

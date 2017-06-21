@@ -18,6 +18,7 @@ describe('mdToJsx', () => {
   test('with nested JSX', () => {
     const text = `
       This is a paragraph {# <span className="foo">with a span inside</span> #}
+
       {# <div style={{ margin: 70 }}>
         And here is a div.
       </div> #}
@@ -30,6 +31,7 @@ describe('mdToJsx', () => {
   test('with broken-up nested JSX', () => {
     const text = `
       This is a paragraph {# <span className="foo"> #} with a **markdown** span inside {# </span> #}
+
       {# <div style={{ margin: 70 }}> #}
         And here is a paragraph inside a div.
         [Link](/some/url)
@@ -43,6 +45,7 @@ describe('mdToJsx', () => {
   test('with alternative delimiters', () => {
     const text = `
       This time there's {{ adjective }} new delimiters.
+
       {{ <div style={{ margin: 70 }}>
         Did this work?
       </div> }}
@@ -93,6 +96,7 @@ describe('mdToJsx', () => {
   test('with built-in Prism highlighting', () => {
     const text = `
       Here is a block of code
+
       \`\`\`javascript
       const obj = {
         thing: 1,
@@ -138,9 +142,11 @@ describe('mdToJsx', () => {
       whether {# <span>inline</span> #} or as a block:
       {# <div className="fancy-class">
         This is a block.
-      </div>#}
+      </div> #}
+
       You can even break up JSX interpolation to process more or your text
       as Markdown.
+
       {# <div className="fancy-class"> #}
         This is a **Markdown** paragraph inside the div.
         And this is another.
