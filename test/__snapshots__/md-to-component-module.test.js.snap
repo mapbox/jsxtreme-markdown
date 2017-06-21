@@ -1,7 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`mdToComponentModule default options 1`] = `
-"\\"use strict\\";
+"/*---
+title: Everything is ok
+---*/
+\\"use strict\\";
 const React = require(\\"react\\");
 
 const frontMatter = {
@@ -32,7 +35,13 @@ exports[`mdToComponentModule default options produce valid module 1`] = `
 `;
 
 exports[`mdToComponentModule default options with modules in front matter 1`] = `
-"\\"use strict\\";
+"/*---
+title: Everything is ok
+modules:
+  - \\"const Timer = require('./timer')\\"
+  - \\"import { Watcher } from './watcher'\\"
+---*/
+\\"use strict\\";
 const React = require(\\"react\\");
 const Timer = require(\\"./timer\\");
 import { Watcher } from \\"./watcher\\";
@@ -60,7 +69,15 @@ module.exports = MarkdownReact;
 `;
 
 exports[`mdToComponentModule documentation example, with wrapper front matter 1`] = `
-"\\"use strict\\";
+"/*---
+wrapper: '../wrapper'
+modules:
+  - \\"const Timer = require('./timer')\\"
+  - \\"import { Watcher } from './watcher'\\"
+title: Everything is ok
+quantity: 834
+---*/
+\\"use strict\\";
 const React = require(\\"react\\");
 const Timer = require(\\"./timer\\");
 import { Watcher } from \\"./watcher\\";
@@ -93,7 +110,13 @@ module.exports = MarkdownReact;
 `;
 
 exports[`mdToComponentModule mdToJsx options 1`] = `
-"\\"use strict\\";
+"/*---
+title: Foo
+list:
+  - one
+  - two
+---*/
+\\"use strict\\";
 const React = require(\\"react\\");
 
 const frontMatter = {
@@ -128,7 +151,11 @@ module.exports = MarkdownReact;
 `;
 
 exports[`mdToComponentModule non-string primitives in front matter 1`] = `
-"\\"use strict\\";
+"/*---
+count: 7
+isHonest: false
+---*/
+\\"use strict\\";
 const React = require(\\"react\\");
 
 const frontMatter = {
