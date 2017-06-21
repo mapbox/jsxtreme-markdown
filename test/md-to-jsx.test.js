@@ -72,10 +72,9 @@ describe('mdToJsx', () => {
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
-  test('with alternative delimiters', () => {
+  test.only('with alternative delimiters', () => {
     const text = `
       This time there's {{ adjective }} new delimiters.
-
       {{ <div style={{ margin: 70 }}>
         Did this work?
       </div> }}
