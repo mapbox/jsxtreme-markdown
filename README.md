@@ -11,7 +11,7 @@ Transform Markdown **with interpolated JS expressions and JSX elements (!)** int
 This module takes one string (Markdown) and converts it to another string (JSX or React component module).
 That low-level focus means it can be used by a variety of higher-level modules that target specific contexts (Webpack loaders, Browserify transforms, CLIs, etc.).
 
-## How does this differ from regular Markdonw?
+## How does this differ from regular Markdown?
 
 Unlike regular Markdown:
 
