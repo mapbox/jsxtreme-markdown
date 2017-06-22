@@ -200,6 +200,21 @@ describe('toComponentModule', () => {
     });
   });
 
+  test('options.modules', () => {
+    const text = prepText(`
+      ---
+      title: Everything is ok
+      ---
+
+      {{<Watcher />}}
+    `);
+    const options = {
+      modules: ["import { Watcher } from './watcher'"]
+    };
+    const code = toComponentModule(text, options);
+    expect(code).toMatchSnapshot();
+  });
+
   test('documentation example, with wrapper front matter', () => {
     const text = prepText(`
       ---

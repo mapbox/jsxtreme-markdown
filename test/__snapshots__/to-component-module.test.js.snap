@@ -138,6 +138,29 @@ module.exports = MarkdownReact;
 "
 `;
 
+exports[`toComponentModule options.modules 1`] = `
+"/*---
+title: Everything is ok
+---*/
+\\"use strict\\";
+const React = require(\\"react\\");
+import { Watcher } from \\"./watcher\\";
+
+const frontMatter = {
+  title: \\"Everything is ok\\"
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return <Watcher />;
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
 exports[`toComponentModule options.name 1`] = `
 "\\"use strict\\";
 const React = require(\\"react\\");
