@@ -1,7 +1,6 @@
 'use strict';
 
 const prettier = require('prettier');
-const Prism = require('prismjs');
 const mdToJsx = require('../lib/md-to-jsx');
 
 describe('mdToJsx', () => {
@@ -60,7 +59,7 @@ describe('mdToJsx', () => {
 
   test('with broken-up nested JSX', () => {
     const text = `
-      This is a paragraph {# <span className="foo"> #} with a **markdown** span inside {# </span> #}
+      This is a paragraph {# <span className="foo"> #}with a **markdown** span inside{# </span> #}
 
       {# <div style={{ margin: 70 }}> #}
         And here is a paragraph inside a div.
@@ -75,7 +74,6 @@ describe('mdToJsx', () => {
   test('with alternative delimiters', () => {
     const text = `
       This time there's {{ adjective }} new delimiters.
-
       {{ <div style={{ margin: 70 }}>
         Did this work?
       </div> }}
@@ -83,79 +81,6 @@ describe('mdToJsx', () => {
 
     const options = {
       delimiters: ['{{', '}}']
-    };
-
-    const jsx = mdToJsx(text, options);
-    expect(prettier.format(jsx)).toMatchSnapshot();
-  });
-
-  test('with MarkdownIt options', () => {
-    const highlight = (code, lang) => {
-      const fallback = `<pre><code>${code}</pre></code>`;
-      if (!lang) return fallback;
-      // lang must be http://prismjs.com/#languages-list
-      const grammar = Prism.languages[lang];
-      if (!grammar) return fallback;
-      const highlightedCode = Prism.highlight(code, grammar);
-      // Needs the wrapper class
-      return `<pre><code class="language-${lang}">${highlightedCode}</code></pre>`;
-    };
-
-    const text = `
-      This time there's "special" punctuation and syntax highlighting.
-      \`\`\`javascript
-      const obj = {
-        thing: 1,
-        thing: 'two'
-      };
-      \`\`\`
-    `;
-
-    const options = {
-      delimiters: ['{{', '}}'],
-      markdownItOptions: {
-        typographer: true,
-        highlight
-      }
-    };
-
-    const jsx = mdToJsx(text, options);
-    expect(prettier.format(jsx)).toMatchSnapshot();
-  });
-
-  test('with built-in Prism highlighting', () => {
-    const text = `
-      Here is a block of code
-
-      \`\`\`javascript
-      const obj = {
-        thing: 1,
-        thing: 'two'
-      };
-      \`\`\`
-    `;
-
-    const options = {
-      syntaxHighlighting: 'prism'
-    };
-
-    const jsx = mdToJsx(text, options);
-    expect(prettier.format(jsx)).toMatchSnapshot();
-  });
-
-  test('with built-in highlight.js highlighting', () => {
-    const text = `
-      Here is a block of code
-      \`\`\`javascript
-      const obj = {
-        thing: 1,
-        thing: 'two'
-      };
-      \`\`\`
-    `;
-
-    const options = {
-      syntaxHighlighting: 'highlightjs'
     };
 
     const jsx = mdToJsx(text, options);
