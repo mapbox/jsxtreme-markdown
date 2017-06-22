@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/mapbox/md-react-transformer#readme",
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.1.0",
     "babel-code-frame": "^6.22.0",
     "balanced-match": "^1.0.0",
     "block-elements": "^1.2.0",
