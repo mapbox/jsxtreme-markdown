@@ -10,7 +10,7 @@ const beautify = require('js-beautify');
 const fs = require('fs');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const mdToComponentModule = require('../lib/md-to-component-module');
+const toComponentModule = require('../lib/to-component-module');
 
 const prepText = text => stripIndent(text).trim();
 const tmpDir = path.join(__dirname, '../tmp');
@@ -33,7 +33,7 @@ const renderComponent = (Component, props) => {
   );
 };
 
-describe('mdToComponentModule', () => {
+describe('toComponentModule', () => {
   beforeAll(() => {
     return pify(mkdirp)(tmpDir);
   });
@@ -57,7 +57,7 @@ describe('mdToComponentModule', () => {
       And a **special** number: {{ props.number }}.
     `);
 
-    const code = mdToComponentModule(text);
+    const code = toComponentModule(text);
     expect(code).toMatchSnapshot();
   });
 
@@ -72,7 +72,7 @@ describe('mdToComponentModule', () => {
       And a **special** number: {{ props.number }}.
     `);
 
-    const code = mdToComponentModule(text);
+    const code = toComponentModule(text);
     return loadOutputModule(code).then(Output => {
       const rendered = renderComponent(Output, {
         number: 77
@@ -99,7 +99,7 @@ describe('mdToComponentModule', () => {
       This paragraph includes a {{ <Timer /> }}.
     `);
 
-    const code = mdToComponentModule(text);
+    const code = toComponentModule(text);
     expect(code).toMatchSnapshot();
   });
 
@@ -110,7 +110,7 @@ describe('mdToComponentModule', () => {
     const options = {
       name: 'my-special-name'
     };
-    const code = mdToComponentModule(text, options);
+    const code = toComponentModule(text, options);
     expect(code).toMatchSnapshot();
   });
 
@@ -130,11 +130,11 @@ describe('mdToComponentModule', () => {
         return `${data.name}\n${JSON.stringify(data.frontMatter)}\n${data.jsx}`;
       }
     };
-    const code = mdToComponentModule(text, options);
+    const code = toComponentModule(text, options);
     expect(code).toMatchSnapshot();
   });
 
-  test('mdToJsx options', () => {
+  test('toJsx options', () => {
     const text = prepText(`
       ---
       title: Foo
@@ -156,7 +156,7 @@ describe('mdToComponentModule', () => {
     const options = {
       delimiters: ['{#', '#}']
     };
-    const code = mdToComponentModule(text, options);
+    const code = toComponentModule(text, options);
     expect(code).toMatchSnapshot();
   });
 
@@ -171,7 +171,7 @@ describe('mdToComponentModule', () => {
 
       isHonest: {{ frontMatter.isHonest }}
     `);
-    const code = mdToComponentModule(text);
+    const code = toComponentModule(text);
     expect(code).toMatchSnapshot();
   });
 
@@ -191,7 +191,7 @@ describe('mdToComponentModule', () => {
     const options = {
       wrapper: path.join(__dirname, './fixtures/wrapper.js')
     };
-    const code = mdToComponentModule(text, options);
+    const code = toComponentModule(text, options);
     return loadOutputModule(code).then(Output => {
       const rendered = renderComponent(Output, {
         number: 77
@@ -221,7 +221,7 @@ describe('mdToComponentModule', () => {
 
       This component also accepts a "foo" prop: {{ props.foo }}
     `);
-    const code = mdToComponentModule(text);
+    const code = toComponentModule(text);
     expect(code).toMatchSnapshot();
   });
 });

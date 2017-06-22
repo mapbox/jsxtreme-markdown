@@ -1,16 +1,16 @@
 'use strict';
 
 const prettier = require('prettier');
-const mdToJsx = require('../lib/md-to-jsx');
+const toJsx = require('../lib/to-jsx');
 
-describe('mdToJsx', () => {
+describe('toJsx', () => {
   test('with simple expression', () => {
     const text = `
       # Title
       And a **special**: {{ number }}, {{twice}}.
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -25,7 +25,7 @@ describe('mdToJsx', () => {
       Go to [the place]({{ theUrl }}/place)
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -40,7 +40,7 @@ describe('mdToJsx', () => {
       ![The image]({{ theUrl }}/img.jpg)
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -53,7 +53,7 @@ describe('mdToJsx', () => {
       </div> }}
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -67,7 +67,7 @@ describe('mdToJsx', () => {
       {{ </div> }}
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -83,7 +83,7 @@ describe('mdToJsx', () => {
       delimiters: ['{{', '}}']
     };
 
-    const jsx = mdToJsx(text, options);
+    const jsx = toJsx(text, options);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -95,7 +95,7 @@ describe('mdToJsx', () => {
       <div style=#{{ color: pink }}>{{ color }}</div>
       \`\`\`
     `;
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -120,7 +120,7 @@ describe('mdToJsx', () => {
       {{ </div> }}
     `;
 
-    const jsx = mdToJsx(text);
+    const jsx = toJsx(text);
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
@@ -130,13 +130,13 @@ describe('mdToJsx', () => {
 
       More text.
     `;
-    expect(() => mdToJsx(text)).toThrow('block-level element');
+    expect(() => toJsx(text)).toThrow('block-level element');
   });
 
   test('error on block-level element starting paragraph', () => {
     const text = `
       {{ <ul><li>block</li></ul> }} text.
     `;
-    expect(() => mdToJsx(text)).toThrow('block-level element');
+    expect(() => toJsx(text)).toThrow('block-level element');
   });
 });

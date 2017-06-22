@@ -1,8 +1,10 @@
-# md-react-transformer
+# jsxtreme-markdown
 
-[![Build Status](https://travis-ci.org/mapbox/md-react-transformer.svg?branch=master)](https://travis-ci.org/mapbox/md-react-transformer)
+[![Build Status](https://travis-ci.org/mapbox/jsxtreme-markdown.svg?branch=master)](https://travis-ci.org/mapbox/jsxtreme-markdown)
 
 Transform Markdown **with interpolated JS expressions and JSX elements (!)** into JSX or React component modules.
+
+**It's Xtreme!** Like xtreme sports with Red Bull, but with Markdown and React and inside at your computer.
 
 🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
 
@@ -13,18 +15,18 @@ That low-level focus means it can be used by a variety of higher-level modules t
 
 This module exposes the following functions.
 
-- [mdToJsx](#mdtojsx)
-- [mdToComponentModule](#mdtocomponentmodule)
+- [toJsx](#tojsx)
+- [toComponentModule](#tocomponentmodule)
 
-## mdToJsx
+## toJsx
 
-`mdToJsx(input: string, options?: Object): string`
+`toJsx(input: string, options?: Object): string`
 
 Write Markdown with interpolated JS and JSX that are set off from the Markdown syntax by designated delimiters; then transform it into pure JSX.
 
 ```js
 const prettier = require('prettier');
-const mdReactTransformer = require('md-react-transformer');
+const jsxtremeMarkdown = require('jsxtreme-markdown');
 
 const markdown = `
   # Title
@@ -51,7 +53,7 @@ const markdown = `
   {{ </div> }}
 `;
 
-const jsx = mdReactTransformer.mdToJsx(markdown);
+const jsx = jsxtremeMarkdown.toJsx(markdown);
 console.log(prettier.format(jsx));
 
 /*
@@ -100,11 +102,11 @@ JSX elements are passed directly through.
 - **rehypePlugins** - Parsed Markdown is passed into [rehype](https://github.com/wooorm/remark), at which point it represents HTML nodes.
   At this stage, you can use any rehype plugins you'd like (e.g. syntax highlighting).
 
-## mdToComponentModule
+## toComponentModule
 
-`mdToComponentModule(input: string, options?: Object): string`
+`toComponentModule(input: string, options?: Object): string`
 
-Uses `mdToJsx`, above, to transform Markdown to JSX.
+Uses `toJsx`, above, to transform Markdown to JSX.
 Also parses front matter.
 Finally, generates a React component module that wraps this content.
 
@@ -119,13 +121,13 @@ By default, **there are two special front matter properties:**
 - `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
 
 ```js
-const mdReactTransformer = require('md-react-transformer');
+const jsxtremeMarkdown = require('jsxtreme-markdown');
 
 const markdown = `
   ---
   title: Everything is ok
   quantity: 834
-  wrapper: '../wrapper.js',
+  wrapper: "../wrapper.js",
   modules:
     - "const Timer = require('./timer')"
     - "import { Watcher } from './watcher'"
@@ -142,7 +144,7 @@ const markdown = `
   This component also accepts a "foo" prop: {{ props.foo }}
 `;
 
-const js = mdReactTransformer.mdToComponentModule(markdown);
+const js = jsxtremeMarkdown.toComponentModule(markdown);
 console.log(js);
 
 /*
@@ -180,7 +182,7 @@ module.exports = MarkdownReact;
 
 **Options** (none required)
 
-- Any of the options for `mdToJsx`, documented above.
+- Any of the options for `toJsx`, documented above.
 - **wrapper** `?string` - The path to a wrapper component.
   This value can be set of overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
   See the docs about `wrapper` front matter above.

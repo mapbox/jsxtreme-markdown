@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mdToJsx documentation example 1`] = `
+exports[`toJsx documentation example 1`] = `
 "<div>
   <h1>Title</h1>
   <p>
@@ -27,7 +27,7 @@ exports[`mdToJsx documentation example 1`] = `
 "
 `;
 
-exports[`mdToJsx expression inside a link url 1`] = `
+exports[`toJsx expression inside a link url 1`] = `
 "<div>
   <p>Go to <a href=\\"/the/place/\\">the place</a></p>
   <p>Go to <a href={\`\${thePlaceUrl}\`}>the place</a></p>
@@ -37,7 +37,7 @@ exports[`mdToJsx expression inside a link url 1`] = `
 "
 `;
 
-exports[`mdToJsx expression inside a src url 1`] = `
+exports[`toJsx expression inside a src url 1`] = `
 "<div>
   <p><img src=\\"/the/img.jpg\\" alt=\\"The image\\" /></p>
   <p><img src={\`\${theImgUrl}.jpg\`} alt=\\"The image\\" /></p>
@@ -47,7 +47,7 @@ exports[`mdToJsx expression inside a src url 1`] = `
 "
 `;
 
-exports[`mdToJsx syntax highlighting clashing with delimiters 1`] = `
+exports[`toJsx syntax highlighting clashing with delimiters 1`] = `
 "<div>
   <p>I'm thinking of a {color}</p>
   <pre>
@@ -59,7 +59,7 @@ exports[`mdToJsx syntax highlighting clashing with delimiters 1`] = `
 "
 `;
 
-exports[`mdToJsx with alternative delimiters 1`] = `
+exports[`toJsx with alternative delimiters 1`] = `
 "<div>
   <p>
     This time there's {adjective} new delimiters.
@@ -71,7 +71,7 @@ exports[`mdToJsx with alternative delimiters 1`] = `
 "
 `;
 
-exports[`mdToJsx with broken-up nested JSX 1`] = `
+exports[`toJsx with broken-up nested JSX 1`] = `
 "<div>
   <p>
     This is a paragraph{\\" \\"}
@@ -87,7 +87,7 @@ exports[`mdToJsx with broken-up nested JSX 1`] = `
 "
 `;
 
-exports[`mdToJsx with nested JSX 1`] = `
+exports[`toJsx with nested JSX 1`] = `
 "<div>
   <p>This is a paragraph <span className=\\"foo\\">with a span inside</span></p>
   <div style={{ margin: 70 }}>
@@ -97,7 +97,7 @@ exports[`mdToJsx with nested JSX 1`] = `
 "
 `;
 
-exports[`mdToJsx with simple expression 1`] = `
+exports[`toJsx with simple expression 1`] = `
 "<div>
   <h1>Title</h1>
   <p>And a <strong>special</strong>: {number}, {twice}.</p>

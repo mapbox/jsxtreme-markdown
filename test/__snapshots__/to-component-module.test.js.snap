@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`mdToComponentModule default options 1`] = `
+exports[`toComponentModule default options 1`] = `
 "/*---
 title: Everything is ok
 ---*/
@@ -27,14 +27,14 @@ module.exports = MarkdownReact;
 "
 `;
 
-exports[`mdToComponentModule default options produce valid module 1`] = `
+exports[`toComponentModule default options produce valid module 1`] = `
 "<div>
     <h1>Everything is ok</h1>
     <p>And a <strong>special</strong> number: 77.</p>
 </div>"
 `;
 
-exports[`mdToComponentModule default options with modules in front matter 1`] = `
+exports[`toComponentModule default options with modules in front matter 1`] = `
 "/*---
 title: Everything is ok
 modules:
@@ -68,7 +68,7 @@ module.exports = MarkdownReact;
 "
 `;
 
-exports[`mdToComponentModule documentation example, with wrapper front matter 1`] = `
+exports[`toComponentModule documentation example, with wrapper front matter 1`] = `
 "/*---
 wrapper: '../wrapper'
 modules:
@@ -109,7 +109,74 @@ module.exports = MarkdownReact;
 "
 `;
 
-exports[`mdToComponentModule mdToJsx options 1`] = `
+exports[`toComponentModule non-string primitives in front matter 1`] = `
+"/*---
+count: 7
+isHonest: false
+---*/
+\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {
+  count: 7,
+  isHonest: false
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <p>count: {frontMatter.count}</p>
+        <p>isHonest: {frontMatter.isHonest}</p>
+      </div>
+    );
+  }
+}
+
+module.exports = MarkdownReact;
+"
+`;
+
+exports[`toComponentModule options.name 1`] = `
+"\\"use strict\\";
+const React = require(\\"react\\");
+
+const frontMatter = {};
+
+class MySpecialName extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return <h1>Title</h1>;
+  }
+}
+
+module.exports = MySpecialName;
+"
+`;
+
+exports[`toComponentModule options.template 1`] = `
+"MarkdownReact
+{\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
+<h1>{frontMatter.title}</h1>
+"
+`;
+
+exports[`toComponentModule options.wrapper 1`] = `
+"<div>
+    <div>This is the wrapper. Here are its props:</div>
+    <div>77</div>
+    <div>Everything is ok</div>
+    <div>834</div>
+    <div>
+        <h1>Everything is ok</h1>
+        <p>Some introductory text. The quantity is 834</p>
+        <p>Here is a number: 77</p>
+    </div>
+</div>"
+`;
+
+exports[`toComponentModule toJsx options 1`] = `
 "/*---
 title: Foo
 list:
@@ -141,71 +208,4 @@ class MarkdownReact extends React.PureComponent {
 
 module.exports = MarkdownReact;
 "
-`;
-
-exports[`mdToComponentModule non-string primitives in front matter 1`] = `
-"/*---
-count: 7
-isHonest: false
----*/
-\\"use strict\\";
-const React = require(\\"react\\");
-
-const frontMatter = {
-  count: 7,
-  isHonest: false
-};
-
-class MarkdownReact extends React.PureComponent {
-  render() {
-    const props = this.props;
-    return (
-      <div>
-        <p>count: {frontMatter.count}</p>
-        <p>isHonest: {frontMatter.isHonest}</p>
-      </div>
-    );
-  }
-}
-
-module.exports = MarkdownReact;
-"
-`;
-
-exports[`mdToComponentModule options.name 1`] = `
-"\\"use strict\\";
-const React = require(\\"react\\");
-
-const frontMatter = {};
-
-class MySpecialName extends React.PureComponent {
-  render() {
-    const props = this.props;
-    return <h1>Title</h1>;
-  }
-}
-
-module.exports = MySpecialName;
-"
-`;
-
-exports[`mdToComponentModule options.template 1`] = `
-"MarkdownReact
-{\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
-<h1>{frontMatter.title}</h1>
-"
-`;
-
-exports[`mdToComponentModule options.wrapper 1`] = `
-"<div>
-    <div>This is the wrapper. Here are its props:</div>
-    <div>77</div>
-    <div>Everything is ok</div>
-    <div>834</div>
-    <div>
-        <h1>Everything is ok</h1>
-        <p>Some introductory text. The quantity is 834</p>
-        <p>Here is a number: 77</p>
-    </div>
-</div>"
 `;
