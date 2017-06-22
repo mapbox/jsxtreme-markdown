@@ -87,6 +87,18 @@ describe('mdToJsx', () => {
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
+  test.only('syntax highlighting clashing with delimiters', () => {
+    const text = `
+      I'm thinking of a {{color}}
+
+      \`\`\`javascript
+      <div style=#{{ color: pink }}>{{ color }}</div>
+      \`\`\`
+    `;
+    const jsx = mdToJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
+
   test('documentation example', () => {
     const text = `
       # Title
