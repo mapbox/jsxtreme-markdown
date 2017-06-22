@@ -133,14 +133,7 @@ class MarkdownReact extends React.PureComponent {
         <div className=\\"foo\\">
           <p>The default {\\"{\\"}# delimiter #{\\"}\\"} is ignored.</p>
         </div>
-        <pre>
-          <code className=\\"language-js\\">
-            <span className=\\"token keyword\\">var</span> x{\\" \\"}
-            <span className=\\"token operator\\">=</span>{\\" \\"}
-            <span className=\\"token number\\">3</span>
-            <span className=\\"token punctuation\\">;</span>{\\"\\\\n\\"}
-          </code>
-        </pre>
+        <pre><code className=\\"language-js\\">var x = 3;{\\"\\\\n\\"}</code></pre>
       </div>
     );
   }

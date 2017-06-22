@@ -154,8 +154,7 @@ describe('mdToComponentModule', () => {
       \`\`\`
     `);
     const options = {
-      delimiters: ['{{', '}}'],
-      syntaxHighlighting: 'prism'
+      delimiters: ['{{', '}}']
     };
     const code = mdToComponentModule(text, options);
     expect(code).toMatchSnapshot();

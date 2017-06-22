@@ -87,22 +87,6 @@ describe('mdToJsx', () => {
     expect(prettier.format(jsx)).toMatchSnapshot();
   });
 
-  test('with built-in Prism highlighting', () => {
-    const text = `
-      Here is a block of code
-
-      \`\`\`javascript
-      const obj = {
-        thing: 1,
-        thing: 'two'
-      };
-      \`\`\`
-    `;
-
-    const jsx = mdToJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
-  });
-
   test('documentation example', () => {
     const text = `
       # Title

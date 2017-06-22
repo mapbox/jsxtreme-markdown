@@ -85,25 +85,14 @@ Within the Markdown, JS expressions and JSX elements can be interpolated between
 JS expressions are transformed into curly-brace delimited `{expressions}` within the JSX output.
 JSX elements are passed directly through.
 
-Markdown is parsed with [MarkdownIt](https://github.com/markdown-it/markdown-it).
-You can use any MarkdownIt options you'd like (except `html`).
-See the `markdownItOptions` option below.
-
-Syntax highlighting can be done easily with [Prism](https://github.com/PrismJS/prism) or [highlight.js](https://github.com/isagalaev/highlight.js).
-Alternately, you can provide custom syntax highlighting instructions with your `markdownItOptions`.
-
 **Options** (none required)
 
 - **delimiters** `?[string, string]` - Default: `['{#', '#}']`.
   Delimiters set off interpolated JS and JSX from the Markdown text.
   Customize them by passing an array with two strings, one for the opener, one for the closer.
   For example: `['{{', '}}']`.
-- **syntaxHighlighting** `'highlightjs' | 'prism' | void` - Default `'highlightjs'`.
-  Preconfigured syntax highlighting with [highlight.js](https://github.com/isagalaev/highlight.js) or [Prism](https://github.com/PrismJS/prism).
-  *Make sure that you include the CSS you'll need to theme the highlighted code!*
-  If you would like more control over syntax highlighting, use `markdownItOptions`.
-- **markdownItOptions** `?Object` - Any [MarkdownIt options](https://github.com/markdown-it/markdown-it#init-with-presets-and-options) *except* `html`.
-  `html` will always be set to `true`.
+- **remarkPlugins**
+- **rehypePlugins**
 
 ## mdToComponentModule
 

@@ -75,25 +75,6 @@ exports[`mdToJsx with broken-up nested JSX 1`] = `
 "
 `;
 
-exports[`mdToJsx with built-in Prism highlighting 1`] = `
-"<div>
-  <p>Here is a block of code</p>
-  <pre>
-    <code className=\\"language-javascript\\">
-      <span className=\\"token keyword\\">const</span> obj{\\" \\"}
-      <span className=\\"token operator\\">=</span>{\\" \\"}
-      <span className=\\"token punctuation\\">{\\"{\\"}</span>{\\"\\\\n\\"}{\\"  \\"}thing<span className=\\"token punctuation\\">:</span>{\\" \\"}
-      <span className=\\"token number\\">1</span>
-      <span className=\\"token punctuation\\">,</span>{\\"\\\\n\\"}{\\"  \\"}thing<span className=\\"token punctuation\\">:</span>{\\" \\"}
-      <span className=\\"token string\\">'two'</span>{\\"\\\\n\\"}
-      <span className=\\"token punctuation\\">{\\"}\\"}</span>
-      <span className=\\"token punctuation\\">;</span>{\\"\\\\n\\"}
-    </code>
-  </pre>
-</div>;
-"
-`;
-
 exports[`mdToJsx with nested JSX 1`] = `
 "<div>
   <p>This is a paragraph <span className=\\"foo\\">with a span inside</span></p>
