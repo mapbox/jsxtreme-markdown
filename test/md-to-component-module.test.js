@@ -52,9 +52,9 @@ describe('mdToComponentModule', () => {
       title: Everything is ok
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
 
-      And a **special** number: {# props.number #}.
+      And a **special** number: {{ props.number }}.
     `);
 
     const code = mdToComponentModule(text);
@@ -67,9 +67,9 @@ describe('mdToComponentModule', () => {
       title: Everything is ok
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
 
-      And a **special** number: {# props.number #}.
+      And a **special** number: {{ props.number }}.
     `);
 
     const code = mdToComponentModule(text);
@@ -90,13 +90,13 @@ describe('mdToComponentModule', () => {
         - "import { Watcher } from './watcher'"
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
 
       Some introductory text.
 
-      {# <Watcher /> #}
+      {{ <Watcher /> }}
 
-      This paragraph includes a {# <Timer /> #}.
+      This paragraph includes a {{ <Timer /> }}.
     `);
 
     const code = mdToComponentModule(text);
@@ -123,7 +123,7 @@ describe('mdToComponentModule', () => {
         - two
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
     `);
     const options = {
       template: data => {
@@ -143,18 +143,18 @@ describe('mdToComponentModule', () => {
         - two
       ---
 
-      # {{ frontMatter.title }}
+      # {# frontMatter.title #}
 
-      {{ <div className="foo"> }}
-      The default {# delimiter #} is ignored.
-      {{ </div> }}
+      {# <div className="foo"> #}
+      The default {{ delimiter }} is ignored.
+      {# </div> #}
 
       \`\`\`js
       var x = 3;
       \`\`\`
     `);
     const options = {
-      delimiters: ['{{', '}}']
+      delimiters: ['{#', '#}']
     };
     const code = mdToComponentModule(text, options);
     expect(code).toMatchSnapshot();
@@ -167,9 +167,9 @@ describe('mdToComponentModule', () => {
       isHonest: false
       ---
 
-      count: {# frontMatter.count #}
+      count: {{ frontMatter.count }}
 
-      isHonest: {# frontMatter.isHonest #}
+      isHonest: {{ frontMatter.isHonest }}
     `);
     const code = mdToComponentModule(text);
     expect(code).toMatchSnapshot();
@@ -182,11 +182,11 @@ describe('mdToComponentModule', () => {
       quantity: 834
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
 
-      Some introductory text. The quantity is {# frontMatter.quantity #}
+      Some introductory text. The quantity is {{ frontMatter.quantity }}
 
-      Here is a number: {# props.number #}
+      Here is a number: {{ props.number }}
     `);
     const options = {
       wrapper: path.join(__dirname, './fixtures/wrapper.js')
@@ -211,15 +211,15 @@ describe('mdToComponentModule', () => {
       quantity: 834
       ---
 
-      # {# frontMatter.title #}
+      # {{ frontMatter.title }}
 
-      Some introductory text. The quantity is {# frontMatter.quantity #}
+      Some introductory text. The quantity is {{ frontMatter.quantity }}
 
-      {# <Watcher /> #}
+      {{ <Watcher /> }}
 
-      This paragraph includes a {# <Timer /> #}.
+      This paragraph includes a {{ <Timer /> }}.
 
-      This component also accepts a "foo" prop: {# props.foo #}
+      This component also accepts a "foo" prop: {{ props.foo }}
     `);
     const code = mdToComponentModule(text);
     expect(code).toMatchSnapshot();

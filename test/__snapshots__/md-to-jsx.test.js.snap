@@ -47,6 +47,18 @@ exports[`mdToJsx expression inside a src url 1`] = `
 "
 `;
 
+exports[`mdToJsx syntax highlighting clashing with delimiters 1`] = `
+"<div>
+  <p>I'm thinking of a {color}</p>
+  <pre>
+    <code className=\\"language-javascript\\">
+      &lt;div style={\\"{\\"}{\\"{\\"} color: pink {\\"}\\"}{\\"}\\"}&gt;{color}&lt;/div&gt;{\\"\\\\n\\"}
+    </code>
+  </pre>
+</div>;
+"
+`;
+
 exports[`mdToJsx with alternative delimiters 1`] = `
 "<div>
   <p>

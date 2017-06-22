@@ -131,7 +131,7 @@ class MarkdownReact extends React.PureComponent {
       <div>
         <h1>{frontMatter.title}</h1>
         <div className=\\"foo\\">
-          <p>The default {\\"{\\"}# delimiter #{\\"}\\"} is ignored.</p>
+          <p>The default {\\"{\\"}{\\"{\\"} delimiter {\\"}\\"}{\\"}\\"} is ignored.</p>
         </div>
         <pre><code className=\\"language-js\\">var x = 3;{\\"\\\\n\\"}</code></pre>
       </div>
