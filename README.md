@@ -107,7 +107,7 @@ JSX elements are passed directly through.
   The `escapeDelimiter` will be stripped from the output, but the delimiter characters will remain untouched.
   For example, if I wanted to show the JSX `<div style={{ margin: 10 }} />`, I would need to escape the double curly brace: `<div style=#{{ margin: 10 }} />`.
 - **remarkPlugins** `Function | Array<Function> | void` - The Markdown is parsed by [remark](https://github.com/wooorm/remark).
-  You can use any [remark plugins]([remark plugins](https://github.com/wooorm/remark/blob/master/doc/plugins.md)) you'd like (e.g. linting).
+  You can use any [remark plugins](https://github.com/wooorm/remark/blob/master/doc/plugins.md) you'd like (e.g. linting).
 - **rehypePlugins** `Function | Array<Function> | void` - Parsed Markdown is passed into [rehype](https://github.com/wooorm/remark), at which point it represents HTML nodes.
   At this stage, you can use any [rehype plugins](https://github.com/wooorm/rehype/blob/master/doc/plugins.md) you'd like (e.g. syntax highlighting).
 
