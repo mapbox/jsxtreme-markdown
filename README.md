@@ -31,24 +31,24 @@ const markdown = `
 
   Here is some **markdown**. *So easy* to write.
 
-  You can interpolate JS expressions like {# data.number #}
-  or {# dogs.map(d => d.name).join(', ') #}.
+  You can interpolate JS expressions like {{ data.number }}
+  or {{ dogs.map(d => d.name).join(', ') }}.
 
   You can also interpolate JSX elements,
-  whether {# <span>inline</span> #} or as a block:
+  whether {{ <span>inline</span> }} or as a block:
 
-  {# <div className="fancy-class">
+  {{ <div className="fancy-class">
     This is a block.
-  </div> #}
+  </div> }}
 
   You can even break up JSX interpolation to process more or your text
   as Markdown.
 
-  {# <div className="fancy-class"}> #}
+  {{ <div className="fancy-class"}> }}
     This is a **Markdown** paragraph inside the div.
 
     And this is another.
-  {# </div> #}
+  {{ </div> }}
 `;
 
 const jsx = mdReactTransformer.mdToJsx(markdown);
@@ -87,12 +87,18 @@ JSX elements are passed directly through.
 
 **Options** (none required)
 
-- **delimiters** `?[string, string]` - Default: `['{#', '#}']`.
+- **delimiters** `?[string, string]` - Default: `['{{', '}}']`.
   Delimiters set off interpolated JS and JSX from the Markdown text.
   Customize them by passing an array with two strings, one for the opener, one for the closer.
   For example: `['{{', '}}']`.
-- **remarkPlugins**
-- **rehypePlugins**
+- **escapeDelimiter** `?string` - Default: `#`.
+  In the rare case that you want to use your delimiters but *not* for interpolation (e.g. you have code in the text that includes them), you can escape them by prefixing the start delimiter with this character.
+  The `escapeDelimiter` will be stripped from the output, but the delimiter characters will remain untouched.
+  For example, with the defaults, if I wanted to show some JSX `<div style={{ margin: 10 }} />`, I would need to escape the double curly brace: `<div style=#{{ margin: 10 }}`.
+- **remarkPlugins** - The Markdown is parsed by [remark](https://github.com/wooorm/remark).
+  You can use any remark plugins you'd like (e.g. linting).
+- **rehypePlugins** - Parsed Markdown is passed into [rehype](https://github.com/wooorm/remark), at which point it represents HTML nodes.
+  At this stage, you can use any rehype plugins you'd like (e.g. syntax highlighting).
 
 ## mdToComponentModule
 
@@ -125,15 +131,15 @@ const markdown = `
     - "import { Watcher } from './watcher'"
   ---
 
-  # {# frontMatter.title #}
+  # {{ frontMatter.title }}
 
-  Some introductory text. The quantity is {# frontMatter.quantity #}
+  Some introductory text. The quantity is {{ frontMatter.quantity }}
 
-  {# <Watcher /> #}
+  {{ <Watcher /> }}
 
-  This paragraph includes a {# <Timer /> #}.
+  This paragraph includes a {{ <Timer /> }}.
 
-  This component also accepts a "foo" prop: {# props.foo #}
+  This component also accepts a "foo" prop: {{ props.foo }}
 `;
 
 const js = mdReactTransformer.mdToComponentModule(markdown);
