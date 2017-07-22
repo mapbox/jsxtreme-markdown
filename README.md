@@ -36,10 +36,10 @@ These possibilities are illustrated in the documentation and examples below.
 
 This module exposes the following functions.
 
-- [`jsxtremeMarkdown.toJsx`]
-- [`jsxtremeMarkdown.toComponentModule`]
+- [`toJsx`]
+- [`toComponentModule`]
 
-## jsxtremeMarkdown.toJsx
+## toJsx
 
 `jsxtremeMarkdown.toJsx(input[, options])`
 
@@ -131,11 +131,11 @@ The text runs through a series of steps:
 4. Transform the HTML to JSX (with [htmltojsx]).
 5. Restore the interpolations.
 
-## jsxtremeMarkdown.toComponentModule
+## toComponentModule
 
 `jsxtremeMarkdown.toComponentModule(input[, options])`
 
-Uses [`jsxtremeMarkdown.toJsx`], above, to transform Markdown to JSX.
+Uses [`toJsx`], above, to transform Markdown to JSX.
 Also parses front matter.
 Returns a JS string representing a React component module that wraps this content.
 
@@ -205,7 +205,7 @@ module.exports = MarkdownReact;
 
 - `input {string}`: xtreme Markdown.
 - `options {?Object}`: options.
-  - Any of the options for [`jsxtremeMarkdown.toJsx`], documented above.
+  - Any of the options for [`toJsx`], documented above.
   - `wrapper {?string}` - The path to a wrapper component.
     This value can be overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
     The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
@@ -235,8 +235,8 @@ For the default template, there are two special front matter properties that Mar
 - `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
   This can be set outside the front matter with the `modules` option (above).
 
-[`jsxtremeMarkdown.toJsx`]: #jsxtrememarkdowntojsx
-[`jsxtremeMarkdown.toComponentModule`]: #jsxtrememarkdowntocomponentmodule
+[`toJsx`]: #tojsx
+[`toComponentModule`]: #tocomponentmodule
 [remark]: https://github.com/wooorm/remark
 [remark plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
 [rehype]: https://github.com/wooorm/remark
