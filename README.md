@@ -39,7 +39,9 @@ This module exposes the following functions.
 - [`jsxtremeMarkdown.toJsx`]
 - [`jsxtremeMarkdown.toComponentModule`]
 
-## jsxtremeMarkdown.toJsx(input[, options])
+## jsxtremeMarkdown.toJsx
+
+`jsxtremeMarkdown.toJsx(input[, options])`
 
 Transforms jsxtreme-markdown into pure JSX, returning the JSX.
 
@@ -129,7 +131,9 @@ The text runs through a series of steps:
 4. Transform the HTML to JSX (with [htmltojsx]).
 5. Restore the interpolations.
 
-## jsxtremeMarkdown.toComponentModule(input[, options])
+## jsxtremeMarkdown.toComponentModule
+
+`jsxtremeMarkdown.toComponentModule(input[, options])`
 
 Uses [`jsxtremeMarkdown.toJsx`], above, to transform Markdown to JSX.
 Also parses front matter.
