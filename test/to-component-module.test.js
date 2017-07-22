@@ -200,6 +200,31 @@ describe('toComponentModule', () => {
     });
   });
 
+  test('options.wrapper with ES2015 default export', () => {
+    const text = prepText(`
+      ---
+      title: Everything is ok
+      quantity: 834
+      ---
+
+      # {{ frontMatter.title }}
+
+      Some introductory text. The quantity is {{ frontMatter.quantity }}
+
+      Here is a number: {{ props.number }}
+    `);
+    const options = {
+      wrapper: path.join(__dirname, './fixtures/wrapper-es2015.js')
+    };
+    const code = toComponentModule(text, options);
+    return loadOutputModule(code).then(Output => {
+      const rendered = renderComponent(Output, {
+        number: 77
+      });
+      expect(rendered).toMatchSnapshot();
+    });
+  });
+
   test('options.modules', () => {
     const text = prepText(`
       ---

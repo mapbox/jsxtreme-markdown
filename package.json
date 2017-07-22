@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "precommit": "lint-staged",
-    "lint": "eslint *.js test lib",
+    "lint": "eslint .",
     "format": "prettier --single-quote --write '{,lib/**/,test/**/}*.js'",
     "test-jest": "jest",
     "pretest": "npm run lint",
@@ -64,7 +64,7 @@
     "react-dom": "^15.6.1"
   },
   "lint-staged": {
-    "{,lib/**/,test/**/}*.js": [
+    "**/*.js": [
       "eslint",
       "prettier --single-quote --write",
       "git add"
@@ -72,12 +72,10 @@
   },
   "jest": {
     "coverageReporters": [
-      "json",
-      "lcov",
       "text",
       "html"
     ],
-    "resetMocks": true,
+    "clearMocks": true,
     "roots": [
       "./test"
     ]
