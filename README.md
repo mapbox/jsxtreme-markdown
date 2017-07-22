@@ -36,8 +36,8 @@ These possibilities are illustrated in the documentation and examples below.
 
 This module exposes the following functions.
 
-- [`toJsx`]
-- [`toComponentModule`]
+- [`jsxtremeMarkdown.toJsx`]
+- [`jsxtremeMarkdown.toComponentModule`]
 
 ## jsxtremeMarkdown.toJsx(input[, options])
 
@@ -231,8 +231,8 @@ For the default template, there are two special front matter properties that Mar
 - `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
   This can be set outside the front matter with the `modules` option (above).
 
-[toJsx]: #jsxtrememarkdowntojsx
-[toComponentModule]: #jsxtrememarkdowntocomponentmodule
+[`jsxtremeMarkdown.toJsx`]: #jsxtrememarkdowntojsx
+[`jsxtremeMarkdown.toComponentModule`]: #jsxtrememarkdowntocomponentmodule
 [remark]: https://github.com/wooorm/remark
 [remark plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
 [rehype]: https://github.com/wooorm/remark
