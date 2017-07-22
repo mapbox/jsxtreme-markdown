@@ -8,6 +8,8 @@ Transform **Markdown with interpolated JS expressions and JSX elements** into JS
 
 **It's Xtreme!** Like xtreme sports with Red Bull, but with Markdown and React and indoors at your computer.
 
+Have a look at the big code-block examples below.
+
 ## Low-level focus
 
 This module takes one string (Markdown) and converts it to another string (JSX or a React component module).
