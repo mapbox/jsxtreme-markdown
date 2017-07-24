@@ -239,4 +239,25 @@ describe('toComponentModule', () => {
     const code = toComponentModule(text);
     expect(code).toMatchSnapshot();
   });
+
+  test('options.precompile = true', () => {
+    const text = prepText(`
+      ---
+      title: Everything is ok
+      ---
+
+      # {{ frontMatter.title }}
+
+      Some introductory text.
+    `);
+    const options = {
+      precompile: true
+    };
+    const code = toComponentModule(text, options);
+    expect(code).toMatchSnapshot();
+    return loadOutputModule(code).then(Output => {
+      const rendered = renderComponent(Output);
+      expect(rendered).toMatchSnapshot();
+    });
+  });
 });

@@ -223,6 +223,8 @@ module.exports = MarkdownReact;
     - `name`: The value of the `name` option above, converted to PascalCase.
     - `frontMatter`: The parsed front matter.
     - `jsx`: The JSX string generated from your source Markdown.
+  - `precompile {?boolean}` - Default: `false`.
+    If `true`, the returned string will be compiled with Babel (using the ES2015 and React presets).
 
 For the default template, there are two special front matter properties that Markdown documets can use:
 - `wrapper`: Path to a wrapper component.
