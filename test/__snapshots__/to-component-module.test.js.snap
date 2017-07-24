@@ -89,7 +89,8 @@ quantity: 834
 const React = require(\\"react\\");
 const Timer = require(\\"./timer\\");
 import { Watcher } from \\"./watcher\\";
-const Wrapper = require(\\"../wrapper\\");
+let Wrapper = require(\\"../wrapper\\");
+Wrapper = Wrapper.default || Wrapper;
 
 const frontMatter = {
   title: \\"Everything is ok\\",
@@ -269,6 +270,20 @@ exports[`toComponentModule options.template 1`] = `
 `;
 
 exports[`toComponentModule options.wrapper 1`] = `
+"<div>
+    <div>This is the wrapper. Here are its props:</div>
+    <div>77</div>
+    <div>Everything is ok</div>
+    <div>834</div>
+    <div>
+        <h1>Everything is ok</h1>
+        <p>Some introductory text. The quantity is 834</p>
+        <p>Here is a number: 77</p>
+    </div>
+</div>"
+`;
+
+exports[`toComponentModule options.wrapper with ES2015 default export 1`] = `
 "<div>
     <div>This is the wrapper. Here are its props:</div>
     <div>77</div>
