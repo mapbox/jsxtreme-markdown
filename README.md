@@ -34,16 +34,22 @@ These possibilities are illustrated in the documentation and examples below.
 
 ## API
 
-This module exposes the following functions.
+### toJsx
 
-- [`toJsx`]
-- [`toComponentModule`]
-
-## toJsx
-
-`jsxtremeMarkdown.toJsx(input[, options])`
+`jsxtremeMarkdown.toJsx(input, [options])`
 
 Transforms jsxtreme-markdown into pure JSX, returning the JSX.
+
+
+The text runs through a series of steps:
+
+1. Extract interpolations, replacing them with placeholders that will be handled properly by the Markdown parser.
+2. Run the result through [remark] to parse the Markdown.
+  (At this stage, you can use any [remark plugins]) you'd like)
+3. Parsed Markdown is passed into [rehype] for transformation into HTML.
+  (At this stage, you can use any [rehype plugins] you'd like.)
+4. Transform the HTML to JSX (with [htmltojsx]).
+5. Restore the interpolations.
 
 ```js
 const prettier = require('prettier');
@@ -104,36 +110,50 @@ console.log(prettier.format(jsx));
 */
 ```
 
-- `input {string}`: xtreme Markdown.
-- `options {?Object}`: options.
-  - `delimiters {?[string, string]}` - Default: `['{{', '}}']`.
-    Delimiters set off interpolated JS and JSX from the Markdown text.
-    Customize them by passing an array with two strings, one for the opener, one for the closer.
-    For example: `['{%', '%}']`.
-  - `escapeDelimiter {?string}` - Default: `#`.
-    In the rare case that you want to use your delimiters but *not* for interpolation (e.g. you have code in the text that includes them), you can escape them by prefixing the start delimiter with this character.
-    The `escapeDelimiter` will be stripped from the output, but the delimiter characters will remain untouched.
-    For example, if you want to include the JSX `<div style={{ margin: 10 }} />` in a code block, you would need to escape the double curly brace: `<div style=#{{ margin: 10 }} />`.
-  - `remarkPlugins {Function | Array<Function> | void}` - The Markdown is parsed by [remark].
-    You can use any [remark plugins] you'd like (e.g. for linting).
-  - `rehypePlugins {Function | Array<Function> | void}` - Parsed Markdown is passed into [rehype], at which point it represents HTML nodes.
-    At this stage, you can use any [rehype plugins] you'd like (e.g. for syntax highlighting).
+#### input
 
-### How does this work?
+Type: `string`.
+**Required**.
 
-The text runs through a series of steps:
+Your xtreme Markdown.
 
-1. Extract interpolations, replacing them with placeholders that will be handled properly by the Markdown parser.
-2. Run the result through [remark] to parse the Markdown.
-  (At this stage, you can use any [remark plugins]) you'd like)
-3. Parsed Markdown is passed into [rehype] for transformation into HTML.
-  (At this stage, you can use any [rehype plugins] you'd like.)
-4. Transform the HTML to JSX (with [htmltojsx]).
-5. Restore the interpolations.
+#### options
 
-## toComponentModule
+##### delimiters
 
-`jsxtremeMarkdown.toComponentModule(input[, options])`
+Type: `[string, string]`.
+Default: `['{{', '}}']`.
+
+Delimiters set off interpolated JS and JSX from the Markdown text.
+Customize them by passing an array with two strings, one for the opener, one for the closer.
+For example: `['{%', '%}']`.
+
+##### escapeDelimiter
+
+Type: `string`.
+Default: `'#'`.
+
+In the rare case that you want to use your delimiters but *not* for interpolation (e.g. you have code in the text that includes them), you can escape them by prefixing the start delimiter with this character.
+The `escapeDelimiter` will be stripped from the output, but the delimiter characters will remain untouched.
+For example, if you want to include the JSX `<div style={{ margin: 10 }} />` in a code block, you would need to escape the double curly brace: `<div style=#{{ margin: 10 }} />`.
+
+##### remarkPlugins
+
+Type: `Function | Array<Function>`.
+
+The Markdown is parsed by [remark].
+So you can use any [remark plugins] you'd like (e.g. for linting).
+
+##### rehypePlugins
+
+Type: `Function | Array<Function>`.
+
+Parsed Markdown is passed into [rehype], at which point it represents HTML nodes.
+At this stage, you can use any [rehype plugins] you'd like (e.g. for syntax highlighting).
+
+### toComponentModule
+
+`jsxtremeMarkdown.toComponentModule(input, [options])`
 
 Uses [`toJsx`], above, to transform Markdown to JSX.
 Also parses front matter.
@@ -203,39 +223,77 @@ module.exports = MarkdownReact;
 */
 ```
 
-- `input {string}`: xtreme Markdown.
-- `options {?Object}`: options.
-  - Any of the options for [`toJsx`], documented above.
-  - `wrapper {?string}` - The path to a wrapper component.
-    This value can be overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
-    The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
-    See the docs about `wrapper` front matter, below.
-  - `modules {?Array<string>}` -  An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
-    This value can be overridden document-by-document by setting `modules` in the front matter of specific documents.
-  - `name {?string}` - Default: `MarkdownReact`.
-    The name of the component class that will be generated.
-  - `template {?Function}` - An alternative template function.
-    Look to [the default template](lib/templates/default.js) as an example.
-    Receives as its argument a data object and must return a string.
-    The data object includes the following:
-    - `wrapper`: The value of the `wrapper` option above.
-    - `modules`: The value of the `modules` option above.
-    - `name`: The value of the `name` option above, converted to PascalCase.
-    - `frontMatter`: The parsed front matter.
-    - `jsx`: The JSX string generated from your source Markdown.
-  - `precompile {?boolean}` - Default: `false`.
-    If `true`, the returned string will be compiled with Babel (using the ES2015 and React presets).
+#### input
+
+Type: `string`.
+**Required**.
+
+Your xtreme Markdown.
+
+#### options
+
+**You can pass any of the options for [`toJsx`]**, documented above.
+Also the following:
+
+###### wrapper
+
+Type: `string`.
+
+The path to a wrapper component.
+This value can be overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
+The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
+See the docs about `wrapper` front matter, below.
+
+###### modules
+
+Type: `Array<string>`.
+
+An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
+This value can be overridden document-by-document by setting `modules` in the front matter of specific documents.
+
+###### name
+
+Type: `string`.
+Default: `MarkdownReact`.
+
+The name of the component class that will be generated.
+
+###### template
+
+Type: `(data: Object) => string`.
+
+An alternative template function.
+
+Receives as its argument a data object and must return a string.
+Look to [the default template](lib/templates/default.js) as an example.
+The data object includes the following:
+
+- `wrapper`: The value of [the `wrapper` option](#wrapper), above.
+- `modules`: The value of [the `modules` option](#modules), above.
+- `name`: The value of [the `name` option](#name), above, converted to PascalCase.
+- `frontMatter`: The parsed front matter.
+- `jsx`: The JSX string generated from your source Markdown.
+
+##### precompile
+
+Type: `boolean`.
+Default: `false`.
+
+If `true`, the returned string will be compiled with Babel (using the ES2015 and React presets).
+
+#### The default template
 
 For the default template, there are two special front matter properties that Markdown documets can use:
+
 - `wrapper`: Path to a wrapper component.
-  This can be set outside the front matter with the `wrapper` option (above).
+  This can be set outside the front matter with [the `wrapper` option](#wrapper), above.
   The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
   This wrapper component will receive the following props:
   - All the props passed to the component at runtime.
   - `frontMatter`: The parsed front matter.
   - `children`: The JSX content generated from your source Markdown.
 - `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
-  This can be set outside the front matter with the `modules` option (above).
+  This can be set outside the front matter with [the `modules` option](#modules), above.
 
 [`toJsx`]: #tojsx
 [`toComponentModule`]: #tocomponentmodule
