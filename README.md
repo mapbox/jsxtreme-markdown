@@ -191,18 +191,17 @@ const js = jsxtremeMarkdown.toComponentModule(markdown);
 console.log(js);
 
 /*
-"use strict";
-const React = require("react");
-const Timer = require("./timer");
+import React from "react";
+import Timer from "./timer";
 import { Watcher } from "./watcher";
-const Wrapper = require("../wrapper");
+import Wrapper from "../wrapper";
 
 const frontMatter = {
   title: "Everything is ok",
   quantity: 834
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -218,8 +217,6 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 */
 ```
 

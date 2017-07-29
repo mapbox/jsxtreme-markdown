@@ -4,14 +4,13 @@ exports[`toComponentModule default options 1`] = `
 "/*---
 title: Everything is ok
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
+import React from \\"react\\";
 
 const frontMatter = {
   title: \\"Everything is ok\\"
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -26,8 +25,6 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
 
@@ -43,18 +40,17 @@ exports[`toComponentModule default options with prependJs in front matter 1`] = 
 title: Everything is ok
 prependJs:
   - \\"const Timer = require('./timer')\\"
-  - \\"import { Watcher } from './watcher'\\"
+  - \\"const Watcher = require('./watcher').Watcher\\"
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
+import React from \\"react\\";
 const Timer = require(\\"./timer\\");
-import { Watcher } from \\"./watcher\\";
+const Watcher = require(\\"./watcher\\").Watcher;
 
 const frontMatter = {
   title: \\"Everything is ok\\"
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -71,8 +67,6 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
 
@@ -80,24 +74,22 @@ exports[`toComponentModule documentation example, with wrapper front matter 1`] 
 "/*---
 wrapper: '../wrapper'
 prependJs:
-  - \\"const Timer = require('./timer')\\"
+  - \\"import Timer from './timer'\\"
   - \\"import { Watcher } from './watcher'\\"
 title: Everything is ok
 quantity: 834
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
-const Timer = require(\\"./timer\\");
+import React from \\"react\\";
+import Timer from \\"./timer\\";
 import { Watcher } from \\"./watcher\\";
-let Wrapper = require(\\"../wrapper\\");
-Wrapper = Wrapper.default || Wrapper;
+import Wrapper from \\"../wrapper\\";
 
 const frontMatter = {
   title: \\"Everything is ok\\",
   quantity: 834
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -121,8 +113,6 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
 
@@ -131,15 +121,14 @@ exports[`toComponentModule non-string primitives in front matter 1`] = `
 count: 7
 isHonest: false
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
+import React from \\"react\\";
 
 const frontMatter = {
   count: 7,
   isHonest: false
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -154,43 +143,46 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
 
 exports[`toComponentModule options.name 1`] = `
-"\\"use strict\\";
-const React = require(\\"react\\");
+"import React from \\"react\\";
 
 const frontMatter = {};
 
-class MySpecialName extends React.PureComponent {
+export default class MySpecialName extends React.PureComponent {
   render() {
     const props = this.props;
     return <h1>Title</h1>;
   }
 }
-
-module.exports = MySpecialName;
 "
 `;
 
 exports[`toComponentModule options.precompile = true 1`] = `
-"/*---
-title: Everything is ok
----*/
-\\"use strict\\";
+"\\"use strict\\";
+
+Object.defineProperty(exports, \\"__esModule\\", {
+  value: true
+});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\\"value\\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require(\\"react\\");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\\"Cannot call a class as a function\\"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\\"this hasn't been initialised - super() hasn't been called\\"); } return call && (typeof call === \\"object\\" || typeof call === \\"function\\") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== \\"function\\" && superClass !== null) { throw new TypeError(\\"Super expression must either be null or a function, not \\" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== \\"function\\" && superClass !== null) { throw new TypeError(\\"Super expression must either be null or a function, not \\" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*---
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               title: Everything is ok
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               ---*/
 
-var React = require(\\"react\\");
 
 var frontMatter = {
   title: \\"Everything is ok\\"
@@ -209,15 +201,15 @@ var MarkdownReact = function (_React$PureComponent) {
     key: \\"render\\",
     value: function render() {
       var props = this.props;
-      return React.createElement(
+      return _react2.default.createElement(
         \\"div\\",
         null,
-        React.createElement(
+        _react2.default.createElement(
           \\"h1\\",
           null,
           frontMatter.title
         ),
-        React.createElement(
+        _react2.default.createElement(
           \\"p\\",
           null,
           \\"Some introductory text.\\"
@@ -227,9 +219,9 @@ var MarkdownReact = function (_React$PureComponent) {
   }]);
 
   return MarkdownReact;
-}(React.PureComponent);
+}(_react2.default.PureComponent);
 
-module.exports = MarkdownReact;"
+exports.default = MarkdownReact;"
 `;
 
 exports[`toComponentModule options.precompile = true 2`] = `
@@ -243,22 +235,19 @@ exports[`toComponentModule options.prependJs 1`] = `
 "/*---
 title: Everything is ok
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
+import React from \\"react\\";
 import { Watcher } from \\"./watcher\\";
 
 const frontMatter = {
   title: \\"Everything is ok\\"
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return <Watcher />;
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
 
@@ -304,15 +293,14 @@ list:
   - one
   - two
 ---*/
-\\"use strict\\";
-const React = require(\\"react\\");
+import React from \\"react\\";
 
 const frontMatter = {
   title: \\"Foo\\",
   list: [\\"one\\", \\"two\\"]
 };
 
-class MarkdownReact extends React.PureComponent {
+export default class MarkdownReact extends React.PureComponent {
   render() {
     const props = this.props;
     return (
@@ -336,7 +324,5 @@ class MarkdownReact extends React.PureComponent {
     );
   }
 }
-
-module.exports = MarkdownReact;
 "
 `;
