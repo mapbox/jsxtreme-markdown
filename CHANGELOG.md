@@ -1,9 +1,13 @@
 # Changelog
 
+## Head
+
+- [Fix] Move Babel modules from `devDependencies` to `dependencies`.
+
 ## 0.7.0
 
-- [Breaking] Use ES2015 module syntax in default template.
-- [Breaking] Rename `modules` option to `prependJs`.
+- [Breaking change] Use ES2015 module syntax in default template.
+- [Breaking change] Rename `modules` option to `prependJs`.
 
 ## 0.6.0
 
