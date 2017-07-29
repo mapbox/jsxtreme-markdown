@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 0.7.0
 
 - [Breaking] Use ES2015 module syntax in default template.
 - [Breaking] Rename `modules` option to `prependJs`.
