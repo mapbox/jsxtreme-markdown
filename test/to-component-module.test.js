@@ -22,7 +22,8 @@ const loadOutputModule = content => {
   );
 
   return pify(fs.writeFile)(filename, content).then(() => {
-    const m = require(filename);
+    let m = require(filename);
+    m = m.default || m;
     return m;
   });
 };
@@ -87,7 +88,7 @@ describe('toComponentModule', () => {
       title: Everything is ok
       prependJs:
         - "const Timer = require('./timer')"
-        - "import { Watcher } from './watcher'"
+        - "const Watcher = require('./watcher').Watcher"
       ---
 
       # {{ frontMatter.title }}
@@ -245,7 +246,7 @@ describe('toComponentModule', () => {
       ---
       wrapper: '../wrapper'
       prependJs:
-        - "const Timer = require('./timer')"
+        - "import Timer from './timer'"
         - "import { Watcher } from './watcher'"
       title: Everything is ok
       quantity: 834
