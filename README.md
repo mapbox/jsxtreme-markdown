@@ -32,6 +32,12 @@ JSX elements are passed directly through.
 
 These possibilities are illustrated in the documentation and examples below.
 
+## Installation
+
+```
+npm install @mapbox/jsxtreme-markdown
+```
+
 ## API
 
 ### toJsx
@@ -229,10 +235,10 @@ Your xtreme Markdown.
 
 #### options
 
-**You can pass any of the options for [`toJsx`]**, documented above.
+**You can pass any of [the options for `toJsx`](#options)**, documented above.
 Also the following:
 
-###### wrapper
+##### wrapper
 
 Type: `string`.
 
@@ -246,7 +252,7 @@ The wrapper component will receive the following props:
 - `frontMatter`: The parsed front matter.
 - `children`: The JSX content generated from your source Markdown.
 
-###### prependJs
+##### prependJs
 
 Type: `Array<string>`.
 
@@ -254,14 +260,14 @@ An array of lines of JS code that will be prepended to the top of the JavaScript
 The typical use-case is to `require` or `import` modules that will be used by interpolated JS and JSX.
 This value can be *added to* document-by-document by setting `prependJs` in the front matter of specific documents.
 
-###### name
+##### name
 
 Type: `string`.
 Default: `MarkdownReact`.
 
 The name of the component class that will be generated.
 
-###### template
+##### template
 
 Type: `(data: Object) => string`.
 
