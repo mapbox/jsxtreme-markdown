@@ -1,6 +1,6 @@
 # Changelog
 
-## Head
+## 0.7.1
 
 - [Fix] Move Babel modules from `devDependencies` to `dependencies`.
 
