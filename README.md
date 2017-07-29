@@ -171,7 +171,7 @@ const markdown = `
   title: Everything is ok
   quantity: 834
   wrapper: "../wrapper.js",
-  modules:
+  prependJs:
     - "const Timer = require('./timer')"
     - "import { Watcher } from './watcher'"
   ---
@@ -242,14 +242,20 @@ Type: `string`.
 The path to a wrapper component.
 This value can be overridden document-by-document by setting `wrapper` in the front matter of the Markdown.
 The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
-See the docs about `wrapper` front matter, below.
 
-###### modules
+The wrapper component will receive the following props:
+
+- All the props passed to the component at runtime.
+- `frontMatter`: The parsed front matter.
+- `children`: The JSX content generated from your source Markdown.
+
+###### prependJs
 
 Type: `Array<string>`.
 
-An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
-This value can be overridden document-by-document by setting `modules` in the front matter of specific documents.
+An array of lines of JS code that will be prepended to the top of the JavaScript.
+The typical use-case is to `require` or `import` modules that will be used by interpolated JS and JSX.
+This value can be *added to* document-by-document by setting `prependJs` in the front matter of specific documents.
 
 ###### name
 
@@ -269,7 +275,7 @@ Look to [the default template](lib/templates/default.js) as an example.
 The data object includes the following:
 
 - `wrapper`: The value of [the `wrapper` option](#wrapper), above.
-- `modules`: The value of [the `modules` option](#modules), above.
+- `prependJs`: The value of [the `prependJs` option](#prependjs), above.
 - `name`: The value of [the `name` option](#name), above, converted to PascalCase.
 - `frontMatter`: The parsed front matter.
 - `jsx`: The JSX string generated from your source Markdown.
@@ -283,17 +289,13 @@ If `true`, the returned string will be compiled with Babel (using the ES2015 and
 
 #### The default template
 
-For the default template, there are two special front matter properties that Markdown documets can use:
+For the default template, there are two special front matter properties that Markdown documents can use:
 
 - `wrapper`: Path to a wrapper component.
   This can be set outside the front matter with [the `wrapper` option](#wrapper), above.
-  The wrapper component must be exported with `module.exports` or `export default`, not a named ES2015 export.
-  This wrapper component will receive the following props:
-  - All the props passed to the component at runtime.
-  - `frontMatter`: The parsed front matter.
-  - `children`: The JSX content generated from your source Markdown.
-- `modules`: An array of lines of JS code that `require` or `import` modules that will be used in the interpolated JS and JSX.
-  This can be set outside the front matter with [the `modules` option](#modules), above.
+  See those docs for more details.
+- `prependJs`: See the [the `prependJs` option](#prependjs), above.
+  In a document's front matter, this property will *add lines to* the value of that option, for that specific module.
 
 [`toJsx`]: #tojsx
 [`toComponentModule`]: #tocomponentmodule

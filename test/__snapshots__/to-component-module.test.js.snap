@@ -38,10 +38,10 @@ exports[`toComponentModule default options produce valid module 1`] = `
 </div>"
 `;
 
-exports[`toComponentModule default options with modules in front matter 1`] = `
+exports[`toComponentModule default options with prependJs in front matter 1`] = `
 "/*---
 title: Everything is ok
-modules:
+prependJs:
   - \\"const Timer = require('./timer')\\"
   - \\"import { Watcher } from './watcher'\\"
 ---*/
@@ -79,7 +79,7 @@ module.exports = MarkdownReact;
 exports[`toComponentModule documentation example, with wrapper front matter 1`] = `
 "/*---
 wrapper: '../wrapper'
-modules:
+prependJs:
   - \\"const Timer = require('./timer')\\"
   - \\"import { Watcher } from './watcher'\\"
 title: Everything is ok
@@ -152,29 +152,6 @@ class MarkdownReact extends React.PureComponent {
         </p>
       </div>
     );
-  }
-}
-
-module.exports = MarkdownReact;
-"
-`;
-
-exports[`toComponentModule options.modules 1`] = `
-"/*---
-title: Everything is ok
----*/
-\\"use strict\\";
-const React = require(\\"react\\");
-import { Watcher } from \\"./watcher\\";
-
-const frontMatter = {
-  title: \\"Everything is ok\\"
-};
-
-class MarkdownReact extends React.PureComponent {
-  render() {
-    const props = this.props;
-    return <Watcher />;
   }
 }
 
@@ -260,6 +237,29 @@ exports[`toComponentModule options.precompile = true 2`] = `
     <h1>Everything is ok</h1>
     <p>Some introductory text.</p>
 </div>"
+`;
+
+exports[`toComponentModule options.prependJs 1`] = `
+"/*---
+title: Everything is ok
+---*/
+\\"use strict\\";
+const React = require(\\"react\\");
+import { Watcher } from \\"./watcher\\";
+
+const frontMatter = {
+  title: \\"Everything is ok\\"
+};
+
+class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return <Watcher />;
+  }
+}
+
+module.exports = MarkdownReact;
+"
 `;
 
 exports[`toComponentModule options.template 1`] = `
