@@ -81,11 +81,11 @@ describe('toComponentModule', () => {
     });
   });
 
-  test('default options with modules in front matter', () => {
+  test('default options with prependJs in front matter', () => {
     const text = prepText(`
       ---
       title: Everything is ok
-      modules:
+      prependJs:
         - "const Timer = require('./timer')"
         - "import { Watcher } from './watcher'"
       ---
@@ -225,7 +225,7 @@ describe('toComponentModule', () => {
     });
   });
 
-  test('options.modules', () => {
+  test('options.prependJs', () => {
     const text = prepText(`
       ---
       title: Everything is ok
@@ -234,7 +234,7 @@ describe('toComponentModule', () => {
       {{<Watcher />}}
     `);
     const options = {
-      modules: ["import { Watcher } from './watcher'"]
+      prependJs: ["import { Watcher } from './watcher'"]
     };
     const code = toComponentModule(text, options);
     expect(code).toMatchSnapshot();
@@ -244,7 +244,7 @@ describe('toComponentModule', () => {
     const text = prepText(`
       ---
       wrapper: '../wrapper'
-      modules:
+      prependJs:
         - "const Timer = require('./timer')"
         - "import { Watcher } from './watcher'"
       title: Everything is ok
