@@ -2,3 +2,4 @@
 .DS_Store
 coverage
 test/fixtures
+**/wrapper-es2015.js

@@ -1,0 +1,26 @@
+{
+  "name": "@mapbox/jsxtreme-markdown-loader",
+  "version": "0.5.0",
+  "description": "Webpack loader to transform Markdown with interpolated JS and JSX into React components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/jsxtreme-markdown.git"
+  },
+  "author": "Mapbox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapbox/jsxtreme-markdown/issues"
+  },
+  "homepage": "https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown-loader#readme",
+  "keywords": [
+    "webpack",
+    "react",
+    "markdown",
+    "loader"
+  ],
+  "dependencies": {
+    "@mapbox/jsxtreme-markdown": "^0.7.1",
+    "loader-utils": "^1.1.0"
+  }
+}

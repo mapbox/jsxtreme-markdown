@@ -1,0 +1,35 @@
+{
+  "name": "@mapbox/babel-plugin-transform-jsxtreme-markdown",
+  "version": "0.4.0",
+  "description": "Transform Markdown interpolated with JS expressions and JSX elements at compile time",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/jsxtreme-markdown.git"
+  },
+  "author": "Mapbox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapbox/jsxtreme-markdown/issues"
+  },
+  "homepage": "https://github.com/mapbox/jsxtreme-markdown/packages/babel-plugin-transform-jsxtreme-markdown#readme",
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "markdown",
+    "react",
+    "jsx",
+    "transform"
+  ],
+  "dependencies": {
+    "@mapbox/jsxtreme-markdown": "^0.7.1",
+    "babylon": "^6.17.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1"
+  },
+  "engines": {
+    "node": ">=4"
+  }
+}

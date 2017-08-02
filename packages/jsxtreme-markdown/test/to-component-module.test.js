@@ -13,7 +13,12 @@ const ReactDOMServer = require('react-dom/server');
 const toComponentModule = require('../lib/to-component-module');
 
 const prepText = text => stripIndent(text).trim();
-const tmpDir = path.join(__dirname, '../tmp');
+
+// This directory needs to be within the project, so Babel will compile it and
+// it has access to node_modules; but outside of Jest's roots, so the adding
+// and deleting of files from it will not put Jest's watch mode in an endless
+// loop. This is the reason we have Jests roots setting in package.json.
+const tmpDir = path.join(__dirname, '../../../tmp');
 
 const loadOutputModule = content => {
   const filename = path.join(
