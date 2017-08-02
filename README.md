@@ -79,8 +79,8 @@ This monorepo includes a few packages that allow you to use the jsxtreme-markdow
   Given an input Markdown file, it outputs a React component module.
 - [babel-plugin-transform-jsxtreme-markdown] is a Babel plugin that allows you to tag template literals of jsxtreme-markdown so they'll be transformed *at compile time* (and you don't have to include a Markdown parser in the browser bundle).
 
-[jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#readme
-[jsxtreme-markdown-loader]: https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown-loader#readme
-[babel-plugin-transform-jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/packages/babel-plugin-transform-jsxtreme-markdown#readme
+[jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#readme
+[jsxtreme-markdown-loader]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown-loader#readme
+[babel-plugin-transform-jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/babel-plugin-transform-jsxtreme-markdown#readme
 [remark]: https://github.com/wooorm/remark
 [rehype]: https://github.com/wooorm/rehype

@@ -4,7 +4,7 @@
 
 Webpack loader to transform Markdown with interpolated JS and JSX into React components.
 
-Runs files through [the `toComponentModule` function of jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#tocomponentmodule).
+Runs files through [the `toComponentModule` function of jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#tocomponentmodule).
 Please read that documentation for more information.
 
 For more information about jsxtreme-markdown features, read [the README at the root of this monorepo](https://github.com/mapbox/jsxtreme-markdown#readme).
@@ -23,7 +23,7 @@ Follow the instructions for using [Webpack loaders](https://webpack.js.org/conce
 
 ### options
 
-You can pass all of [the options from `toComponentModule`](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#options-1).
+You can pass all of [the options from `toComponentModule`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#options-1).
 
 Additional options for the loader:
 
