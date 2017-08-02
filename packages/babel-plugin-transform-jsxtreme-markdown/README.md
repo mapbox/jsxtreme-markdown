@@ -1,12 +1,12 @@
 # @mapbox/babel-plugin-transform-jsxtreme-markdown
 
-[![Build Status](https://travis-ci.org/mapbox/babel-plugin-transform-jsxtreme-markdown.svg?branch=master)](https://travis-ci.org/mapbox/babel-plugin-transform-jsxtreme-markdown)
-
 🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
 
 Transform Markdown interpolated with JS expressions and JSX elements into pure JSX, at compile time.
 
-Uses [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown) to compile the interpolated Markdown.
+Uses [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#readme) to compile the interpolated Markdown.
+
+For more information about jsxtreme-markdown features, read [the README at the root of this monorepo](https://github.com/mapbox/jsxtreme-markdown#readme).
 
 ## Installation
 
@@ -18,8 +18,8 @@ npm install @mapbox/babel-plugin-transform-jsxtreme-markdown
 
 Transforms a special [tagged template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals).
 
-`require` or `import` `'babel-plugin-transform-jsxtreme-markdown/md'`, or whatever you've specified as `packageName` in your Babel options.
-Then use that (fake) module's value as a template literal tag, marking the template literals you'd like to be compiled at run time.
+`require` or `import` the (fake) package `'babel-plugin-transform-jsxtreme-markdown/md'`, or whatever you've specified as `packageName` in your Babel options.
+Then use that (fake) module's export as a template literal tag, marking the template literals you'd like to be compiled at run time.
 
 ```jsx
 // Input
@@ -68,7 +68,7 @@ var text = <div>
 
 ### options
 
-You can pass any of [the options available to `jsxtremeMarkdown.toJsx`](https://github.com/mapbox/jsxtreme-markdown#tojsx).
+You can pass any of [the options available to `jsxtremeMarkdown.toJsx`](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#options).
 
 Additional options:
 
@@ -78,3 +78,8 @@ Type: `string`.
 Default: `'babel-plugin-transform-jsxtreme-markdown/md'`.
 
 The name of the package that you will `require` or `import` to use this thing.
+For example, with the value `'xtreme-markdown'` you should use
+
+```js
+import md from 'xtreme-markdown';
+```

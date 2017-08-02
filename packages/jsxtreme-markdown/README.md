@@ -1,36 +1,12 @@
 # @mapbox/jsxtreme-markdown
 
-[![Build Status](https://travis-ci.org/mapbox/jsxtreme-markdown.svg?branch=master)](https://travis-ci.org/mapbox/jsxtreme-markdown)
-
 🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
 
 Transform **Markdown with interpolated JS expressions and JSX elements** into JSX or React component modules.
 
-**It's Xtreme!** Like xtreme sports with Red Bull, but with Markdown and React and indoors at your computer.
+This is the low-level, core module that takes one string (Markdown) and converts it to another string (JSX or a React component module).
 
-Have a look at the big code-block examples below.
-
-## Low-level focus
-
-This module takes one string (Markdown) and converts it to another string (JSX or a React component module).
 That low-level focus means this module can be used by a variety of higher-level modules that target specific contexts (Webpack loaders, Browserify transforms, CLIs, etc.).
-Here are some higher-level modules that exist:
-
-- [jsxtreme-markdown-loader](https://github.com/mapbox/jsxtreme-markdown-loader), for Webpack.
-- [babel-plugin-jsxtreme-markdown](https://github.com/mapbox/babel-plugin-transform-jsxtreme-markdown), for build-time compilation with Babel.
-
-## Interpolate JS and JSX
-
-Unlike regular Markdown:
-
-- The end goal is to produce JSX.
-- You can interpolate JS expression and JSX elements between designated delimiters.
-
-Within jsxtreme Markdown, JS expressions and JSX elements can be interpolated between designated delimiters (defaults are `{{..}}`).
-JS expressions are transformed into curly-brace-delimited `{expressions}` within the JSX output.
-JSX elements are passed directly through.
-
-These possibilities are illustrated in the documentation and examples below.
 
 ## Installation
 
@@ -304,6 +280,6 @@ For the default template, there are two special front matter properties that Mar
 [`toComponentModule`]: #tocomponentmodule
 [remark]: https://github.com/wooorm/remark
 [remark plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
-[rehype]: https://github.com/wooorm/remark
+[rehype]: https://github.com/wooorm/rehype
 [rehype plugins]: https://github.com/wooorm/rehype/blob/master/doc/plugins.md
 [htmltojsx]: https://www.npmjs.com/package/htmltojsx

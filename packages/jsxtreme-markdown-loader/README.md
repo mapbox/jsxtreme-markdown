@@ -1,13 +1,13 @@
 # @mapbox/jsxtreme-markdown-loader
 
-[![Build Status](https://travis-ci.org/mapbox/jsxtreme-markdown-loader.svg?branch=master)](https://travis-ci.org/mapbox/jsxtreme-markdown-loader)
-
 🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
 
 Webpack loader to transform Markdown with interpolated JS and JSX into React components.
 
-Runs files through the `toComponentModule` function of [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown).
-Please read the [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown) documentation for more information.
+Runs files through [the `toComponentModule` function of jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#tocomponentmodule).
+Please read that documentation for more information.
+
+For more information about jsxtreme-markdown features, read [the README at the root of this monorepo](https://github.com/mapbox/jsxtreme-markdown#readme).
 
 ## Installation
 
@@ -23,7 +23,7 @@ Follow the instructions for using [Webpack loaders](https://webpack.js.org/conce
 
 ### options
 
-You can pass all of [the options from `toComponentModule`](https://github.com/mapbox/jsxtreme-markdown#tocomponentmodule).
+You can pass all of [the options from `toComponentModule`](https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown#options-1).
 
 Additional options for the loader:
 
@@ -32,3 +32,4 @@ Additional options for the loader:
 Type: `(resource: string) => string`.
 
 A function that receives the Webpack module's `resource` as an argument, and returns the path to a `wrapper` component.
+You can use this to automatically determine the wrapper component based on the Markdown file's path.
