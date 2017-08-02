@@ -1,11 +1,10 @@
 'use strict';
 
-const loader = require('./index.js');
+const loader = require('../index.js');
 const loaderUtils = require('loader-utils');
 const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
 
 describe('jsxtremeMarkdownLoader', () => {
-  let callback;
   let mockContext;
   let transformResult;
   let mockOptions;
@@ -18,7 +17,9 @@ describe('jsxtremeMarkdownLoader', () => {
     mockOptions = {};
     transformResult = 'mockResult';
     jest.spyOn(loaderUtils, 'getOptions').mockReturnValue(mockOptions);
-    jest.spyOn(jsxtremeMarkdown, 'toComponentModule').mockReturnValue(transformResult);
+    jest
+      .spyOn(jsxtremeMarkdown, 'toComponentModule')
+      .mockReturnValue(transformResult);
   });
 
   afterEach(() => {
@@ -35,7 +36,10 @@ describe('jsxtremeMarkdownLoader', () => {
   test('passes arguments to toComponentModule', () => {
     mockContext.loader('mockMarkdown');
     expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
-    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith('mockMarkdown', mockOptions);
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith(
+      'mockMarkdown',
+      mockOptions
+    );
   });
 
   test('calls the callback with the results', () => {
@@ -57,7 +61,9 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(getWrapper).toHaveBeenCalledTimes(1);
     expect(getWrapper).toHaveBeenCalledWith('mockResource');
     expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
-    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith('mockMarkdown', {
+    expect(
+      jsxtremeMarkdown.toComponentModule
+    ).toHaveBeenCalledWith('mockMarkdown', {
       wrapper: 'mockWrapper'
     });
   });

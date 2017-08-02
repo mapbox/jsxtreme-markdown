@@ -2,7 +2,7 @@
 
 const babel = require('babel-core');
 const babelEs2015 = require('babel-preset-es2015');
-const plugin = require('./index.js');
+const plugin = require('../index.js');
 
 const transform = (code, options) => {
   return babel.transform(code, {

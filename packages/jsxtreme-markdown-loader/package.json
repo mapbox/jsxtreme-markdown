@@ -12,14 +12,13 @@
   "bugs": {
     "url": "https://github.com/mapbox/jsxtreme-markdown/issues"
   },
-  "homepage": "https://github.com/mapbox/jsxtreme-markdown#readme",
+  "homepage": "https://github.com/mapbox/jsxtreme-markdown/packages/jsxtreme-markdown-loader#readme",
   "keywords": [
     "webpack",
     "react",
     "markdown",
     "loader"
   ],
-  "homepage": "https://github.com/mapbox/jsxtreme-markdown-loader#readme",
   "dependencies": {
     "@mapbox/jsxtreme-markdown": "^0.7.1",
     "loader-utils": "^1.1.0"
