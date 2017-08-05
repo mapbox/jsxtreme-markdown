@@ -40,5 +40,9 @@ module.exports = data => {
     }
   `;
 
+  console.log(js)
+  console.log(js.replace(/ /g, '*'))
+  console.log(prettier.format(js).replace(/ /g, '*'))
+
   return prettier.format(js);
 };
