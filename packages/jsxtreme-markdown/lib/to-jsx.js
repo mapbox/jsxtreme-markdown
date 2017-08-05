@@ -1,12 +1,13 @@
 'use strict';
 
 const stripIndent = require('strip-indent');
-const HtmlToJsx = require('htmltojsx');
 const unified = require('unified');
 const remarkParse = require('remark-parse');
 const remarkRehype = require('remark-rehype');
 const rehypeRaw = require('rehype-raw');
-const rehypeStringify = require('rehype-stringify');
+const rehypeReact = require('rehype-react');
+const React = require('react');
+const reactElementToJsxString = require('react-element-to-jsx-string').default;
 const parseablePlaceholders = require('./parseable-placeholders');
 
 // Disable parsing of indented lines as code blocks. Indentation can be a little
@@ -14,8 +15,6 @@ const parseablePlaceholders = require('./parseable-placeholders');
 // Markdown parser doesn't know about those tags. As a result, the Markdown
 // parser should not trust indentation to indicate a code block.
 delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
-
-const htmlToJsxConverter = new HtmlToJsx({ createClass: false });
 
 module.exports = (input, options) => {
   options = Object.assign(
@@ -31,9 +30,9 @@ module.exports = (input, options) => {
   if (options.remarkPlugins) {
     options.remarkPlugins.forEach(plugin => {
       if (Array.isArray(plugin)) {
-        unifiedProcessor.use(plugin[0], plugin[1]);
+        unifiedProcessor = unifiedProcessor.use(plugin[0], plugin[1]);
       } else {
-        unifiedProcessor.use(plugin);
+        unifiedProcessor = unifiedProcessor.use(plugin);
       }
     });
   }
@@ -41,21 +40,23 @@ module.exports = (input, options) => {
   // HTML comments qualify as "dangerous HTML" for rehype, because remark
   // passes them in as raw elements. That's why we need that option and need to
   // use rehype-raw.
-  unifiedProcessor
+  unifiedProcessor = unifiedProcessor
     .use(remarkRehype, { allowDangerousHTML: true })
     .use(rehypeRaw);
 
   if (options.rehypePlugins) {
     options.rehypePlugins.forEach(plugin => {
       if (Array.isArray(plugin)) {
-        unifiedProcessor.use(plugin[0], plugin[1]);
+        unifiedProcessor = unifiedProcessor.use(plugin[0], plugin[1]);
       } else {
-        unifiedProcessor.use(plugin);
+        unifiedProcessor = unifiedProcessor.use(plugin);
       }
     });
   }
 
-  unifiedProcessor.use(rehypeStringify);
+  unifiedProcessor = unifiedProcessor.use(rehypeReact, {
+    createElement: React.createElement
+  });
 
   const commentified = parseablePlaceholders(
     input,
@@ -64,8 +65,12 @@ module.exports = (input, options) => {
   );
   const placeholders = commentified.placeholders;
   const tidyMarkdown = stripIndent(commentified.text).trim();
-  const html = unifiedProcessor.processSync(tidyMarkdown).contents;
-  const jsx = htmlToJsxConverter.convert(html);
+  const reactElement = unifiedProcessor.processSync(tidyMarkdown).contents;
+  console.log(reactElement.props.children[2].props.children)
+  const jsx = reactElementToJsxString(reactElement, {
+    filterProps: ['key'],
+    sortProps: false
+  });
 
   let result = jsx;
   Object.keys(placeholders).forEach(matchId => {
