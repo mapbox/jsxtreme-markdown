@@ -3,4 +3,4 @@ node_modules
 .DS_Store
 coverage
 dist
-**/wrapper-es2015.js
+test/fixtures
