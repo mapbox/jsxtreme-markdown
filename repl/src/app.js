@@ -59,6 +59,8 @@ const outputCode = CodeMirror.fromTextArea(outputEl, {
 });
 inputCode.on('change', onInputChange);
 inputCode.on('renderLine', onRenderLine);
+outputCode.on('beforeChange', onOutputBeforeChange);
+outputCode.on('change', onOutputChange);
 
 function onRenderLine(instance, line, element) {
   // If a line contains only jsxtreme tokens, add the jsxtreme background color.
@@ -104,4 +106,13 @@ function onInputChange() {
     }
     showError(error.message);
   }
+}
+
+// Try to preserve the scroll position of the output area between changes.
+let outputCodePreChangeScroll;
+function onOutputBeforeChange() {
+  outputCodePreChangeScroll = outputCode.getScrollInfo();
+}
+function onOutputChange() {
+  outputCode.scrollTo(outputCodePreChangeScroll, outputCodePreChangeScroll.top);
 }
