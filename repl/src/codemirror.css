@@ -1,6 +1,12 @@
-/* Adapted from the default CodeMirror theme. */
-
-/* BASICS */
+/**
+ * Most of the code below the CodeMirror base theme slightly modified,
+ * mostly for colors.
+ *
+ * Can use Assembly variables because it is processed as part of a custom
+ * Assembly build.
+ *
+ * To see changes in the REPL site, you need to run `node repl/build-css.js`.
+ */
 
 .CodeMirror {
   font-family: var(--font-stack-mono);
@@ -471,6 +477,12 @@ div.CodeMirror-dragcursors {
 .cm-tab-wrap-hack:after {
   content: '';
 }
+
+/**
+ * =============================================================================
+ * Below here is custom styling, not so much just modifications of the base
+ * theme.
+ */
 
 /* Hide the cursor in the output area */
 #output-container .CodeMirror-cursor {
