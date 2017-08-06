@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+require('./build-css');
 
 const isProduction = !!process.env.PRODUCTION;
 

@@ -51,7 +51,7 @@ const inputCode = CodeMirror.fromTextArea(inputEl, {
   styleSelectedText: true
 });
 const outputCode = CodeMirror.fromTextArea(outputEl, {
-  tabSize: 2,
+  lineNumbers: true,
   mode: 'text/jsx',
   lineWrapping: true,
   readOnly: true,
@@ -93,7 +93,13 @@ function onInputChange() {
         { line, ch: error.loc.column + 1 },
         { className: 'bg-red color-white' }
       );
-      outputCode.addLineClass(error.loc.line - 1, 'background', 'bg-red-faint');
+      outputCode.addLineClass(error.loc.line - 1, 'wrap', 'bg-red-faint');
+      outputCode.addLineClass(
+        error.loc.line - 1,
+        'gutter',
+        'bg-red-faint border-r border--red'
+      );
+      outputCode.scrollIntoView({ line, ch: 1 }, 24);
       error.message = `JSX syntax error: ${error.message}`;
     }
     showError(error.message);
