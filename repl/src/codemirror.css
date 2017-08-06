@@ -537,3 +537,8 @@ div.CodeMirror-dragcursors {
   color: var(--red-dark);
   font-weight: bold;
 }
+
+.cm-trailingspace {
+  background: var(--gray-faint);
+  border-bottom: 1px solid var(--red);
+}

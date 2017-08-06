@@ -48,14 +48,16 @@ const inputCode = CodeMirror.fromTextArea(inputEl, {
   lineWrapping: true,
   autoCloseBrackets: true,
   extraKeys: { Enter: 'newlineAndIndentContinueMarkdownList' },
-  styleSelectedText: true
+  styleSelectedText: true,
+  showTrailingSpace: true
 });
 const outputCode = CodeMirror.fromTextArea(outputEl, {
   lineNumbers: true,
   mode: 'text/jsx',
   lineWrapping: true,
   readOnly: true,
-  styleSelectedText: true
+  styleSelectedText: true,
+  showTrailingSpace: true
 });
 inputCode.on('change', onInputChange);
 inputCode.on('renderLine', onRenderLine);
@@ -77,7 +79,19 @@ function onRenderLine(instance, line, element) {
   element.classList.add('jsxtreme-bg');
 }
 
+let erroredInputLines = [];
+
 function onInputChange() {
+  // Clear all errored lines. They will repopulate if they still exist.
+  erroredInputLines.forEach(line => {
+    inputCode.removeLineClass(line, 'wrap', 'bg-red-faint');
+    inputCode.removeLineClass(
+      line,
+      'gutter',
+      'bg-red-faint border-r border--red'
+    );
+  });
+  erroredInputLines = [];
   const raw = inputCode.getValue();
   let jsx;
   try {
@@ -87,26 +101,24 @@ function onInputChange() {
     babylon.parse(jsx, { plugins: ['jsx'] });
     clearError();
   } catch (error) {
-    // Duck-typing babylon errors.
-    if (error.loc) {
-      const line = error.loc.line - 1;
-      outputCode.markText(
-        { line, ch: error.loc.column },
-        { line, ch: error.loc.column + 1 },
-        { className: 'bg-red color-white' }
-      );
-      outputCode.addLineClass(error.loc.line - 1, 'wrap', 'bg-red-faint');
-      outputCode.addLineClass(
-        error.loc.line - 1,
-        'gutter',
-        'bg-red-faint border-r border--red'
-      );
-      outputCode.scrollIntoView({ line, ch: 1 }, 24);
+    // Back block-level element errors.
+    if (error.code === 'BADBLOCK') {
+      markError(inputCode, error.position.line - 1, error.position.column);
+    } else if (error.loc) {
+      // Duck-typed babylon parsing errors.
+      markError(outputCode, error.loc.line - 1, error.loc.column);
       error.message = `JSX syntax error: ${error.message}`;
     }
     showError(error.message);
   }
 }
+
+// Thanks http://codemirror.977696.n3.nabble.com/Scroll-to-line-td4028275.html
+CodeMirror.defineExtension('centerOnLine', function(line) {
+  var h = this.getScrollInfo().clientHeight;
+  var coords = this.charCoords({ line: line, ch: 0 }, 'local');
+  this.scrollTo(null, (coords.top + coords.bottom - h) / 2);
+});
 
 // Try to preserve the scroll position of the output area between changes.
 let outputCodePreChangeScroll;
@@ -115,4 +127,19 @@ function onOutputBeforeChange() {
 }
 function onOutputChange() {
   outputCode.scrollTo(outputCodePreChangeScroll, outputCodePreChangeScroll.top);
+}
+
+function markError(editor, line, column) {
+  editor.markText(
+    { line, ch: column },
+    { line, ch: column + 1 },
+    { className: 'bg-red color-white' }
+  );
+  editor.addLineClass(line, 'wrap', 'bg-red-faint');
+  editor.addLineClass(line, 'gutter', 'bg-red-faint border-r border--red');
+  erroredInputLines.push(line);
+  setTimeout(() => {
+    // Run this after onOutputChange is done.
+    editor.centerOnLine(line);
+  }, 0);
 }
