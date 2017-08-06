@@ -4,11 +4,37 @@
   <title>jsxtreme-markdown repl</title>
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link href='https://api.mapbox.com/mapbox-assembly/v0.16.0/assembly.min.css' rel='stylesheet'>
-  <script async defer src='https://api.mapbox.com/mapbox-assembly/v0.16.0/assembly.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/codemirror.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/mode/markdown/markdown.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/mode/javascript/javascript.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/mode/xml/xml.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/mode/jsx/jsx.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/fold/xml-fold.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/edit/matchbrackets.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/edit/closebrackets.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/edit/continuelist.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/mode/multiplex.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.28.0/addon/selection/mark-selection.min.js'></script>
+  <link href='dist/assembly.css' rel='stylesheet'>
+  <script async defer src='dist/assembly.js'></script>
 </head>
 <body>
-  <div id="app"></div>
+  <div class="viewport-full flex-parent flex-parent--column">
+    <div class="border-b border--gray-light px24 py12">
+      <h1 class="txt-l txt-bold">
+        <a href="https://github.com/mapbox/jsxtreme-markdown" class="link">jsxtreme-markdown</a> REPL
+      </h1>
+    </div>
+    <div class="flex-child flex-child--grow flex-parent flex-parent--stretch-cross">
+      <div class="grid flex-child flex-child--grow wmax-none">
+        <div id="input-container" class="col col--12 col--6-mm"></div>
+        <div id="output-container" class="col col--12 col--6-mm border-l border--gray-light"></div>
+      </div>
+    </div>
+    <div class="border-t border--gray-light px6 py6 hmin-24">
+      <div id="error" class="none px12 py6 border border--red round bg-red-faint color-red txt-code"></div>
+    </div>
+  </div>
   <script src="dist/bundle.js"></script>
 </body>
 </html>

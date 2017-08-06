@@ -60,6 +60,9 @@ module.exports = (input, delimiters, escapeDelimiter) => {
       endDelimiter,
       input.slice(index)
     );
+    if (!delimiterBalancedMatch) {
+      continue;
+    }
     resumeAt = index + delimiterBalancedMatch.end + endDelimiter.length - 1;
 
     // We can count on the match's starting position being unique, so usable as

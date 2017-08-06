@@ -1,51 +1,101 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CodeMirror from 'react-codemirror';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/mode/markdown/markdown';
-import toJsx from '../../packages/jsxtreme-markdown/lib/to-jsx';
+'use strict';
 
-const inputCodeMirrorOptions = {
-  lineNumbers: true,
-  mode: 'markdown'
-};
+const babylon = require('babylon');
+const toJsx = require('../../packages/jsxtreme-markdown/lib/to-jsx');
+const CodeMirror = window.CodeMirror;
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      input: '',
-      output: ''
-    };
-    this.onInputChange = this.onInputChange.bind(this);
-  }
-
-  onInputChange(nextCode) {
-    const nextOutput = toJsx(nextCode);
-    this.setState({ input: nextCode, output: nextOutput });
-  }
-
-  render() {
-    return (
-      <div className="viewport-full flex-parent flex-parent--column">
-        <div className="flex-child flex-child--grow w-full grid grid--gut24 flex-parent--stretch-cross">
-          <div className="col col--12 col--6-mm">
-            <CodeMirror
-              value={this.state.input}
-              onChange={this.onInputChange}
-              options={inputCodeMirrorOptions}
-              autoFocus={true}
-              className="h-full"
-            />
-          </div>
-          <div className="col col--12 col--6-mm">
-            {this.state.output}
-          </div>
-        </div>
-      </div>
-    );
-  }
+const errorEl = document.getElementById('error');
+function clearError() {
+  errorEl.textContent = '';
+  errorEl.classList.add('none');
+}
+function showError(text) {
+  errorEl.textContent = text;
+  errorEl.classList.remove('none');
 }
 
-const container = document.getElementById('app');
-ReactDOM.render(<App />, container);
+CodeMirror.defineMode('jsxtreme-markdown', config => {
+  const markdownMode = CodeMirror.getMode(config, 'markdown');
+  const jsxMode = CodeMirror.getMode(config, 'jsx');
+  return CodeMirror.multiplexingMode(
+    markdownMode,
+    // First catch any escaped delimiters and treat them as Markdown.
+    {
+      open: '#{{',
+      close: '}}',
+      mode: markdownMode
+    },
+    // Then see if there are unescaped delimiters.
+    {
+      open: '{{',
+      close: '}}',
+      mode: jsxMode,
+      delimStyle: 'jsxtreme-delimiter',
+      innerStyle: 'jsxtreme'
+    }
+  );
+});
+
+const inputEl = document.createElement('textarea');
+document.getElementById('input-container').appendChild(inputEl);
+const outputEl = document.createElement('textarea');
+outputEl.setAttribute('disabled', '');
+document.getElementById('output-container').appendChild(outputEl);
+const inputCode = CodeMirror.fromTextArea(inputEl, {
+  lineNumbers: true,
+  tabSize: 2,
+  mode: 'jsxtreme-markdown',
+  lineWrapping: true,
+  autoCloseBrackets: true,
+  extraKeys: { Enter: 'newlineAndIndentContinueMarkdownList' },
+  styleSelectedText: true
+});
+const outputCode = CodeMirror.fromTextArea(outputEl, {
+  tabSize: 2,
+  mode: 'text/jsx',
+  lineWrapping: true,
+  readOnly: true,
+  styleSelectedText: true
+});
+inputCode.on('change', onInputChange);
+inputCode.on('renderLine', onRenderLine);
+
+function onRenderLine(instance, line, element) {
+  // If a line contains only jsxtreme tokens, add the jsxtreme background color.
+  if (element.children.length !== 1) return;
+  const tokens = element.children[0].childNodes;
+  for (let i = 0, l = tokens.length; i < l; i++) {
+    if (
+      tokens[i].nodeType !== Node.ELEMENT_NODE ||
+      !/cm-jsxtreme/.test(tokens[i].className)
+    ) {
+      return;
+    }
+  }
+  element.classList.add('jsxtreme-bg');
+}
+
+function onInputChange() {
+  const raw = inputCode.getValue();
+  let jsx;
+  try {
+    jsx = toJsx(raw);
+    outputCode.setValue(jsx);
+    // This line parses JSX only so we can get parsing errors.
+    babylon.parse(jsx, { plugins: ['jsx'] });
+    clearError();
+  } catch (error) {
+    // Duck-typing babylon errors.
+    if (error.loc) {
+      const line = error.loc.line - 1;
+      outputCode.markText(
+        { line, ch: error.loc.column },
+        { line, ch: error.loc.column + 1 },
+        { className: 'bg-red color-white' }
+      );
+      outputCode.addLineClass(error.loc.line - 1, 'background', 'bg-red-faint');
+      error.message = `JSX syntax error: ${error.message}`;
+    }
+    showError(error.message);
+  }
+}
