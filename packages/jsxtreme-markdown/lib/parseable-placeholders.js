@@ -2,9 +2,7 @@
 
 const blockElements = require('block-elements');
 const balancedMatch = require('balanced-match');
-const stripIndent = require('strip-indent');
 const lineColumn = require('line-column');
-const babelCodeFrame = require('babel-code-frame');
 
 const blockElementsSet = new Set(blockElements);
 
@@ -60,6 +58,9 @@ module.exports = (input, delimiters, escapeDelimiter) => {
       endDelimiter,
       input.slice(index)
     );
+    if (!delimiterBalancedMatch) {
+      continue;
+    }
     resumeAt = index + delimiterBalancedMatch.end + endDelimiter.length - 1;
 
     // We can count on the match's starting position being unique, so usable as
@@ -84,13 +85,11 @@ module.exports = (input, delimiters, escapeDelimiter) => {
             ? delimiterBalancedMatch.start + index
             : delimiterBalancedMatch.end + index + endDelimiter.length - 1;
           const position = lineColumn(input, errorIndex);
-          const place = babelCodeFrame(input, position.line, position.col);
-          const message = stripIndent(`
-            <${tagName}> is a block-level element.
-            Interpolated tags for block-element JSX elements
-            should be separated from surrounding Markdown by newlines.
-          `);
-          throw new Error(`${message}\n\n${place}`);
+          const message = `<${tagName}> is a block-level element. Interpolated tags for block-element JSX elements should be separated from surrounding Markdown by newlines. (${position.line}:${position.col})`;
+          const error = new Error(message);
+          error.code = 'BADBLOCK';
+          error.position = position;
+          throw error;
         }
       }
     }

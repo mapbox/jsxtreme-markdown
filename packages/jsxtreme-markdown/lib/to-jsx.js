@@ -65,7 +65,10 @@ module.exports = (input, options) => {
   const placeholders = commentified.placeholders;
   const tidyMarkdown = stripIndent(commentified.text).trim();
   const html = unifiedProcessor.processSync(tidyMarkdown).contents;
-  const jsx = htmlToJsxConverter.convert(html);
+  let jsx = htmlToJsxConverter.convert(html);
+  const firstNewlineIndex = jsx.indexOf('\n');
+  jsx =
+    jsx.slice(0, firstNewlineIndex) + stripIndent(jsx.slice(firstNewlineIndex));
 
   let result = jsx;
   Object.keys(placeholders).forEach(matchId => {
