@@ -11,8 +11,7 @@
     "postinstall": "lerna bootstrap",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
-    "test": "jest",
-    "build-repl-pages": "npm run build-repl && cp -R repl repl-pages"
+    "test": "jest"
   },
   "devDependencies": {
     "@mapbox/assembly": "^0.16.0",

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Clone the repository into a subdirectory, then go inside
+git clone git@github.com:mapbox/jsxtreme-markdown.git gh-pages-subdir
+cd gh-pages-subdir
+git checkout gh-pages
+cd ../
+rm -rf gh-pages-subdir/*
+npm run build-repl
+cp -R repl/* gh-pages-subdir
+cd gh-pages-subdir
+git add -A
+git commit -m "Update REPL"
+git push
+cd ../
+rm -rf gh-pages-subdir

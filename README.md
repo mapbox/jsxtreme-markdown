@@ -4,6 +4,8 @@
 
 Transform Markdown with interpolated JS expressions and JSX elements into JSX or React component modules.
 
+**[Try it out online.](https://mapbox.github.io/jsxtreme-markdown/)**
+
 It's Xtreme! Like xtreme sports with Red Bull, but with Markdown and React and indoors at your computer.
 
 ## jsxtreme-markdown features
@@ -78,6 +80,13 @@ This monorepo includes a few packages that allow you to use the jsxtreme-markdow
 - [jsxtreme-markdown-loader] is a Webpack loader build on top of [jxtreme-markdown].
   Given an input Markdown file, it outputs a React component module.
 - [babel-plugin-transform-jsxtreme-markdown] is a Babel plugin that allows you to tag template literals of jsxtreme-markdown so they'll be transformed *at compile time* (and you don't have to include a Markdown parser in the browser bundle).
+
+## Development
+
+### Updating the REPL
+
+When you're ready to update the REPL, run `bin/deploy-gh-pages`.
+That should do it.
 
 [jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#readme
 [jsxtreme-markdown-loader]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown-loader#readme
