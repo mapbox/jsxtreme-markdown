@@ -4,6 +4,29 @@ const babylon = require('babylon');
 const toJsx = require('../../packages/jsxtreme-markdown/lib/to-jsx');
 const CodeMirror = window.CodeMirror;
 
+const startingMarkdown = `# Title
+
+Here is some **markdown**. *So easy* to write.
+
+You can interpolate JS expressions like {{ data.number }}
+or {{ dogs.map(d => d.name).join(', ') }}.
+
+You can also interpolate JSX elements,
+whether {{ <span>inline</span> }} or as a block:
+
+{{ <div className="fancy-class">
+  This is a block.
+</div> }}
+
+You can even break up JSX interpolation to process more or your text
+as Markdown.
+
+{{ <div className="fancy-class"> }}
+  This is a **Markdown** paragraph inside the div.
+
+  And this is another.
+{{ </div> }}`;
+
 const errorEl = document.getElementById('error');
 function clearError() {
   errorEl.textContent = '';
@@ -64,6 +87,9 @@ inputCode.on('renderLine', onRenderLine);
 outputCode.on('beforeChange', onOutputBeforeChange);
 outputCode.on('change', onOutputChange);
 
+let erroredInputLines = [];
+inputCode.setValue(startingMarkdown);
+
 function onRenderLine(instance, line, element) {
   // If a line contains only jsxtreme tokens, add the jsxtreme background color.
   if (element.children.length !== 1) return;
@@ -78,8 +104,6 @@ function onRenderLine(instance, line, element) {
   }
   element.classList.add('jsxtreme-bg');
 }
-
-let erroredInputLines = [];
 
 function onInputChange() {
   // Clear all errored lines. They will repopulate if they still exist.
