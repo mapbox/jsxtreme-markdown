@@ -38,7 +38,7 @@ whether {{ <span>inline</span> }} or as a block:
 You can even break up JSX interpolation to process more or your text
 as Markdown.
 
-{{ <div className="fancy-class"}> }}
+{{ <div className="fancy-class"> }}
   This is a **Markdown** paragraph inside the div.
 
   And this is another.
@@ -83,7 +83,23 @@ This monorepo includes a few packages that allow you to use the jsxtreme-markdow
 
 ## Development
 
-### Updating the REPL
+### The REPL
+
+#### Development
+
+```
+npm run start-repl
+```
+
+This will start the REPL locally.
+
+```
+node/repl/src/build-css.js
+```
+
+If you update the CSS, you'll need to run this to see your changes.
+
+#### Deployment
 
 When you're ready to update the REPL, run `bin/deploy-gh-pages`.
 That should do it.
