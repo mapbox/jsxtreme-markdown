@@ -1,7 +1,5 @@
 # jsxtreme-markdown
 
-🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
-
 Transform Markdown with interpolated JS expressions and JSX elements into JSX or React component modules.
 
 **[Try it out online.](https://mapbox.github.io/jsxtreme-markdown/)**
