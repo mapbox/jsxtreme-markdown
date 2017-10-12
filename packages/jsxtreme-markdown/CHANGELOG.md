@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.7.2
+
+- No real changes: first Lerna release.
+
 ## 0.7.1
 
 - [Fix] Move Babel modules from `devDependencies` to `dependencies`.

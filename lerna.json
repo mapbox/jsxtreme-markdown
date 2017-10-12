@@ -4,6 +4,14 @@
   "commands": {
     "bootstrap": {
       "hoist": true
+    },
+    "publish": {
+      "ignore": [
+        "**/test/**",
+        "**/*.test.js",
+        "**/examples/**",
+        "**/*.md"
+      ]
     }
   }
 }
