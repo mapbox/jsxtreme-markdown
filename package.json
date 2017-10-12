@@ -7,7 +7,7 @@
     "build-repl": "PRODUCTION=true webpack --config repl/webpack.config.js",
     "lint": "eslint .",
     "test-jest": "jest",
-    "format": "prettier --single-quote --write '**/!(node_modules|dist)/**/*.js'",
+    "format": "prettier --single-quote --write 'packages/**/!(node_modules|dist)**/*.js'",
     "postinstall": "lerna bootstrap",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
