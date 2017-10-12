@@ -118,3 +118,29 @@ test('does nothing when module is not in scope', () => {
   `;
   expect(transform(code)).toMatchSnapshot();
 });
+
+test('does not add React to scope when it is already required', () => {
+  const code = `
+    const React = require('react');
+    const md = require('jsxtreme-markdown/md');
+    const foo = md\`
+      # Title
+      This is **bold.**
+      Here is a [link](/some/url).
+    \`;
+  `;
+  expect(transform(code)).toMatchSnapshot();
+});
+
+test('does not add React to scope when it is already imported', () => {
+  const code = `
+    import React from 'react';
+    import md from 'jsxtreme-markdown/md';
+    const foo = md\`
+      # Title
+      This is **bold.**
+      Here is a [link](/some/url).
+    \`;
+  `;
+  expect(transform(code)).toMatchSnapshot();
+});

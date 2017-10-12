@@ -3,6 +3,7 @@
 exports[`alternate package name 1`] = `
 "'use strict';
 
+var React = require('react');
 var foo = <div>
   <h1>Title</h1>
   <p>This is <strong>bold.</strong>
@@ -13,6 +14,7 @@ var foo = <div>
 exports[`alternate variable name, with broken-up nested JSX 1`] = `
 "'use strict';
 
+var React = require('react');
 var text = <div>
   <p>This is a paragraph <span className=\\"foo\\"> with a <strong>markdown</strong> span inside </span>
   </p>
@@ -27,6 +29,35 @@ var text = <div>
 exports[`basic usage 1`] = `
 "'use strict';
 
+var React = require('react');
+var foo = <div>
+  <h1>Title</h1>
+  <p>This is <strong>bold.</strong>
+    Here is a <a href=\\"/some/url\\">link</a>.</p>
+</div>;"
+`;
+
+exports[`does not add React to scope when it is already imported 1`] = `
+"'use strict';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var foo = <div>
+  <h1>Title</h1>
+  <p>This is <strong>bold.</strong>
+    Here is a <a href=\\"/some/url\\">link</a>.</p>
+</div>;"
+`;
+
+exports[`does not add React to scope when it is already required 1`] = `
+"'use strict';
+
+var React = require('react');
+
 var foo = <div>
   <h1>Title</h1>
   <p>This is <strong>bold.</strong>
@@ -39,6 +70,7 @@ exports[`does nothing when module is not in scope 1`] = `
 
 var _templateObject = _taggedTemplateLiteral(['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    '], ['\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    ']);
 
+var React = require('react');
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function x() {}
@@ -48,6 +80,7 @@ var foo = md(_templateObject);"
 exports[`import instead of require 1`] = `
 "'use strict';
 
+var React = require('react');
 var foo = <div>
   <h1>Title</h1>
   <p>This is <strong>bold.</strong>
@@ -58,6 +91,7 @@ var foo = <div>
 exports[`require in nested scope 1`] = `
 "'use strict';
 
+var React = require('react');
 function x() {
   if (true) {
     var foo = <div>
@@ -72,6 +106,7 @@ function x() {
 exports[`toJsx options 1`] = `
 "'use strict';
 
+var React = require('react');
 var foo = <p>This is a paragraph {'{'}{'{'} <span className=\\"foo\\">with a span inside</span> {'}'}{'}'}
   {'{'}{'{'} <div style={'{'}{'{'} margin: 70 {'}'}{'}'}> {'}'}{'}'}
 And <strong>here*</strong> is a div with {Markdown} inside.

@@ -51,6 +51,7 @@ module.exports = function templateTagMacro(defaultPackageName, applyTransform) {
       const localName = firstSpecifierPath.node.local.name;
       checkBinding(localName, path, state);
       path.remove();
+      state.file.set('usesMacro', true);
     };
 
     const visitCallExpression = (path, state) => {
@@ -70,12 +71,30 @@ module.exports = function templateTagMacro(defaultPackageName, applyTransform) {
       const localName = parentNode.id.name;
       checkBinding(localName, path, state);
       path.parentPath.remove();
+      state.file.set('usesMacro', true);
+    };
+
+    const visitProgramEnter = (path, state) => {
+      state.file.set('usesMacro', false);
+    };
+
+    const visitProgramExit = (path, state) => {
+      if (!state.file.get('usesMacro') || path.scope.hasBinding('React')) {
+        return;
+      }
+
+      const reactDeclaration = babel.transform(`var React = require('react');`);
+      path.node.body.unshift(reactDeclaration.ast);
     };
 
     return {
       visitor: {
         CallExpression: visitCallExpression,
-        ImportDeclaration: visitImportDeclaration
+        ImportDeclaration: visitImportDeclaration,
+        Program: {
+          enter: visitProgramEnter,
+          exit: visitProgramExit
+        }
       }
     };
   };

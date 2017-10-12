@@ -1,4 +1,4 @@
-# Changelog
+# jsxtreme-markdown changelog
 
 ## 0.7.1
 
