@@ -21,6 +21,8 @@ Transforms a special [tagged template literal](https://developer.mozilla.org/en-
 `require` or `import` the (fake) package `'babel-plugin-transform-jsxtreme-markdown/md'`, or whatever you've specified as `packageName` in your Babel options.
 Then use that (fake) module's export as a template literal tag, marking the template literals you'd like to be compiled at run time.
 
+If `React` is not already in the file's top-level scope, `var React = require('react');` will be added to the beginning of the file.
+
 ```jsx
 // Input
 const md = require('babel-plugin-transform-jsxtreme-markdown/md');
@@ -33,6 +35,7 @@ const foo = md`
 // Output
 'use strict';
 
+var React = require('react');
 var foo = <div>
   <h1>Title</h1>
   <p>This is <strong>bold.</strong>
@@ -57,6 +60,7 @@ const text = md`
 // Output
 'use strict';
 
+var React = require('react');
 var text = <div>
   <p>This is a paragraph <span className="foo"> with a <strong>markdown</strong> span inside </span></p>
   <div style={{ margin: 70 }}>
