@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function babelMacroMaker(defaultPackageName, applyTransform) {
+module.exports = function templateTagMacro(defaultPackageName, applyTransform) {
   return babel => {
     const t = babel.types;
 

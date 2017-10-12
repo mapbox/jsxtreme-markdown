@@ -2,7 +2,7 @@
 
 const babylon = require('babylon');
 const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
-const babelMacroMaker = require('./babel-macro-maker');
+const templateTagMacro = require('./template-tag-macro');
 
 const applyTransform = (templateExpressionPath, text, options) => {
   const jsx = jsxtremeMarkdown.toJsx(text, options);
@@ -10,4 +10,4 @@ const applyTransform = (templateExpressionPath, text, options) => {
   templateExpressionPath.replaceWith(ast);
 };
 
-module.exports = babelMacroMaker('jsxtreme-markdown/md', applyTransform);
+module.exports = templateTagMacro('jsxtreme-markdown/md', applyTransform);
