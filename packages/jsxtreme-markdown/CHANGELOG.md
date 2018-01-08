@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.7.3
+
+- Move `prettier` from `devDependencies` to regular `dependencies`.
+
 ## 0.7.2
 
 - No real changes: first Lerna release.
