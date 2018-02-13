@@ -1,6 +1,6 @@
 # jsxtreme-markdown-loader changelog
 
-## Head
+## 0.5.3
 
 - Fix bug where `getWrapper` was not independently invoked for every file.
 
