@@ -1,11 +1,13 @@
 'use strict';
 
 const loaderUtils = require('loader-utils');
+const cloneDeep = require('lodash.clonedeep');
 const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
 
 module.exports = function(source) {
-  const options = loaderUtils.getOptions(this) || {};
+  let options = loaderUtils.getOptions(this) || {};
   if (options.getWrapper) {
+    options = cloneDeep(options);
     options.wrapper = options.getWrapper(this.resource);
     delete options.getWrapper;
   }

@@ -21,6 +21,7 @@
   ],
   "dependencies": {
     "@mapbox/jsxtreme-markdown": "^0.7.3",
-    "loader-utils": "^1.1.0"
+    "loader-utils": "^1.1.0",
+    "lodash.clonedeep": "^4.5.0"
   }
 }

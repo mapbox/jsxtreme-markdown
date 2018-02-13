@@ -67,4 +67,49 @@ describe('jsxtremeMarkdownLoader', () => {
       wrapper: 'mockWrapper'
     });
   });
+
+  test('result of getWrapper is independent for each invocation', () => {
+    const getWrapper = jest.fn(resource => {
+      if (resource === 'a') return 'AAA';
+      if (resource === 'b') return 'BBB';
+      return 'CCC';
+    });
+    loaderUtils.getOptions.mockReturnValue({ getWrapper });
+
+    mockContext = { loader, resource: 'a' };
+    mockContext.loader('mockMarkdownA');
+    expect(getWrapper).toHaveBeenCalledTimes(1);
+    expect(getWrapper).toHaveBeenCalledWith('a');
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
+    expect(jsxtremeMarkdown.toComponentModule.mock.calls[0]).toEqual([
+      'mockMarkdownA',
+      {
+        wrapper: 'AAA'
+      }
+    ]);
+
+    mockContext = { loader, resource: 'b' };
+    mockContext.loader('mockMarkdownB');
+    expect(getWrapper).toHaveBeenCalledTimes(2);
+    expect(getWrapper).toHaveBeenCalledWith('b');
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(2);
+    expect(jsxtremeMarkdown.toComponentModule.mock.calls[1]).toEqual([
+      'mockMarkdownB',
+      {
+        wrapper: 'BBB'
+      }
+    ]);
+
+    mockContext = { loader, resource: 'c' };
+    mockContext.loader('mockMarkdownC');
+    expect(getWrapper).toHaveBeenCalledTimes(3);
+    expect(getWrapper).toHaveBeenCalledWith('c');
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(3);
+    expect(jsxtremeMarkdown.toComponentModule.mock.calls[2]).toEqual([
+      'mockMarkdownC',
+      {
+        wrapper: 'CCC'
+      }
+    ]);
+  });
 });
