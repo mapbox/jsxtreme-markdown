@@ -264,7 +264,7 @@ The data object includes the following:
 Type: `boolean`.
 Default: `false`.
 
-If `true`, the returned string will be compiled with Babel (using the ES2015 and React presets).
+If `true`, the returned string will be compiled with Babel (using `babel-preset-env` and `babel-preset-react`).
 
 #### The default template
 

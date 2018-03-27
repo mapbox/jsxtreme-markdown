@@ -2,7 +2,7 @@
 
 const _ = require('lodash');
 const babel = require('babel-core');
-const presetEs2015 = require('babel-preset-es2015');
+const presetEnv = require('babel-preset-env');
 const presetReact = require('babel-preset-react');
 const frontMatter = require('front-matter');
 const pascalCase = require('pascal-case');
@@ -36,5 +36,5 @@ module.exports = (input, options) => {
   if (options.template) return options.template(templateData);
   const code = defaultTemplate(templateData);
   if (!options.precompile) return code;
-  return babel.transform(code, { presets: [presetEs2015, presetReact] }).code;
+  return babel.transform(code, { presets: [presetEnv, presetReact] }).code;
 };
