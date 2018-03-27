@@ -1,12 +1,12 @@
 'use strict';
 
 const babel = require('babel-core');
-const babelEs2015 = require('babel-preset-es2015');
+const babelPresetEnv = require('babel-preset-env');
 const plugin = require('../index.js');
 
 const transform = (code, options) => {
   return babel.transform(code, {
-    presets: [babelEs2015],
+    presets: [babelPresetEnv],
     plugins: [[plugin, options]]
   }).code;
 };

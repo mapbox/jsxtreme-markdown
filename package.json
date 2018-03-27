@@ -7,27 +7,27 @@
     "build-repl": "PRODUCTION=true webpack --config repl/webpack.config.js",
     "lint": "eslint .",
     "test-jest": "jest",
-    "format": "prettier --single-quote --write 'packages/**/!(node_modules|dist)**/*.js'",
+    "format": "prettier --write 'packages/**/!(node_modules|dist)**/*.js'",
     "postinstall": "lerna bootstrap",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
     "test": "jest"
   },
   "devDependencies": {
-    "@mapbox/assembly": "^0.16.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-es2015": "^6.24.1",
+    "@mapbox/assembly": "^0.21.1",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
-    "eslint": "^4.3.0",
-    "eslint-plugin-node": "^5.1.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-node": "^6.0.1",
     "husky": "^0.14.3",
-    "jest": "^20.0.4",
-    "lerna": "^2.0.0",
-    "lint-staged": "^4.0.2",
-    "prettier": "^1.5.3",
+    "jest": "^22.4.3",
+    "lerna": "^2.9.0",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
-    "webpack-parallel-uglify-plugin": "^1.0.0"
+    "webpack-parallel-uglify-plugin": "^1.1.0"
   },
   "engines": {
     "node": ">=4"
@@ -45,16 +45,19 @@
     ],
     "clearMocks": true
   },
+  "prettier": {
+    "singleQuote": true
+  },
   "lint-staged": {
-    "**/*.js": [
+    "*.js": [
       "eslint",
-      "prettier --single-quote --write",
+      "prettier --write",
       "git add"
     ]
   },
   "babel": {
     "presets": [
-      "es2015",
+      "env",
       "react"
     ]
   }
