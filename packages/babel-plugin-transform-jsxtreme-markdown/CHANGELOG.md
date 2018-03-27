@@ -1,5 +1,9 @@
 # babel-plugin-transform-jsxtreme-markdown changelog
 
+## 0.4.3
+
+- Update dependencies.
+
 ## 0.4.2
 
 - Update `jsxtreme-markdown` package which fixes a bug in which `prettier` was not included in regular `dependencies`.

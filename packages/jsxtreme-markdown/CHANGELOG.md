@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.7.4
+
+- Update dependencies.
+
 ## 0.7.3
 
 - Move `prettier` from `devDependencies` to regular `dependencies`.

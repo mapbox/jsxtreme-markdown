@@ -28,7 +28,7 @@
     "balanced-match": "^1.0.0",
     "block-elements": "^1.2.0",
     "front-matter": "^2.3.0",
-    "htmltojsx": "^0.3.0",
+    "htmltojsx": "^0.2.6",
     "line-column": "^1.0.2",
     "lodash": "^4.17.5",
     "pascal-case": "^2.0.1",
