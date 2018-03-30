@@ -73,12 +73,13 @@ module.exports = (input, options) => {
   let result = jsx;
   Object.keys(placeholders).forEach(matchId => {
     const data = placeholders[matchId];
+    const representationRegExp = new RegExp(data.representation, 'g');
     if (!data.isTag) {
       // Expressions.
-      result = result.replace(data.representation, `{${data.value}}`);
+      result = result.replace(representationRegExp, `{${data.value}}`);
     } else if (data.isInline) {
       // Inline-level JSX elements.
-      result = result.replace(data.representation, data.value);
+      result = result.replace(representationRegExp, data.value);
     } else {
       // Block-level JSX elements.
       const blockPlaceholders = new RegExp(

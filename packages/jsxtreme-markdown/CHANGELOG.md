@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.8.0
+
+- Add `headings` option to `toComponentModule`.
+
 ## 0.7.4
 
 - Update dependencies.
