@@ -367,8 +367,7 @@ export default class MarkdownReact extends React.PureComponent {
 exports[`toComponentModule options.template 1`] = `
 "MarkdownReact
 {\\"title\\":\\"Foo\\",\\"list\\":[\\"one\\",\\"two\\"]}
-<h1>{frontMatter.title}</h1>
-"
+<h1>{frontMatter.title}</h1>"
 `;
 
 exports[`toComponentModule options.wrapper 1`] = `

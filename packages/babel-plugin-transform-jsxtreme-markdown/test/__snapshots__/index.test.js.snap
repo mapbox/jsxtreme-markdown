@@ -4,37 +4,31 @@ exports[`alternate package name 1`] = `
 "'use strict';
 
 var React = require('react');
-var foo = <div>
-  <h1>Title</h1>
+var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-</div>;"
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 `;
 
 exports[`alternate variable name, with broken-up nested JSX 1`] = `
 "'use strict';
 
 var React = require('react');
-var text = <div>
-  <p>This is a paragraph <span className=\\"foo\\"> with a <strong>markdown</strong> span inside </span>
+var text = <div><p>This is a paragraph <span className=\\"foo\\"> with a <strong>markdown</strong> span inside </span>
   </p>
   <div style={{ margin: 70 }}>
-  <p>      And here is a <em>paragraph</em> inside a div.
-    <a href=\\"/some/url\\">Link</a>
-  </p>
-  </div>
-</div>;"
+    <p>      And here is a <em>paragraph</em> inside a div.
+      <a href=\\"/some/url\\">Link</a>
+    </p>
+  </div></div>;"
 `;
 
 exports[`basic usage 1`] = `
 "'use strict';
 
 var React = require('react');
-var foo = <div>
-  <h1>Title</h1>
+var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-</div>;"
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 `;
 
 exports[`does not add React to scope when it is already imported 1`] = `
@@ -46,11 +40,9 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var foo = <div>
-  <h1>Title</h1>
+var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-</div>;"
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 `;
 
 exports[`does not add React to scope when it is already required 1`] = `
@@ -58,11 +50,9 @@ exports[`does not add React to scope when it is already required 1`] = `
 
 var React = require('react');
 
-var foo = <div>
-  <h1>Title</h1>
+var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-</div>;"
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 `;
 
 exports[`does nothing when module is not in scope 1`] = `
@@ -81,11 +71,9 @@ exports[`import instead of require 1`] = `
 "'use strict';
 
 var React = require('react');
-var foo = <div>
-  <h1>Title</h1>
+var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-</div>;"
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 `;
 
 exports[`require in nested scope 1`] = `
@@ -94,11 +82,9 @@ exports[`require in nested scope 1`] = `
 var React = require('react');
 function x() {
   if (true) {
-    var foo = <div>
-  <h1>Title</h1>
-  <p>This is <strong>bold.</strong>
-    Here is a <a href=\\"/some/url\\">link</a>.</p>
-    </div>;
+    var foo = <div><h1>Title</h1>
+      <p>This is <strong>bold.</strong>
+Here is a <a href=\\"/some/url\\">link</a>.</p></div>;
   }
 }"
 `;
@@ -107,8 +93,10 @@ exports[`toJsx options 1`] = `
 "'use strict';
 
 var React = require('react');
-var foo = <p>This is a paragraph {'{'}{'{'} <span className=\\"foo\\">with a span inside</span> {'}'}{'}'}
-  {'{'}{'{'} <div style={'{'}{'{'} margin: 70 {'}'}{'}'}> {'}'}{'}'}
-And <strong>here*</strong> is a div with {Markdown} inside.
-  {'{'}{'{'}  {'}'}{'}'}</p>;"
+var foo = <div><p>This is a paragraph {\\"{\\"}{\\"{\\"} <span className=\\"foo\\">with a span inside</span> {\\"}\\"}{\\"}\\"}
+  </p>
+  <div style={{ margin: 70 }}>
+    <p>        And <strong>here*</strong> is a div with {Markdown} inside.
+    </p>
+  </div></div>;"
 `;

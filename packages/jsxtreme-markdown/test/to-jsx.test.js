@@ -92,7 +92,7 @@ describe('toJsx', () => {
       I'm thinking of a {{color}}
 
       \`\`\`javascript
-      <div style=#{{ color: pink }}>{{ color }}</div>
+      &lt;div style=#{{ color: pink }}&gt;{{ color }}&lt;/div&gt;
       \`\`\`
     `;
     const jsx = toJsx(text);
@@ -140,7 +140,7 @@ describe('toJsx', () => {
     expect(() => toJsx(text)).toThrow('block-level element');
   });
 
-  test('table with alignment gets text-align inline styles', () => {
+  test('table alignment shows up in style properties, instead of align properties', () => {
     const text = `
       | Left-aligned | Center-aligned | Right-aligned |
       | :---         |     :---:      |          ---: |

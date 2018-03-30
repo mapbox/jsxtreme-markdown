@@ -81,9 +81,9 @@ test('toJsx options', () => {
     import md from 'jsxtreme-markdown/md';
     const foo = md\`
       This is a paragraph {{ <span className="foo">with a span inside</span> }}
-      {{ <div style={{ margin: 70 }}> }}
+      {# <div style={{ margin: 70 }}> #}
         And **here*** is a div with {# Markdown #} inside.
-      {{ </div> }}
+      {# </div> #}
     \`;
   `;
   expect(
