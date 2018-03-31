@@ -1,5 +1,7 @@
 # babel-plugin-transform-jsxtreme-markdown changelog
 
+Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
+
 ## 0.4.3
 
 - Update dependencies.

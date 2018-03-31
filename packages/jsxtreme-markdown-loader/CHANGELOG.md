@@ -1,5 +1,9 @@
 # jsxtreme-markdown-loader changelog
 
+## 0.6.0
+
+- Update `@mapbox/jsxtreme-markdown` to get new `headings` option for `toComponentModule`.
+
 ## 0.5.4
 
 - Update dependencies.

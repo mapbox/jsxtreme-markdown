@@ -132,6 +132,133 @@ export default class MarkdownReact extends React.PureComponent {
 "
 `;
 
+exports[`toComponentModule options.headings 1`] = `
+"/*---
+title: Everything is ok
+---*/
+import React from \\"react\\";
+
+const frontMatter = {
+  title: \\"Everything is ok\\",
+  headings: [
+    {
+      text: \\"First heading\\",
+      slug: \\"first-heading\\",
+      level: 1
+    },
+    {
+      text: \\"Two\\",
+      slug: \\"two\\",
+      level: 2
+    },
+    {
+      text: \\"Two\\",
+      slug: \\"two-1\\",
+      level: 2
+    },
+    {
+      text: \\"Third heading, great\\",
+      slug: \\"third-heading-great\\",
+      level: 3
+    },
+    {
+      text: \\"With i89 interpolation\\",
+      slug: \\"with-i89-interpolation\\",
+      level: 1
+    }
+  ]
+};
+
+export default class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1 id=\\"first-heading\\">First heading</h1>
+        <p>Some introductory text.</p>
+        <h2 id=\\"two\\">Two</h2>
+        <h2 id=\\"two-1\\">Two</h2>
+        <h3 id=\\"third-heading-great\\">Third heading, great</h3>
+        <h1 id=\\"with-i89-interpolation\\">With {3} interpolation</h1>
+      </div>
+    );
+  }
+}
+"
+`;
+
+exports[`toComponentModule options.headings 2`] = `
+"<div>
+    <h1 id=\\"first-heading\\">First heading</h1>
+    <p>Some introductory text.</p>
+    <h2 id=\\"two\\">Two</h2>
+    <h2 id=\\"two-1\\">Two</h2>
+    <h3 id=\\"third-heading-great\\">Third heading, great</h3>
+    <h1 id=\\"with-i89-interpolation\\">With 3 interpolation</h1>
+</div>"
+`;
+
+exports[`toComponentModule options.headings README example 1`] = `
+"import React from \\"react\\";
+
+const frontMatter = {
+  headings: [
+    {
+      text: \\"One\\",
+      slug: \\"one\\",
+      level: 1
+    },
+    {
+      text: \\"Two\\",
+      slug: \\"two\\",
+      level: 2
+    },
+    {
+      text: \\"Third-level heading\\",
+      slug: \\"third-level-heading\\",
+      level: 3
+    },
+    {
+      text: \\"Two\\",
+      slug: \\"two-1\\",
+      level: 2
+    }
+  ]
+};
+
+export default class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1 id=\\"one\\">One</h1>
+        <p>Text.</p>
+        <h2 id=\\"two\\">Two</h2>
+        <p>Some more text.</p>
+        <h3 id=\\"third-level-heading\\">Third-level heading</h3>
+        <p>Yet more.</p>
+        <h2 id=\\"two-1\\">Two</h2>
+        <p>A section with a duplicate title.</p>
+      </div>
+    );
+  }
+}
+"
+`;
+
+exports[`toComponentModule options.headings README example 2`] = `
+"<div>
+    <h1 id=\\"one\\">One</h1>
+    <p>Text.</p>
+    <h2 id=\\"two\\">Two</h2>
+    <p>Some more text.</p>
+    <h3 id=\\"third-level-heading\\">Third-level heading</h3>
+    <p>Yet more.</p>
+    <h2 id=\\"two-1\\">Two</h2>
+    <p>A section with a duplicate title.</p>
+</div>"
+`;
+
 exports[`toComponentModule options.name 1`] = `
 "import React from \\"react\\";
 

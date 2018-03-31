@@ -236,13 +236,6 @@ An array of lines of JS code that will be prepended to the top of the JavaScript
 The typical use-case is to `require` or `import` modules that will be used by interpolated JS and JSX.
 This value can be *added to* document-by-document by setting `prependJs` in the front matter of specific documents.
 
-##### name
-
-Type: `string`.
-Default: `MarkdownReact`.
-
-The name of the component class that will be generated.
-
 ##### template
 
 Type: `(data: Object) => string`.
@@ -259,12 +252,112 @@ The data object includes the following:
 - `frontMatter`: The parsed front matter.
 - `jsx`: The JSX string generated from your source Markdown.
 
+##### headings
+
+Type: `boolean`.
+Default: `false`.
+
+**The primary use case for the `headings` option is to build a table of contents in your wrapper component.**
+
+If `true`, the following will happen:
+
+- Every heading element in the Markdown will have an `id` attribute whose value is the element's slugified text.
+- The module's `frontMatter` object will be augmented with a `headings` array.
+  Each item in the array is an object with `text`, `slug`, and `level` properties.
+
+For example:
+
+```js
+const jsxtremeMarkdown = require('jsxtreme-markdown');
+
+const markdown = `
+  # One
+
+  Text.
+
+  ## Two
+
+  Some more text.
+
+  ### Third-level heading
+
+  Yet more.
+
+  ## Two
+
+  A section with a duplicate title.
+`;
+
+const js = jsxtremeMarkdown.toComponentModule(markdown);
+console.log(js);
+
+/*
+import React from "react";
+
+const frontMatter = {
+  headings: [
+    {
+      text: "One",
+      slug: "one",
+      level: 1
+    },
+    {
+      text: "Two",
+      slug: "two",
+      level: 2
+    },
+    {
+      text: "Third-level heading",
+      slug: "third-level-heading",
+      level: 3
+    },
+    {
+      text: "Two",
+      slug: "two-1",
+      level: 2
+    }
+  ]
+};
+
+export default class MarkdownReact extends React.PureComponent {
+  render() {
+    const props = this.props;
+    return (
+      <div>
+        <h1 id="one">One</h1>
+        <p>Text.</p>
+        <h2 id="two">Two</h2>
+        <p>Some more text.</p>
+        <h3 id="third-level-heading">Third-level heading</h3>
+        <p>Yet more.</p>
+        <h2 id="two-1">Two</h2>
+        <p>A section with a duplicate title.</p>
+      </div>
+    );
+  }
+}
+*/
+```
+
+
+A couple of things to keep in mind when using this option:
+
+- *Do not use interpolation in your heading text!*
+- Slugs are generated with [github-slugger], so should match the slugging patterns found in rendered Markdown files on GitHub.
+
 ##### precompile
 
 Type: `boolean`.
 Default: `false`.
 
 If `true`, the returned string will be compiled with Babel (using `babel-preset-env` and `babel-preset-react`).
+
+##### name
+
+Type: `string`.
+Default: `MarkdownReact`.
+
+The name of the component class that will be generated.
 
 #### The default template
 
@@ -283,3 +376,4 @@ For the default template, there are two special front matter properties that Mar
 [rehype]: https://github.com/wooorm/rehype
 [rehype plugins]: https://github.com/wooorm/rehype/blob/master/doc/plugins.md
 [htmltojsx]: https://www.npmjs.com/package/htmltojsx
+[github-slugger]: https://github.com/Flet/github-slugger

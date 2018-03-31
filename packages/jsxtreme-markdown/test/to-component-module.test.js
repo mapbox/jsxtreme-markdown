@@ -291,4 +291,59 @@ describe('toComponentModule', () => {
       expect(rendered).toMatchSnapshot();
     });
   });
+
+  test('options.headings', () => {
+    const text = prepText(`
+      ---
+      title: Everything is ok
+      ---
+
+      # First heading
+
+      Some introductory text.
+
+      ## Two
+      ## Two
+      ### Third heading, great
+      # With {{ 3 }} interpolation
+    `);
+    const options = {
+      headings: true
+    };
+    const code = toComponentModule(text, options);
+    expect(code).toMatchSnapshot();
+    return loadOutputModule(code).then(Output => {
+      const rendered = renderComponent(Output);
+      expect(rendered).toMatchSnapshot();
+    });
+  });
+
+  test('options.headings README example', () => {
+    const text = prepText(`
+      # One
+
+      Text.
+
+      ## Two
+
+      Some more text.
+
+      ### Third-level heading
+
+      Yet more.
+
+      ## Two
+
+      A section with a duplicate title.
+    `);
+    const options = {
+      headings: true
+    };
+    const code = toComponentModule(text, options);
+    expect(code).toMatchSnapshot();
+    return loadOutputModule(code).then(Output => {
+      const rendered = renderComponent(Output);
+      expect(rendered).toMatchSnapshot();
+    });
+  });
 });
