@@ -121,17 +121,42 @@ For example, if you want to include the JSX `<div style={{ margin: 10 }} />` in 
 
 ##### remarkPlugins
 
-Type: `Function | Array<Function>`.
+Type: `Array<Function | [Function, any]>`.
 
 The Markdown is parsed by [remark].
 So you can use any [remark plugins] you'd like (e.g. for linting).
 
+Each item in the array is either a remark plugin function or an array whose first item is the plugin function and second item is plugin options.
+For example:
+
+```js
+{
+  remarkPlugins: [
+    require('remark-squeeze-paragraphs'),
+    [require('remark-lint-emphasis-marker'), '*'],
+    [require('remark-toc'), { heading: 'ToC', maxDepth: 2 }]
+  ]
+}
+```
+
 ##### rehypePlugins
 
-Type: `Function | Array<Function>`.
+Type: `Array<Function | [Function, Object]>`.
 
 Parsed Markdown is passed into [rehype], at which point it represents HTML nodes.
 At this stage, you can use any [rehype plugins] you'd like (e.g. for syntax highlighting).
+
+Each item in the array is either a remark plugin function or an array whose first item is the plugin function and second item is plugin options.
+For example:
+
+```js
+{
+  remarkPlugins: [
+    require('rehype-picture),
+    [require('rehype-prism'), { ignoreMissing: true }]
+  ]
+}
+```
 
 ### toComponentModule
 
