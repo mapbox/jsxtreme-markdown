@@ -7,6 +7,7 @@ const remarkParse = require('remark-parse');
 const remarkRehype = require('remark-rehype');
 const rehypeRaw = require('rehype-raw');
 const rehypeStringify = require('rehype-stringify');
+const tableCellStyle = require('@mapbox/hast-util-table-cell-style');
 const parseablePlaceholders = require('./parseable-placeholders');
 
 // Disable parsing of indented lines as code blocks. Indentation can be a little
@@ -43,7 +44,8 @@ module.exports = (input, options) => {
   // use rehype-raw.
   unifiedProcessor
     .use(remarkRehype, { allowDangerousHTML: true })
-    .use(rehypeRaw);
+    .use(rehypeRaw)
+    .use(() => tableCellStyle);
 
   if (options.rehypePlugins) {
     options.rehypePlugins.forEach(plugin => {
