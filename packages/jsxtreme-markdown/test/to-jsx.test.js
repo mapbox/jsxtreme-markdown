@@ -139,4 +139,15 @@ describe('toJsx', () => {
     `;
     expect(() => toJsx(text)).toThrow('block-level element');
   });
+
+  test('table with alignment gets text-align inline styles', () => {
+    const text = `
+      | Left-aligned | Center-aligned | Right-aligned |
+      | :---         |     :---:      |          ---: |
+      | git status   | git status     | git status    |
+      | git diff     | git diff       | git diff      |
+    `;
+    const jsx = toJsx(text);
+    expect(prettier.format(jsx)).toMatchSnapshot();
+  });
 });

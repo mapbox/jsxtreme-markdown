@@ -3,6 +3,7 @@
 ## 0.8.0
 
 - Add `headings` option to `toComponentModule`.
+- Transform `align` property on table cells to inline `text-align` styles using [hast-util-table-cell-style](https://github.com/mapbox/hast-util-table-cell-style).
 
 ## 0.7.4
 
