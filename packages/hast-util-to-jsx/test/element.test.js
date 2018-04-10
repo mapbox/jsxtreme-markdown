@@ -82,3 +82,15 @@ test('escapes curly braces in text', () => {
   const actual = toJsx(hastFromHtml('<p>{{ here }} {there}</p>'));
   expect(actual).toBe('<p>{"{"}{"{"} here {"}"}{"}"} {"{"}there{"}"}</p>');
 });
+
+test('README example', () => {
+  const actual = toJsx(
+    h('div.one.two', { id: 'bar' }, [
+      h('p.hidden', { ariaHidden: true }, ['hidden text']),
+      h('p', { style: 'color: pink; font-size: 2em;' }, ['fancy text'])
+    ])
+  );
+  expect(actual).toBe(
+    '<div className="one two" id="bar"><p className="hidden" aria-hidden={true}>hidden text</p><p style={{color: "pink", fontSize: "2em"}}>fancy text</p></div>'
+  );
+});

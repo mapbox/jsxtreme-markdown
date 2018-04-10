@@ -1,13 +1,27 @@
 {
-  "name": "hast-util-to-jsx",
+  "name": "@mapbox/hast-util-to-jsx",
   "version": "0.1.0",
-  "description": "",
+  "description": "Transform HAST to JSX",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mapbox/jsxtreme-markdown.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Mapbox",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mapbox/jsxtreme-markdown/issues"
+  },
+  "homepage": "https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx#readme",
+  "keywords": [
+    "hast",
+    "plugin",
+    "markdown",
+    "html",
+    "react",
+    "jsx",
+    "transform"
+  ],
   "dependencies": {
     "kebab-case": "^1.0.0",
     "postcss": "^6.0.21",
@@ -21,5 +35,8 @@
     "rehype-parse": "^4.1.0",
     "unified": "^6.1.6",
     "unist-builder": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }

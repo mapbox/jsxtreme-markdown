@@ -22,6 +22,7 @@
   ],
   "dependencies": {
     "@mapbox/hast-util-table-cell-style": "^0.1.2",
+    "@mapbox/hast-util-to-jsx": "^0.1.0",
     "babel-code-frame": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -30,7 +31,6 @@
     "block-elements": "^1.2.0",
     "front-matter": "^2.3.0",
     "github-slugger": "^1.2.0",
-    "hast-util-to-jsx": "^0.1.0",
     "line-column": "^1.0.2",
     "lodash": "^4.17.5",
     "mdast-util-to-string": "^1.0.4",

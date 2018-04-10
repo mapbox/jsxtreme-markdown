@@ -61,9 +61,5 @@
       "env",
       "react"
     ]
-  },
-  "dependencies": {
-    "hast-to-hyperscript": "^4.0.0",
-    "unist-util-visit": "^1.3.0"
   }
 }

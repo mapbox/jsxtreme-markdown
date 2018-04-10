@@ -1,6 +1,6 @@
 'use strict';
 
-const hastToJsx = require('hast-util-to-jsx');
+const hastToJsx = require('@mapbox/hast-util-to-jsx');
 
 module.exports = function jsxtremeHastCompiler(options) {
   const placeholders = options.placeholders;

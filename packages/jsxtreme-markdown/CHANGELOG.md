@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.8.1
+
+- Behind-the-scenes switch from `htmltojsx` to `@mapbox/hast-util-to-jsx`.
+
 ## 0.8.0
 
 - Add `headings` option to `toComponentModule`.
