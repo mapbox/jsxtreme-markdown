@@ -139,7 +139,7 @@ function hastPropertiesToJsxProps(hastProperties, elementName) {
 }
 
 function cssToJs(css) {
-  return postcssJs.objectify(postcss.parse(css));
+  return postcssJs.objectify(postcss.parse(css, { from: undefined }));
 }
 
 function isNumberyString(str) {

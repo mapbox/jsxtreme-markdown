@@ -1,6 +1,6 @@
 # jsxtreme-markdown changelog
 
-## 0.8.1
+## 0.9.0
 
 - Behind-the-scenes switch from `htmltojsx` to `@mapbox/hast-util-to-jsx`.
 

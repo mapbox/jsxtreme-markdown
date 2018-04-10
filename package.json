@@ -14,7 +14,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@mapbox/assembly": "^0.21.1",
+    "@mapbox/assembly": "^0.21.2",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -23,7 +23,7 @@
     "husky": "^0.14.3",
     "jest": "^22.4.3",
     "lerna": "^2.9.0",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.0.4",
     "prettier": "^1.11.1",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",

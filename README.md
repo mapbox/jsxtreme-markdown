@@ -73,13 +73,14 @@ You get the following JSX output:
 </div>
 ```
 
-This monorepo includes a few packages that allow you to use the jsxtreme-markdown syntax in a variety of ways:
+This monorepo includes the following packages:
 
 - [jsxtreme-markdown] includes the core, low-level transform functions to convert Markdown to JSX strings or complete React component modules.
   These functions can be used to build higher-level modules that target specific contexts (Webpack loaders, Browserify transforms, gulp plugins, etc.).
 - [jsxtreme-markdown-loader] is a Webpack loader build on top of [jxtreme-markdown].
   Given an input Markdown file, it outputs a React component module.
 - [babel-plugin-transform-jsxtreme-markdown] is a Babel plugin that allows you to tag template literals of jsxtreme-markdown so they'll be transformed *at compile time* (and you don't have to include a Markdown parser in the browser bundle).
+- [hast-util-to-jsx] is a utility to convert [HAST] (the AST used by [rehype]) into JSX.
 
 ## Development
 
@@ -109,3 +110,4 @@ That should do it.
 [babel-plugin-transform-jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/babel-plugin-transform-jsxtreme-markdown#readme
 [remark]: https://github.com/wooorm/remark
 [rehype]: https://github.com/wooorm/rehype
+[HAST]: https://github.com/syntax-tree/hast
