@@ -43,7 +43,8 @@
     "testMatch": [
       "**/*.test.js"
     ],
-    "clearMocks": true
+    "clearMocks": true,
+    "testEnvironment": "node"
   },
   "prettier": {
     "singleQuote": true

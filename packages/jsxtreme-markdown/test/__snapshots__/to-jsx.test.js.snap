@@ -77,28 +77,30 @@ exports[`toJsx syntax highlighting clashing with delimiters 1`] = `
 "
 `;
 
-exports[`toJsx table with alignment gets text-align inline styles 1`] = `
-"<table>
-  <thead>
-    <tr>
-      <th style={{ textAlign: \\"left\\" }}>Left-aligned</th>
-      <th style={{ textAlign: \\"center\\" }}>Center-aligned</th>
-      <th style={{ textAlign: \\"right\\" }}>Right-aligned</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style={{ textAlign: \\"left\\" }}>git status</td>
-      <td style={{ textAlign: \\"center\\" }}>git status</td>
-      <td style={{ textAlign: \\"right\\" }}>git status</td>
-    </tr>
-    <tr>
-      <td style={{ textAlign: \\"left\\" }}>git diff</td>
-      <td style={{ textAlign: \\"center\\" }}>git diff</td>
-      <td style={{ textAlign: \\"right\\" }}>git diff</td>
-    </tr>
-  </tbody>
-</table>;
+exports[`toJsx table alignment shows up in style properties, instead of align properties 1`] = `
+"<div>
+  <table>
+    <thead>
+      <tr>
+        <th style={{ textAlign: \\"left\\" }}>Left-aligned</th>
+        <th style={{ textAlign: \\"center\\" }}>Center-aligned</th>
+        <th style={{ textAlign: \\"right\\" }}>Right-aligned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style={{ textAlign: \\"left\\" }}>git status</td>
+        <td style={{ textAlign: \\"center\\" }}>git status</td>
+        <td style={{ textAlign: \\"right\\" }}>git status</td>
+      </tr>
+      <tr>
+        <td style={{ textAlign: \\"left\\" }}>git diff</td>
+        <td style={{ textAlign: \\"center\\" }}>git diff</td>
+        <td style={{ textAlign: \\"right\\" }}>git diff</td>
+      </tr>
+    </tbody>
+  </table>
+</div>;
 "
 `;
 
