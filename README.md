@@ -108,6 +108,7 @@ That should do it.
 [jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#readme
 [jsxtreme-markdown-loader]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown-loader#readme
 [babel-plugin-transform-jsxtreme-markdown]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/babel-plugin-transform-jsxtreme-markdown#readme
+[hast-util-to-jsx]: https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx#readme
 [remark]: https://github.com/wooorm/remark
 [rehype]: https://github.com/wooorm/rehype
 [HAST]: https://github.com/syntax-tree/hast
