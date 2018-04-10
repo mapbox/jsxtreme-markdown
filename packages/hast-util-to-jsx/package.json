@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/hast-util-to-jsx",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Transform HAST to JSX",
   "main": "index.js",
   "repository": {
