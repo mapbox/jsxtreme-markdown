@@ -1,5 +1,9 @@
 # jsxtreme-markdown-loader changelog
 
+## 0.7.0
+
+- Update `@mapbox/jsxtreme-markdown` with new method for stringifying JSX.
+
 ## 0.6.0
 
 - Update `@mapbox/jsxtreme-markdown` to get new `headings` option for `toComponentModule`.
