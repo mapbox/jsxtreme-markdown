@@ -32,7 +32,7 @@ Yields (with whitespace collapsed):
 ```
 
 A few libraries exist to transform HTML to JSX.
-Using this util, you can perform that transformation entirely within the ecosystem of [`unified`](https://github.com/unifiedjs/unified) syntax trees, using `[`rehype](https://github.com/rehypejs/rehype) to parse HTML and this util to stringify the tree into JSX.
+Using this util, you can perform that transformation entirely within the ecosystem of [`unified`](https://github.com/unifiedjs/unified) syntax trees, using [`rehype`](https://github.com/rehypejs/rehype) to parse HTML and this util to stringify the tree into JSX.
 
 ## Related
 
