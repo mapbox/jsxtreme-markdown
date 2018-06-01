@@ -23,8 +23,8 @@ describe('jsxtremeMarkdownLoader', () => {
   });
 
   afterEach(() => {
-    loaderUtils.getOptions.mockRestore();
-    jsxtremeMarkdown.toComponentModule.mockRestore();
+    jest.resetAllMocks();
+    jest.restoreAllMocks();
   });
 
   test('gets options', () => {
@@ -38,7 +38,17 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
     expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith(
       'mockMarkdown',
-      mockOptions
+      { precompile: true }
+    );
+  });
+
+  test('turn off precompilation', () => {
+    loaderUtils.getOptions.mockReturnValue({ precompile: false });
+    mockContext.loader('mockMarkdown');
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith(
+      'mockMarkdown',
+      { precompile: false }
     );
   });
 
@@ -61,11 +71,13 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(getWrapper).toHaveBeenCalledTimes(1);
     expect(getWrapper).toHaveBeenCalledWith('mockResource');
     expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledTimes(1);
-    expect(
-      jsxtremeMarkdown.toComponentModule
-    ).toHaveBeenCalledWith('mockMarkdown', {
-      wrapper: 'mockWrapper'
-    });
+    expect(jsxtremeMarkdown.toComponentModule).toHaveBeenCalledWith(
+      'mockMarkdown',
+      {
+        wrapper: 'mockWrapper',
+        precompile: true
+      }
+    );
   });
 
   test('result of getWrapper is independent for each invocation', () => {
@@ -84,7 +96,8 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(jsxtremeMarkdown.toComponentModule.mock.calls[0]).toEqual([
       'mockMarkdownA',
       {
-        wrapper: 'AAA'
+        wrapper: 'AAA',
+        precompile: true
       }
     ]);
 
@@ -96,7 +109,8 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(jsxtremeMarkdown.toComponentModule.mock.calls[1]).toEqual([
       'mockMarkdownB',
       {
-        wrapper: 'BBB'
+        wrapper: 'BBB',
+        precompile: true
       }
     ]);
 
@@ -108,7 +122,8 @@ describe('jsxtremeMarkdownLoader', () => {
     expect(jsxtremeMarkdown.toComponentModule.mock.calls[2]).toEqual([
       'mockMarkdownC',
       {
-        wrapper: 'CCC'
+        wrapper: 'CCC',
+        precompile: true
       }
     ]);
   });

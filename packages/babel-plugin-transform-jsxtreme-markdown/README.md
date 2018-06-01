@@ -1,7 +1,5 @@
 # @mapbox/babel-plugin-transform-jsxtreme-markdown
 
-🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
-
 Transform Markdown interpolated with JS expressions and JSX elements into pure JSX, at compile time.
 
 Uses [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#readme) to compile the interpolated Markdown.
