@@ -23,7 +23,6 @@ describe('jsxtremeMarkdownLoader', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
     jest.restoreAllMocks();
   });
 

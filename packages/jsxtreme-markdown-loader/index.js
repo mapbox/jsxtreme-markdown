@@ -10,7 +10,7 @@ const defaultOptions = {
 
 module.exports = function(source) {
   let options = loaderUtils.getOptions(this) || {};
-  options = Object.assign(defaultOptions, options);
+  options = Object.assign({}, defaultOptions, options);
   if (options.getWrapper) {
     options = cloneDeep(options);
     options.wrapper = options.getWrapper(this.resource);
