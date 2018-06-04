@@ -1,7 +1,5 @@
 # @mapbox/jsxtreme-markdown
 
-🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
-
 Transform **Markdown with interpolated JS expressions and JSX elements** into JSX or React component modules.
 
 This is the low-level, core module that takes one string (Markdown) and converts it to another string (JSX or a React component module).

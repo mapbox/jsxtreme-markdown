@@ -1,7 +1,5 @@
 # @mapbox/jsxtreme-markdown-loader
 
-🚧 🚧 **EXPERIMENTAL! WORK IN PROGRESS!** 🚧 🚧
-
 Webpack loader to transform Markdown with interpolated JS and JSX into React components.
 
 Runs files through [the `toComponentModule` function of jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#tocomponentmodule).
@@ -19,7 +17,8 @@ npm install @mapbox/jsxtreme-markdown-loader
 
 Follow the instructions for using [Webpack loaders](https://webpack.js.org/concepts/loaders/).
 
-⚠️  **The output of the default template includes JSX and ES2015 (`class`), so you should chain this loader with the [`babel-loader`](https://github.com/babel/babel-loader).**
+By default, the output of this loader is precompiled with Babel.
+You can bypass this step (and use your own compilation) by set the option `precompile: false`.
 
 ### options
 

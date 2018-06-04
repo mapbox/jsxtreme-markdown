@@ -1,5 +1,9 @@
 # jsxtreme-markdown-loader changelog
 
+## HEAD
+
+- Set `precompile: true` by default when calling `toComponentModule`.
+
 ## 0.7.0
 
 - Update `@mapbox/jsxtreme-markdown` with new method for stringifying JSX.
