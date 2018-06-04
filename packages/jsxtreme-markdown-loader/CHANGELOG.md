@@ -1,8 +1,8 @@
 # jsxtreme-markdown-loader changelog
 
-## HEAD
+## 0.8.0
 
-- Set `precompile: true` by default when calling `toComponentModule`.
+- **Breaking change:** Set `precompile: true` by default when calling `toComponentModule`.
 
 ## 0.7.0
 
