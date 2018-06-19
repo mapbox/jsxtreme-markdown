@@ -108,6 +108,8 @@ Delimiters set off interpolated JS and JSX from the Markdown text.
 Customize them by passing an array with two strings, one for the opener, one for the closer.
 For example: `['{%', '%}']`.
 
+**Note: Do not use delimiters which could clash with JS (`${}`) or JSX (`{}`).**
+
 ##### escapeDelimiter
 
 Type: `string`.
