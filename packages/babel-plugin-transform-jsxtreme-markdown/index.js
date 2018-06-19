@@ -10,4 +10,7 @@ const applyTransform = (templateExpressionPath, text, options) => {
   templateExpressionPath.replaceWith(ast);
 };
 
-module.exports = templateTagMacro('jsxtreme-markdown/md', applyTransform);
+module.exports = templateTagMacro(
+  'babel-plugin-transform-jsxtreme-markdown/md',
+  applyTransform
+);
