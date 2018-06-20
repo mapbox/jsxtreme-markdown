@@ -11,6 +11,6 @@ const applyTransform = (templateExpressionPath, text, options) => {
 };
 
 module.exports = templateTagMacro(
-  'babel-plugin-transform-jsxtreme-markdown/md',
+  '@mapbox/babel-plugin-transform-jsxtreme-markdown/md',
   applyTransform
 );
