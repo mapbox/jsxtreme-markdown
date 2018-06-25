@@ -13,7 +13,7 @@ const transform = (code, options) => {
 
 test('basic usage', () => {
   const code = `
-    const md = require('jsxtreme-markdown/md');
+    const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
     const foo = md\`
       # Title
       This is **bold.**
@@ -25,7 +25,7 @@ test('basic usage', () => {
 
 test('import instead of require', () => {
   const code = `
-    import md from 'jsxtreme-markdown/md';
+    import md from '@mapbox/babel-plugin-transform-jsxtreme-markdown/md';
     const foo = md\`
       # Title
       This is **bold.**
@@ -51,7 +51,7 @@ test('require in nested scope', () => {
   const code = `
     function x() {
       if (true) {
-        const md = require('jsxtreme-markdown/md');
+        const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
         const foo = md\`
           # Title
           This is **bold.**
@@ -65,7 +65,7 @@ test('require in nested scope', () => {
 
 test('alternate variable name, with broken-up nested JSX', () => {
   const code = `
-    const markit = require('jsxtreme-markdown/md');
+    const markit = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
     const text = markit\`
     This is a paragraph {{ <span className="foo"> }} with a **markdown** span inside {{ </span> }}
     {{ <div style={{ margin: 70 }}> }}
@@ -78,7 +78,7 @@ test('alternate variable name, with broken-up nested JSX', () => {
 
 test('toJsx options', () => {
   const code = `
-    import md from 'jsxtreme-markdown/md';
+    import md from '@mapbox/babel-plugin-transform-jsxtreme-markdown/md';
     const foo = md\`
       This is a paragraph {{ <span className="foo">with a span inside</span> }}
       {# <div style={{ margin: 70 }}> #}
@@ -95,7 +95,7 @@ test('toJsx options', () => {
 
 test('fails with placeholders in template literals', () => {
   const code = `
-    const md = require('jsxtreme-markdown/md');
+    const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
     const foo = md\`
       # Title
       This is **bold.** $\{number}
@@ -108,7 +108,7 @@ test('fails with placeholders in template literals', () => {
 test('does nothing when module is not in scope', () => {
   const code = `
     function x() {
-      const md = require('jsxtreme-markdown/md');
+      const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
     }
     const foo = md\`
       # Title
@@ -122,7 +122,7 @@ test('does nothing when module is not in scope', () => {
 test('does not add React to scope when it is already required', () => {
   const code = `
     const React = require('react');
-    const md = require('jsxtreme-markdown/md');
+    const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
     const foo = md\`
       # Title
       This is **bold.**
@@ -135,7 +135,7 @@ test('does not add React to scope when it is already required', () => {
 test('does not add React to scope when it is already imported', () => {
   const code = `
     import React from 'react';
-    import md from 'jsxtreme-markdown/md';
+    import md from '@mapbox/babel-plugin-transform-jsxtreme-markdown/md';
     const foo = md\`
       # Title
       This is **bold.**

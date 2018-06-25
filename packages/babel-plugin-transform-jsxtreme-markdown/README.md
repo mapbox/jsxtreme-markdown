@@ -16,14 +16,14 @@ npm install @mapbox/babel-plugin-transform-jsxtreme-markdown
 
 Transforms a special [tagged template literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals).
 
-`require` or `import` the (fake) package `'babel-plugin-transform-jsxtreme-markdown/md'`, or whatever you've specified as `packageName` in your Babel options.
+`require` or `import` the (fake) package `'@mapbox/babel-plugin-transform-jsxtreme-markdown/md'`, or whatever you've specified as `packageName` in your Babel options.
 Then use that (fake) module's export as a template literal tag, marking the template literals you'd like to be compiled at run time.
 
 If `React` is not already in the file's top-level scope, `var React = require('react');` will be added to the beginning of the file.
 
 ```jsx
 // Input
-const md = require('babel-plugin-transform-jsxtreme-markdown/md');
+const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
 const foo = md`
   # Title
   This is **bold.**
@@ -46,7 +46,7 @@ Read more about this in the jsxtreme-markdown docs.
 
 ```jsx
 // Input
-import md from 'babel-plugin-transform-jsxtreme-markdown/md';
+import md from '@mapbox/babel-plugin-transform-jsxtreme-markdown/md';
 const text = md`
   This is a paragraph {{<span className="foo">}} with a **markdown** span inside {{</span>}}
   {{ <div style={{ margin: 70 }}> }}
@@ -77,7 +77,7 @@ Additional options:
 #### packageName
 
 Type: `string`.
-Default: `'babel-plugin-transform-jsxtreme-markdown/md'`.
+Default: `'@mapbox/babel-plugin-transform-jsxtreme-markdown/md'`.
 
 The name of the package that you will `require` or `import` to use this thing.
 For example, with the value `'xtreme-markdown'` you should use
