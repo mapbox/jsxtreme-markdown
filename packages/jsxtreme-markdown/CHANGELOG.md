@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 0.9.1
+
+- [Fix] `strip-indent` is a real dependency, not a devDepedency.
+
 ## 0.9.0
 
 - Behind-the-scenes switch from `htmltojsx` to `@mapbox/hast-util-to-jsx`.
