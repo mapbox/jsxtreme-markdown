@@ -1,7 +1,6 @@
 'use strict';
 
 const _ = require('lodash');
-const prettier = require('prettier');
 const stringifyObject = require('stringify-object');
 
 module.exports = data => {
@@ -40,5 +39,5 @@ module.exports = data => {
     }
   `;
 
-  return prettier.format(js);
+  return js;
 };

@@ -11,7 +11,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('expression inside a link url', () => {
@@ -26,7 +26,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('expression inside a src url', () => {
@@ -41,7 +41,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('with nested JSX', () => {
@@ -54,7 +54,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('with broken-up nested JSX', () => {
@@ -68,7 +68,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('with alternative delimiters', () => {
@@ -84,7 +84,7 @@ describe('toJsx', () => {
     };
 
     const jsx = toJsx(text, options);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('syntax highlighting clashing with delimiters', () => {
@@ -96,7 +96,7 @@ describe('toJsx', () => {
       \`\`\`
     `;
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('documentation example', () => {
@@ -121,7 +121,7 @@ describe('toJsx', () => {
     `;
 
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 
   test('error on block-level element within paragraph', () => {
@@ -148,6 +148,10 @@ describe('toJsx', () => {
       | git diff     | git diff       | git diff      |
     `;
     const jsx = toJsx(text);
-    expect(prettier.format(jsx)).toMatchSnapshot();
+    expect(format(jsx)).toMatchSnapshot();
   });
 });
+
+function format(code) {
+  return prettier.format(code, { parser: 'babylon' });
+}
