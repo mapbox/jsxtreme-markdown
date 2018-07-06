@@ -85,7 +85,9 @@ module.exports = (input, delimiters, escapeDelimiter) => {
             ? delimiterBalancedMatch.start + index
             : delimiterBalancedMatch.end + index + endDelimiter.length - 1;
           const position = lineColumn(input, errorIndex);
-          const message = `<${tagName}> is a block-level element. Interpolated tags for block-element JSX elements should be separated from surrounding Markdown by newlines. (${position.line}:${position.col})`;
+          const message = `<${tagName}> is a block-level element. Interpolated tags for block-element JSX elements should be separated from surrounding Markdown by newlines. (${
+            position.line
+          }:${position.col})`;
           const error = new Error(message);
           error.code = 'BADBLOCK';
           error.position = position;
