@@ -35,7 +35,6 @@
     "lodash": "^4.17.5",
     "mdast-util-to-string": "^1.0.4",
     "pascal-case": "^2.0.1",
-    "prettier": "^1.11.1",
     "rehype-raw": "^2.0.0",
     "remark-parse": "^5.0.0",
     "remark-rehype": "^3.0.0",

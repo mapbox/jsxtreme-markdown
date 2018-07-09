@@ -15,8 +15,9 @@ module.exports = function templateTagMacro(defaultPackageName, applyTransform) {
         throw parentTemplateExpression
           .get('quasi.expressions.0')
           .buildCodeFrameError(
-            `Placeholders are not supported inside "${parentTemplateExpression
-              .node.tag.name}" tagged template literals`
+            `Placeholders are not supported inside "${
+              parentTemplateExpression.node.tag.name
+            }" tagged template literals`
           );
       }
     };

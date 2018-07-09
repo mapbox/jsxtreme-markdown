@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## HEAD
+
+- [Fix] Don't use Prettier to format component module templates. They won't be as pretty for debugging, but it's worth it to remove the production dependency on Prettier.
+
 ## 0.9.1
 
 - [Fix] `strip-indent` is a real dependency, not a devDepedency.

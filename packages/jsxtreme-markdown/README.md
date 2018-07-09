@@ -61,7 +61,7 @@ const markdown = `
 `;
 
 const jsx = jsxtremeMarkdown.toJsx(markdown);
-console.log(prettier.format(jsx));
+console.log(prettier.format(jsx, { parser: 'babylon' }));
 
 /*
 <div>

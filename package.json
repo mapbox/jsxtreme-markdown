@@ -7,7 +7,7 @@
     "build-repl": "PRODUCTION=true webpack --config repl/webpack.config.js",
     "lint": "eslint .",
     "test-jest": "jest",
-    "format": "prettier --write 'packages/**/!(node_modules|dist)**/*.js'",
+    "format": "prettier --write '**/*.js'",
     "postinstall": "lerna bootstrap",
     "precommit": "lint-staged",
     "pretest": "npm run lint",
@@ -24,7 +24,7 @@
     "jest": "^23.1.0",
     "lerna": "^2.9.0",
     "lint-staged": "^7.0.4",
-    "prettier": "^1.11.1",
+    "prettier": "1.13.7",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
     "webpack-parallel-uglify-plugin": "^1.1.0"
