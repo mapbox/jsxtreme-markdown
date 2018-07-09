@@ -1,6 +1,6 @@
 # jsxtreme-markdown changelog
 
-## HEAD
+## 0.9.2
 
 - [Fix] Don't use Prettier to format component module templates. They won't be as pretty for debugging, but it's worth it to remove the production dependency on Prettier.
 
