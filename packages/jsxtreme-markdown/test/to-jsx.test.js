@@ -4,6 +4,12 @@ const prettier = require('prettier');
 const toJsx = require('../lib/to-jsx');
 
 describe('toJsx', () => {
+  test('with an empty string', () => {
+    const text = '';
+    const jsx = toJsx(text);
+    expect(format(jsx)).toBe('');
+  });
+
   test('with simple expression', () => {
     const text = `
       # Title
