@@ -8,7 +8,7 @@ module.exports = function jsxtremeHastCompiler(options) {
   this.Compiler = compiler;
 
   function compiler(ast) {
-    const jsxWithPlaceholders = hastToJsx(ast);
+    const jsxWithPlaceholders = hastToJsx(ast) || '';
 
     let result = jsxWithPlaceholders;
 

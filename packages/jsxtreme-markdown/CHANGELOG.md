@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## HEAD
+
+- [Fix] `toJsx` no longer errors when you pass it an empty string.
+
 ## 0.9.2
 
 - [Fix] Don't use Prettier to format component module templates. They won't be as pretty for debugging, but it's worth it to remove the production dependency on Prettier.
