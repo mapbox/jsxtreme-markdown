@@ -1,6 +1,6 @@
 # jsxtreme-markdown changelog
 
-## HEAD
+## 0.9.3
 
 - [Fix] `toJsx` no longer errors when you pass it an empty string.
 
