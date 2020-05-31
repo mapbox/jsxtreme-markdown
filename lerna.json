@@ -1,12 +1,11 @@
 {
-  "lerna": "2.0.0",
   "version": "independent",
-  "commands": {
+  "command": {
     "bootstrap": {
       "hoist": true
     },
     "publish": {
-      "ignore": [
+      "ignoreChanges": [
         "**/test/**",
         "**/*.test.js",
         "**/examples/**",

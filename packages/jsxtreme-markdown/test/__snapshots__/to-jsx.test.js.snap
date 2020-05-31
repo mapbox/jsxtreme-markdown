@@ -7,7 +7,7 @@ exports[`toJsx documentation example 1`] = `
     {\\" \\"}
     Here is some <strong>markdown</strong>. So <em>easy</em> to write. You can
     interpolate JS expressions like {data.number}
-    or {dogs.map(d => d.name).join(\\", \\")}. You can also interpolate JSX
+    or {dogs.map((d) => d.name).join(\\", \\")}. You can also interpolate JSX
     elements, whether <span>inline</span> or as a block:
   </p>
   <div className=\\"fancy-class\\">This is a block.</div>

@@ -47,7 +47,7 @@ module.exports = (input, options) => {
   // passes them in as raw elements. That's why we need that option and need to
   // use rehype-raw.
   unifiedProcessor
-    .use(remarkRehype, { allowDangerousHTML: true })
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeRaw)
     .use(() => tableCellStyle);
 

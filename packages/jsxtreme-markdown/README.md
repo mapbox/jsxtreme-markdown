@@ -61,7 +61,7 @@ const markdown = `
 `;
 
 const jsx = jsxtremeMarkdown.toJsx(markdown);
-console.log(prettier.format(jsx, { parser: 'babylon' }));
+console.log(prettier.format(jsx, { parser: 'babel' }));
 
 /*
 <div>
@@ -375,7 +375,7 @@ A couple of things to keep in mind when using this option:
 Type: `boolean`.
 Default: `false`.
 
-If `true`, the returned string will be compiled with Babel (using `babel-preset-env` and `babel-preset-react`).
+If `true`, the returned string will be compiled with Babel (using `@babel/preset-env` and `@babel/preset-react`).
 
 ##### name
 

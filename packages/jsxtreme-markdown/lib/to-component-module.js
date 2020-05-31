@@ -1,11 +1,11 @@
 'use strict';
 
 const _ = require('lodash');
-const babel = require('babel-core');
-const presetEnv = require('babel-preset-env');
-const presetReact = require('babel-preset-react');
+const babel = require('@babel/core');
+const presetEnv = require('@babel/preset-env');
+const presetReact = require('@babel/preset-react');
 const frontMatter = require('front-matter');
-const pascalCase = require('pascal-case');
+const { pascalCase } = require('pascal-case');
 const toJsx = require('./to-jsx');
 const remarkExtractHeadings = require('./remark-extract-headings');
 const defaultTemplate = require('./templates/default');
@@ -17,7 +17,7 @@ module.exports = (input, options) => {
       prependJs: [],
       precompile: false,
       headings: false,
-      remarkPlugins: []
+      remarkPlugins: [],
     },
     options
   );
@@ -45,7 +45,7 @@ module.exports = (input, options) => {
       options.prependJs,
       frontMatterResult.attributes.prependJs
     ),
-    jsx
+    jsx,
   };
 
   if (options.template) return options.template(templateData);
