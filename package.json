@@ -9,7 +9,6 @@
 		"test-jest": "jest",
 		"format": "prettier --write '**/*.js'",
 		"postinstall": "lerna bootstrap",
-		"precommit": "lint-staged",
 		"pretest": "npm run lint",
 		"test": "jest"
 	},
@@ -39,6 +38,11 @@
 			"prettier --write"
 		]
 	},
+	"huksy": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
 	"dependencies": {
 		"@babel/code-frame": "^7.10.1",
 		"@babel/core": "^7.10.2",
@@ -55,7 +59,6 @@
 		"line-column": "^1.0.2",
 		"loader-utils": "^2.0.0",
 		"lodash": "^4.17.15",
-		"lodash.clonedeep": "^4.5.0",
 		"mdast-util-to-string": "^1.1.0",
 		"mkdirp": "^1.0.4",
 		"pascal-case": "^3.1.1",
@@ -83,7 +86,6 @@
 		"@mapbox/assembly": "^0.24.0",
 		"babel-jest": "^26.0.1",
 		"babel-loader": "^8.1.0",
-		"babel-preset-react": "^6.24.1",
 		"eslint": "^7.1.0",
 		"eslint-plugin-node": "^11.1.0",
 		"husky": "^4.2.5",
