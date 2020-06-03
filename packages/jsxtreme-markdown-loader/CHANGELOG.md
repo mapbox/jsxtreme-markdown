@@ -2,6 +2,11 @@
 
 Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
 
+
+## 0.9.0
+
+- Update dependencies.
+
 ## 0.8.0
 
 - **Breaking change:** Set `precompile: true` by default when calling `toComponentModule`.
