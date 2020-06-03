@@ -38,12 +38,14 @@ module.exports = () => {
         }
       ]
     },
+    mode: 'development',
     plugins,
     devtool: !isProduction ? 'cheap-module-eval-source-map' : false,
     node: {
       fs: 'empty',
       module: 'empty',
       child_process: 'empty'
-    }
+    },
+    performance: { hints: false }
   };
 };

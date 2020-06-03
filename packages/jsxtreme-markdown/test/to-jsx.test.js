@@ -159,5 +159,5 @@ describe('toJsx', () => {
 });
 
 function format(code) {
-  return prettier.format(code, { parser: 'babylon' });
+  return prettier.format(code, { parser: 'babel' });
 }

@@ -2,7 +2,6 @@
 
 const crypto = require('crypto');
 const stripIndent = require('strip-indent');
-const pify = require('pify');
 const path = require('path');
 const del = require('del');
 const mkdirp = require('mkdirp');
@@ -10,6 +9,7 @@ const beautify = require('js-beautify');
 const fs = require('fs');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
+const { promisify } = require('util');
 const toComponentModule = require('../lib/to-component-module');
 
 const prepText = text => stripIndent(text).trim();
@@ -26,7 +26,7 @@ const loadOutputModule = content => {
     crypto.randomBytes(16).toString('hex') + '.js'
   );
 
-  return pify(fs.writeFile)(filename, content).then(() => {
+  return promisify(fs.writeFile)(filename, content).then(() => {
     let m = require(filename);
     m = m.default || m;
     return m;
@@ -41,7 +41,7 @@ const renderComponent = (Component, props) => {
 
 describe('toComponentModule', () => {
   beforeAll(() => {
-    return pify(mkdirp)(tmpDir);
+    return mkdirp(tmpDir);
   });
 
   afterAll(() => {

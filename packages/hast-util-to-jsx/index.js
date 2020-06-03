@@ -91,7 +91,7 @@ function hastPropertiesToJsxProps(hastProperties, elementName) {
     }
 
     const htmlName = hastPropertyNameToHtmlName(hastName);
-    const info = propertyInformation(htmlName);
+    const info = propertyInformation.find(propertyInformation.html, htmlName);
     const propName = reactAttrConverter(htmlName);
 
     // Transform input values to defaultX props, to allow for changes.

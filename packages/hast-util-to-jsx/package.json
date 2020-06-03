@@ -24,20 +24,20 @@
   ],
   "dependencies": {
     "kebab-case": "^1.0.0",
-    "postcss": "^6.0.21",
-    "postcss-js": "^1.0.1",
-    "property-information": "^3.2.0",
+    "postcss": "^7.0.31",
+    "postcss-js": "^2.0.3",
+    "property-information": "^5.5.0",
     "react-attr-converter": "^0.3.1",
-    "stringify-entities": "^1.3.1",
-    "stringify-object": "^3.2.2"
+    "stringify-entities": "^3.0.1",
+    "stringify-object": "^3.3.0"
   },
   "devDependencies": {
-    "hastscript": "^3.1.0",
-    "rehype-parse": "^4.1.0",
-    "unified": "^6.1.6",
-    "unist-builder": "^1.0.2"
+    "hastscript": "^5.1.2",
+    "rehype-parse": "^6.0.2",
+    "unified": "^9.0.0",
+    "unist-builder": "^2.0.3"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=10"
   }
 }
