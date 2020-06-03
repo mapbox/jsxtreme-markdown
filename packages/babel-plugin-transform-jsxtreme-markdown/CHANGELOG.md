@@ -2,7 +2,7 @@
 
 Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
 
-## 0.6.0
+## 1.0.0
 
 - Update to Babel 7, require Node >=10, and update dependencies.
 

@@ -1,6 +1,6 @@
 # jsxtreme-markdown changelog
 
-## 0.10.0
+## 1.0.0
 
 - Update to Babel 7, require Node >=10, and update dependencies.
 
