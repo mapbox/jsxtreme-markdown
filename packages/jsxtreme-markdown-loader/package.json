@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/jsxtreme-markdown-loader",
-  "version": "0.8.3",
+  "version": "1.0.0",
   "description": "Webpack loader to transform Markdown with interpolated JS and JSX into React components",
   "main": "index.js",
   "repository": {
@@ -20,7 +20,7 @@
     "loader"
   ],
   "dependencies": {
-    "@mapbox/jsxtreme-markdown": "^0.9.3",
+    "@mapbox/jsxtreme-markdown": "^1.0.0",
     "loader-utils": "^2.0.0",
     "lodash.clonedeep": "^4.5.0"
   }
