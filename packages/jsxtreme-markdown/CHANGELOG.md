@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 1.0.0
+
+- Update to Babel 7, require Node >=10, and update dependencies.
+
 ## 0.9.3
 
 - [Fix] `toJsx` no longer errors when you pass it an empty string.

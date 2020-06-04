@@ -2,6 +2,10 @@
 
 Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
 
+## 1.0.0
+
+- Update to Babel 7, require Node >=10, and update dependencies.
+
 ## 0.5.0
 
 - Update `@mapbox/jsxtreme-markdown` with new method for stringifying JSX.
