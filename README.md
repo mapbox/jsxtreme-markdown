@@ -1,6 +1,6 @@
 # jsxtreme-markdown
 
-[![Build Status](https://travis-ci.org/mapbox/jsxtreme-markdown.svg?branch=master)](https://travis-ci.org/mapbox/jsxtreme-markdown)
+[![Build Status](https://travis-ci.org/mapbox/jsxtreme-markdown.svg?branch=main)](https://travis-ci.org/mapbox/jsxtreme-markdown)
 
 Transform Markdown with interpolated JS expressions and JSX elements into JSX or React component modules.
 
