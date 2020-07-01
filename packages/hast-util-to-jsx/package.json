@@ -12,7 +12,7 @@
   "bugs": {
     "url": "https://github.com/mapbox/jsxtreme-markdown/issues"
   },
-  "homepage": "https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/hast-util-to-jsx#readme",
+  "homepage": "https://github.com/mapbox/jsxtreme-markdown/tree/main/packages/hast-util-to-jsx#readme",
   "keywords": [
     "hast",
     "plugin",

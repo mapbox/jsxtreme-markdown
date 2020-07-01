@@ -2,7 +2,7 @@
 
 Transform Markdown interpolated with JS expressions and JSX elements into pure JSX, at compile time.
 
-Uses [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#readme) to compile the interpolated Markdown.
+Uses [jsxtreme-markdown](https://github.com/mapbox/jsxtreme-markdown/tree/main/packages/jsxtreme-markdown#readme) to compile the interpolated Markdown.
 
 For more information about jsxtreme-markdown features, read [the README at the root of this monorepo](https://github.com/mapbox/jsxtreme-markdown#readme).
 
@@ -70,7 +70,7 @@ var text = <div>
 
 ### options
 
-You can pass any of [the options available to `jsxtremeMarkdown.toJsx`](https://github.com/mapbox/jsxtreme-markdown/tree/master/packages/jsxtreme-markdown#options).
+You can pass any of [the options available to `jsxtremeMarkdown.toJsx`](https://github.com/mapbox/jsxtreme-markdown/tree/main/packages/jsxtreme-markdown#options).
 
 Additional options:
 
