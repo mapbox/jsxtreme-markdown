@@ -33,7 +33,7 @@ The text runs through a series of steps:
 
 ```js
 const prettier = require('prettier');
-const jsxtremeMarkdown = require('jsxtreme-markdown');
+const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
 
 const markdown = `
   # Title
@@ -171,7 +171,7 @@ A default template is provided that produces the output exemplified below.
 You can also provide your own template to fit your own needs and preferences.
 
 ```js
-const jsxtremeMarkdown = require('jsxtreme-markdown');
+const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
 
 const markdown = `
   ---
@@ -293,7 +293,7 @@ If `true`, the following will happen:
 For example:
 
 ```js
-const jsxtremeMarkdown = require('jsxtreme-markdown');
+const jsxtremeMarkdown = require('@mapbox/jsxtreme-markdown');
 
 const markdown = `
   # One
