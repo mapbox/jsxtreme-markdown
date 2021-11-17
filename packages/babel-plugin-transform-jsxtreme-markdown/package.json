@@ -22,14 +22,14 @@
     "transform"
   ],
   "dependencies": {
-    "@babel/parser": "^7.10.2",
+    "@babel/parser": "^7.16.4",
     "@mapbox/jsxtreme-markdown": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2"
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   }
 }

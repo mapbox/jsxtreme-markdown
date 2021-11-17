@@ -53,21 +53,13 @@ Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
 exports[`does nothing when module is not in scope 1`] = `
 "\\"use strict\\";
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral([\\"\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    \\"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
+var _templateObject;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function x() {}
 
-var foo = md(_templateObject());"
+var foo = md(_templateObject || (_templateObject = _taggedTemplateLiteral([\\"\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    \\"])));"
 `;
 
 exports[`import instead of require 1`] = `
