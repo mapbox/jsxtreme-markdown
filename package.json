@@ -7,7 +7,6 @@
     "build-repl": "PRODUCTION=true webpack --config repl/webpack.config.js",
     "lint": "eslint .",
     "test-jest": "jest",
-    "format": "prettier --write '**/*.js'",
     "postinstall": "lerna bootstrap",
     "pretest": "npm run lint",
     "test": "jest",
