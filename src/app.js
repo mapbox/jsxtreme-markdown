@@ -1,6 +1,6 @@
 'use strict';
 
-const babylon = require('babylon');
+const babel = require('@babel/parser');
 const toJsx = require('../../packages/jsxtreme-markdown/lib/to-jsx');
 const CodeMirror = window.CodeMirror;
 
@@ -122,14 +122,14 @@ function onInputChange() {
     jsx = toJsx(raw);
     outputCode.setValue(jsx);
     // This line parses JSX only so we can get parsing errors.
-    babylon.parse(jsx, { plugins: ['jsx'] });
+    babel.parse(jsx, { plugins: ['jsx'] });
     clearError();
   } catch (error) {
     // Back block-level element errors.
     if (error.code === 'BADBLOCK') {
       markError(inputCode, error.position.line - 1, error.position.column);
     } else if (error.loc) {
-      // Duck-typed babylon parsing errors.
+      // Duck-typed babel parsing errors.
       markError(outputCode, error.loc.line - 1, error.loc.column);
       error.message = `JSX syntax error: ${error.message}`;
     }
