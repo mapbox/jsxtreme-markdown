@@ -2,6 +2,10 @@
 
 Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
 
+## 1.1.0
+
+- Update dependencies.
+
 ## 1.0.0
 
 - Update dependencies.
