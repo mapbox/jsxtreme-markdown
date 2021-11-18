@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/babel-plugin-transform-jsxtreme-markdown",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Transform Markdown interpolated with JS expressions and JSX elements at compile time",
   "main": "index.js",
   "repository": {
@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@babel/parser": "^7.16.4",
-    "@mapbox/jsxtreme-markdown": "^1.0.0"
+    "@mapbox/jsxtreme-markdown": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
