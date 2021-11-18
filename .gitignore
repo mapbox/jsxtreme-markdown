@@ -3,4 +3,3 @@ node_modules
 .DS_Store
 coverage
 repl/dist
-packages/**/package-lock.json
