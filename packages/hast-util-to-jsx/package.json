@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "kebab-case": "^1.0.0",
-    "postcss": "^7.0.31",
+    "postcss": "^7.0.39",
     "postcss-js": "^2.0.3",
     "property-information": "^5.5.0",
     "react-attr-converter": "^0.3.1",
@@ -34,10 +34,10 @@
   "devDependencies": {
     "hastscript": "^5.1.2",
     "rehype-parse": "^6.0.2",
-    "unified": "^9.0.0",
+    "unified": "^9.2.2",
     "unist-builder": "^2.0.3"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   }
 }

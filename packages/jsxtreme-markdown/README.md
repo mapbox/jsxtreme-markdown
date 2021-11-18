@@ -20,14 +20,13 @@ npm install @mapbox/jsxtreme-markdown
 
 Transforms jsxtreme-markdown into pure JSX, returning the JSX.
 
-
 The text runs through a series of steps:
 
 1. Extract interpolations, replacing them with placeholders that will be handled properly by the Markdown parser.
 2. Run the result through [remark] to parse the Markdown.
-  (At this stage, you can use any [remark plugins]) you'd like)
+   (At this stage, you can use any [remark plugins]) you'd like)
 3. Parsed Markdown is passed into [rehype] for transformation into HTML.
-  (At this stage, you can use any [rehype plugins] you'd like.)
+   (At this stage, you can use any [rehype plugins] you'd like.)
 4. Transform the HTML to JSX (with [htmltojsx]).
 5. Restore the interpolations.
 
@@ -115,7 +114,7 @@ For example: `['{%', '%}']`.
 Type: `string`.
 Default: `'#'`.
 
-In the rare case that you want to use your delimiters but *not* for interpolation (e.g. you have code in the text that includes them), you can escape them by prefixing the start delimiter with this character.
+In the rare case that you want to use your delimiters but _not_ for interpolation (e.g. you have code in the text that includes them), you can escape them by prefixing the start delimiter with this character.
 The `escapeDelimiter` will be stripped from the output, but the delimiter characters will remain untouched.
 For example, if you want to include the JSX `<div style={{ margin: 10 }} />` in a code block, you would need to escape the double curly brace: `<div style=#{{ margin: 10 }} />`.
 
@@ -134,8 +133,8 @@ For example:
   remarkPlugins: [
     require('remark-squeeze-paragraphs'),
     [require('remark-lint-emphasis-marker'), '*'],
-    [require('remark-toc'), { heading: 'ToC', maxDepth: 2 }]
-  ]
+    [require('remark-toc'), { heading: 'ToC', maxDepth: 2 }],
+  ];
 }
 ```
 
@@ -259,7 +258,7 @@ Type: `Array<string>`.
 
 An array of lines of JS code that will be prepended to the top of the JavaScript.
 The typical use-case is to `require` or `import` modules that will be used by interpolated JS and JSX.
-This value can be *added to* document-by-document by setting `prependJs` in the front matter of specific documents.
+This value can be _added to_ document-by-document by setting `prependJs` in the front matter of specific documents.
 
 ##### template
 
@@ -364,10 +363,9 @@ export default class MarkdownReact extends React.PureComponent {
 */
 ```
 
-
 A couple of things to keep in mind when using this option:
 
-- *Do not use interpolation in your heading text!*
+- _Do not use interpolation in your heading text!_
 - Slugs are generated with [github-slugger], so should match the slugging patterns found in rendered Markdown files on GitHub.
 
 ##### precompile
@@ -392,10 +390,10 @@ For the default template, there are two special front matter properties that Mar
   This can be set outside the front matter with [the `wrapper` option](#wrapper), above.
   See those docs for more details.
 - `prependJs`: See the [the `prependJs` option](#prependjs), above.
-  In a document's front matter, this property will *add lines to* the value of that option, for that specific module.
+  In a document's front matter, this property will _add lines to_ the value of that option, for that specific module.
 
-[`toJsx`]: #tojsx
-[`toComponentModule`]: #tocomponentmodule
+[`tojsx`]: #tojsx
+[`tocomponentmodule`]: #tocomponentmodule
 [remark]: https://github.com/wooorm/remark
 [remark plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
 [rehype]: https://github.com/wooorm/rehype
