@@ -5,7 +5,12 @@
       "hoist": true
     },
     "publish": {
-      "ignoreChanges": ["**/test/**", "**/*.test.js", "**/examples/**"]
+      "ignoreChanges": [
+        "**/test/**",
+        "**/*.test.js",
+        "**/examples/**",
+        "**/*.md"
+      ]
     }
   }
 }
