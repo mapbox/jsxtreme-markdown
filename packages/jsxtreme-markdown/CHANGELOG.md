@@ -1,6 +1,6 @@
 # jsxtreme-markdown changelog
 
-## 1.1.0
+## 2.0.0
 
 - Require Node >=14 and update dependencies.
 
