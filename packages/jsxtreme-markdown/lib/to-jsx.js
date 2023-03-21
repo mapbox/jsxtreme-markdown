@@ -19,7 +19,7 @@ module.exports = (input, options) => {
   options = Object.assign(
     {
       delimiters: ['{{', '}}'],
-      escapeDelimiter: '#'
+      escapeDelimiter: '#',
     },
     options
   );
@@ -34,7 +34,7 @@ module.exports = (input, options) => {
   let unifiedProcessor = unified().use(remarkParse, { commonmark: true });
 
   if (options.remarkPlugins) {
-    options.remarkPlugins.forEach(plugin => {
+    options.remarkPlugins.forEach((plugin) => {
       if (Array.isArray(plugin)) {
         unifiedProcessor.use(plugin[0], plugin[1]);
       } else {
@@ -52,7 +52,7 @@ module.exports = (input, options) => {
     .use(() => tableCellStyle);
 
   if (options.rehypePlugins) {
-    options.rehypePlugins.forEach(plugin => {
+    options.rehypePlugins.forEach((plugin) => {
       if (Array.isArray(plugin)) {
         unifiedProcessor.use(plugin[0], plugin[1]);
       } else {
@@ -62,7 +62,7 @@ module.exports = (input, options) => {
   }
 
   unifiedProcessor.use(jsxtremeHastCompiler, {
-    placeholders: parseable.placeholders
+    placeholders: parseable.placeholders,
   });
 
   const jsx = unifiedProcessor.processSync(tidyMarkdown).contents;
