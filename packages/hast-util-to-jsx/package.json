@@ -38,6 +38,7 @@
     "unist-builder": "^2.0.3"
   },
   "engines": {
-    "node": ">=14"
+    "node": ">=18",
+    "npm": ">=9"
   }
 }
