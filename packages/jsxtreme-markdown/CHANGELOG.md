@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 3.0.0
+
+- Require Node >=18 and update dependencies. Vendor `remark-parse` and manually update one of its vulnerable dependencies.
+
 ## 2.0.0
 
 - Require Node >=14 and update dependencies.
