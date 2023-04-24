@@ -60,7 +60,6 @@
     "react": "^16.14.0",
     "react-attr-converter": "^0.3.1",
     "react-dom": "^16.14.0",
-    "remark-parse": "file:./vendor/remark-parse",
     "rehype-raw": "^4.0.2",
     "remark-rehype": "^7.0.0",
     "stringify-entities": "^3.1.0",
