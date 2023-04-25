@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 3.0.1
+
+- Refactor the vendoring of `remark-parse` (previous attempt was not available to upstream packages)
+
 ## 3.0.0
 
 - Require Node >=18 and update dependencies. Vendor `remark-parse` and manually update one of its vulnerable dependencies.
