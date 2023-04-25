@@ -2,7 +2,9 @@
 
 Any version not listed here is just a non-disruptive update in the `@mapbox/jsxtreme-markdown` dependency.
 
-## 3.0.1
+## 3.0.2
+
+- Update `jsxtreme-markdown` to 3.0.2
 
 - Update `jsxtreme-markdown` to 3.0.1
 
