@@ -2,12 +2,13 @@
 
 const stripIndent = require('strip-indent');
 const unified = require('unified');
-const remarkParse = require('remark-parse');
 const remarkRehype = require('remark-rehype');
 const rehypeRaw = require('rehype-raw');
 const tableCellStyle = require('@mapbox/hast-util-table-cell-style');
+
 const parseablePlaceholders = require('./parseable-placeholders');
 const jsxtremeHastCompiler = require('./jsxtreme-hast-compiler');
+const remarkParse = require('../vendor/remark-parse');
 
 // Disable parsing of indented lines as code blocks. Indentation can be a little
 // weird, because users might indent lines within interpolated tags, but the
