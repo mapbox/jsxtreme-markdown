@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@babel/parser": "^7.16.4",
-    "@mapbox/jsxtreme-markdown": "^3.0.0"
+    "@mapbox/jsxtreme-markdown": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
