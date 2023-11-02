@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 3.1.0
+
+- update dependencies
+
 ## 3.0.2
 
 - add missing `remark-parse` dependencies to package.json (#101)
