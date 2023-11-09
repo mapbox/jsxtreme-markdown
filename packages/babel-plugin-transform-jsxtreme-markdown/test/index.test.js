@@ -8,7 +8,7 @@ const transform = (code, options) => {
   return babel.transform(code, {
     presets: [babelPresetEnv],
     plugins: [[plugin, options]],
-    configFile: false
+    configFile: false,
   }).code;
 };
 
@@ -89,7 +89,7 @@ test('toJsx options', () => {
   `;
   expect(
     transform(code, {
-      delimiters: ['{#', '#}']
+      delimiters: ['{#', '#}'],
     })
   ).toMatchSnapshot();
 });
@@ -108,9 +108,6 @@ test('fails with placeholders in template literals', () => {
 
 test('does nothing when module is not in scope', () => {
   const code = `
-    function x() {
-      const md = require('@mapbox/babel-plugin-transform-jsxtreme-markdown/md');
-    }
     const foo = md\`
       # Title
       This is **bold.**

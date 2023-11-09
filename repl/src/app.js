@@ -37,7 +37,7 @@ function showError(text) {
   errorEl.classList.remove('none');
 }
 
-CodeMirror.defineMode('jsxtreme-markdown', config => {
+CodeMirror.defineMode('jsxtreme-markdown', (config) => {
   const markdownMode = CodeMirror.getMode(config, 'markdown');
   const jsxMode = CodeMirror.getMode(config, 'jsx');
   return CodeMirror.multiplexingMode(
@@ -46,7 +46,7 @@ CodeMirror.defineMode('jsxtreme-markdown', config => {
     {
       open: '#{{',
       close: '}}',
-      mode: markdownMode
+      mode: markdownMode,
     },
     // Then see if there are unescaped delimiters.
     {
@@ -54,7 +54,7 @@ CodeMirror.defineMode('jsxtreme-markdown', config => {
       close: '}}',
       mode: jsxMode,
       delimStyle: 'jsxtreme-delimiter',
-      innerStyle: 'jsxtreme'
+      innerStyle: 'jsxtreme',
     }
   );
 });
@@ -72,7 +72,7 @@ const inputCode = CodeMirror.fromTextArea(inputEl, {
   autoCloseBrackets: true,
   extraKeys: { Enter: 'newlineAndIndentContinueMarkdownList' },
   styleSelectedText: true,
-  showTrailingSpace: true
+  showTrailingSpace: true,
 });
 const outputCode = CodeMirror.fromTextArea(outputEl, {
   lineNumbers: true,
@@ -80,7 +80,7 @@ const outputCode = CodeMirror.fromTextArea(outputEl, {
   lineWrapping: true,
   readOnly: true,
   styleSelectedText: true,
-  showTrailingSpace: true
+  showTrailingSpace: true,
 });
 inputCode.on('change', onInputChange);
 inputCode.on('renderLine', onRenderLine);
@@ -107,7 +107,7 @@ function onRenderLine(instance, line, element) {
 
 function onInputChange() {
   // Clear all errored lines. They will repopulate if they still exist.
-  erroredInputLines.forEach(line => {
+  erroredInputLines.forEach((line) => {
     inputCode.removeLineClass(line, 'wrap', 'bg-red-faint');
     inputCode.removeLineClass(
       line,
@@ -125,6 +125,7 @@ function onInputChange() {
     babel.parse(jsx, { plugins: ['jsx'] });
     clearError();
   } catch (error) {
+    console.error(error);
     // Back block-level element errors.
     if (error.code === 'BADBLOCK') {
       markError(inputCode, error.position.line - 1, error.position.column);
@@ -138,7 +139,7 @@ function onInputChange() {
 }
 
 // Thanks http://codemirror.977696.n3.nabble.com/Scroll-to-line-td4028275.html
-CodeMirror.defineExtension('centerOnLine', function(line) {
+CodeMirror.defineExtension('centerOnLine', function (line) {
   var h = this.getScrollInfo().clientHeight;
   var coords = this.charCoords({ line: line, ch: 0 }, 'local');
   this.scrollTo(null, (coords.top + coords.bottom - h) / 2);
