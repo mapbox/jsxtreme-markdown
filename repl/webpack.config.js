@@ -11,14 +11,14 @@ module.exports = () => {
   const plugins = [
     new webpack.DefinePlugin({
       // This prevents htmltojsx from bundling jsdom
-      IN_BROWSER: true
-    })
+      IN_BROWSER: true,
+    }),
   ];
 
   if (isProduction) {
     plugins.push(
       new ParallelUglifyPlugin({
-        uglifyJS: {}
+        uglifyJS: {},
       })
     );
   }
@@ -28,24 +28,31 @@ module.exports = () => {
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, './dist'),
-      publicPath: '/dist/'
+      publicPath: '/dist/',
     },
     module: {
       rules: [
         {
           test: /\.js$/,
-          use: [{ loader: 'babel-loader' }]
-        }
-      ]
+          use: [{ loader: 'babel-loader' }],
+        },
+      ],
     },
     mode: 'development',
     plugins,
-    devtool: !isProduction ? 'cheap-module-eval-source-map' : false,
-    node: {
-      fs: 'empty',
-      module: 'empty',
-      child_process: 'empty'
+    devtool: !isProduction ? 'eval-cheap-module-source-map' : false,
+    devServer: {
+      static: './repl',
     },
-    performance: { hints: false }
+    node: {
+      global: true,
+    },
+    performance: { hints: false },
+    resolve: {
+      fallback: {
+        path: require.resolve('path-browserify'),
+      },
+      modules: ['node_modules'],
+    },
   };
 };

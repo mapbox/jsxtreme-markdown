@@ -24,16 +24,15 @@
   ],
   "dependencies": {
     "kebab-case": "^1.0.0",
-    "postcss": "^7.0.39",
-    "postcss-js": "^2.0.3",
+    "postcss-js": "^4.0.1",
     "property-information": "^5.5.0",
     "react-attr-converter": "^0.3.1",
     "stringify-entities": "^3.0.1",
-    "stringify-object": "^3.3.0"
+    "stringify-object": "^3.3.0",
+    "rehype-parse": "^6.0.2"
   },
   "devDependencies": {
     "hastscript": "^5.1.2",
-    "rehype-parse": "^6.0.2",
     "unified": "^9.2.2",
     "unist-builder": "^2.0.3"
   },

@@ -2,12 +2,17 @@
   "private": true,
   "name": "jsxtreme-markdown",
   "license": "MIT",
+  "workspaces": [
+    "packages/babel-plugin-transform-jsxtreme-markdown",
+    "packages/hast-util-to-jsx",
+    "packages/jsxtreme-markdown",
+    "packages/jsxtreme-markdown-loader"
+  ],
   "scripts": {
-    "start-repl": "webpack-dev-server --config repl/webpack.config.js --content-base repl",
-    "build-repl": "PRODUCTION=true webpack --config repl/webpack.config.js",
+    "start-repl": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --config repl/webpack.config.js",
+    "build-repl": "webpack --config repl/webpack.prod.js",
     "lint": "eslint .",
     "test-jest": "jest",
-    "postinstall": "lerna bootstrap",
     "pretest": "npm run lint",
     "test": "jest",
     "prepare": "husky install",
@@ -53,9 +58,8 @@
     "mdast-util-to-string": "^1.1.0",
     "mkdirp": "^1.0.4",
     "pascal-case": "^3.1.2",
+    "path-browserify": "^1.0.1",
     "pify": "^5.0.0",
-    "postcss": "^7.0.39",
-    "postcss-js": "^2.0.3",
     "property-information": "^5.6.0",
     "react": "^16.14.0",
     "react-attr-converter": "^0.3.1",
@@ -67,7 +71,8 @@
     "strip-indent": "^3.0.0",
     "unified": "^9.2.2",
     "unist-builder": "^2.0.3",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^2.0.3",
+    "vfile": "^4.2.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.23.2",
@@ -75,16 +80,17 @@
     "@mapbox/assembly": "^1.5.1",
     "babel-jest": "^27.3.1",
     "babel-loader": "^8.2.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^7.0.0",
     "jest": "^26.6.3",
-    "lerna": "^3.22.1",
+    "lerna": "^7.4.2",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.2",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.3",
+    "webpack": "^5",
+    "webpack-cli": "^5",
+    "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.10.0",
     "webpack-parallel-uglify-plugin": "^1.1.4"
   }
 }
