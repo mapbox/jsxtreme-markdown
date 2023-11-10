@@ -27,9 +27,9 @@
     "postcss-js": "^4.0.1",
     "property-information": "^5.5.0",
     "react-attr-converter": "^0.3.1",
+    "rehype-parse": "^6.0.2",
     "stringify-entities": "^3.0.1",
-    "stringify-object": "^3.3.0",
-    "rehype-parse": "^6.0.2"
+    "stringify-object": "^3.3.0"
   },
   "devDependencies": {
     "hastscript": "^5.1.2",
@@ -39,5 +39,6 @@
   "engines": {
     "node": ">=18",
     "npm": ">=9"
-  }
+  },
+  "gitHead": "13ee9214bb864c45f3180d04448fcb5033abaf7c"
 }
