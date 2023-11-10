@@ -1,5 +1,10 @@
 # jsxtreme-markdown changelog
 
+## 3.2.0
+
+- Update dependencies to remove all vulnerabilities
+- Updates webpack & tests
+
 ## 3.1.0
 
 - update dependencies
