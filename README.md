@@ -115,3 +115,9 @@ That should do it.
 [remark]: https://github.com/wooorm/remark
 [rehype]: https://github.com/wooorm/rehype
 [hast]: https://github.com/syntax-tree/hast
+
+## Monorepo Notes
+
+This monorepo does not include any special tooling for managing common dependencies or publishing. Tests are run from the root of the repo, but each of the four packages are updated and published independently using the same publishing process used in other Mapbox JS packages.
+
+A `postinstall` script is in place to ensure that each of the four packages install dependencies when `npm i` is run at the repo root. This ensures that all dependencies are in place so that tests can run on ci.

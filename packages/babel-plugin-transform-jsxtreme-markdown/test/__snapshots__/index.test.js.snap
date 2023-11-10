@@ -32,9 +32,7 @@ exports[`does not add React to scope when it is already imported 1`] = `
 "\\"use strict\\";
 
 var _react = _interopRequireDefault(require(\\"react\\"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \\"default\\": obj }; }
-
 var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
 Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
@@ -44,7 +42,6 @@ exports[`does not add React to scope when it is already required 1`] = `
 "\\"use strict\\";
 
 var React = require('react');
-
 var foo = <div><h1>Title</h1>
   <p>This is <strong>bold.</strong>
 Here is a <a href=\\"/some/url\\">link</a>.</p></div>;"
@@ -54,11 +51,7 @@ exports[`does nothing when module is not in scope 1`] = `
 "\\"use strict\\";
 
 var _templateObject;
-
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function x() {}
-
 var foo = md(_templateObject || (_templateObject = _taggedTemplateLiteral([\\"\\\\n      # Title\\\\n      This is **bold.**\\\\n      Here is a [link](/some/url).\\\\n    \\"])));"
 `;
 
