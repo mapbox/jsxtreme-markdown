@@ -1,6 +1,6 @@
 {
   "name": "@mapbox/jsxtreme-markdown",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Transform Markdown into JSX or React component modules",
   "main": "index.js",
   "repository": {
