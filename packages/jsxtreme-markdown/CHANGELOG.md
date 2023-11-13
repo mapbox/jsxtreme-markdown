@@ -1,5 +1,9 @@
 # jsxtreme-markdown changelog
 
+## 3.2.0
+
+- update dependencies
+
 ## 3.1.0
 
 - update dependencies
