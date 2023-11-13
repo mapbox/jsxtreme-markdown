@@ -1,5 +1,9 @@
 # hast-util-to-jsx changelog
 
+## 2.1.0
+
+- Update dependencies
+
 ## 2.0.0
 
 - Require Node >=14 and update dependencies.
