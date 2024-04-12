@@ -1,3 +1,6 @@
+## Note: Repo no longer maintained.
+As of April 2024, jsxtreme markdown (& batfish) are no longer maintained & this repository is archived.
+
 # jsxtreme-markdown
 
 [![Build Status](https://travis-ci.com/mapbox/jsxtreme-markdown.svg?branch=main)](https://travis-ci.com/mapbox/jsxtreme-markdown)
